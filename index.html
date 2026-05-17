@@ -34,7 +34,6 @@
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #FBFBFA; }
         .editorial-header { font-family: 'Cormorant Garamond', serif; }
-        /* Custom minimalist scrollbar */
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: #FBFBFA; }
         ::-webkit-scrollbar-thumb { background: #8C7A6B; }
@@ -60,7 +59,7 @@
     <main class="max-w-7xl mx-auto px-6 py-12">
 
         <!-- ================= CLOSET / COLLECTION VIEW ================= -->
-        <section id="view-closet" class="space-y-10 animate-fade-in">
+        <section id="view-closet" class="space-y-10">
             <!-- Filter Bar -->
             <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-studio-border pb-6 gap-4">
                 <h1 class="editorial-header text-4xl italic font-medium">The Permanent Collection</h1>
@@ -83,15 +82,23 @@
 
             <!-- Closet Grid -->
             <div id="closet-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-y-12 gap-x-8">
-                <!-- Dynamic Content Injection -->
+                <!-- Dynamic Content -->
             </div>
         </section>
 
         <!-- ================= LOOKBOOKS VIEW ================= -->
         <section id="view-fits" class="space-y-8 hidden">
-            <div class="border-b border-studio-border pb-6">
-                <h1 class="editorial-header text-4xl italic font-medium">Compiled Lookbooks</h1>
-                <p class="text-xs text-studio-muted tracking-wide mt-1">Assembled and synced via studio backend pipeline.</p>
+            <!-- Lookbook Header & Filter -->
+            <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-studio-border pb-6 gap-4">
+                <div>
+                    <h1 class="editorial-header text-4xl italic font-medium">Compiled Lookbooks</h1>
+                    <p class="text-xs text-studio-muted tracking-wide mt-1">Assembled and synced via studio backend pipeline.</p>
+                </div>
+                <div>
+                    <select id="filter-fit-occasion" onchange="renderFitsPage()" class="bg-studio-paper border border-studio-border text-xs uppercase tracking-wider px-4 py-2 focus:outline-none focus:border-studio-accent transition">
+                        <option value="all">All Occasions</option>
+                    </select>
+                </div>
             </div>
 
             <div id="outfits-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -143,7 +150,7 @@
 
     <!-- ================= SYSTEM INFRASTRUCTURE ================= -->
     <script>
-        // --- SEED DATA (Conforming to requested media.json structures) ---
+        // --- SEED DATA (media.json format) ---
         const initialClothesSeed = {
             "7b9d1468-b785-4b0e-bc6d-dfc5409d57a1": {
                 "type": "coat",
@@ -171,16 +178,22 @@
             }
         };
 
-        // --- BACKEND OUTIFT SCHEMA MAP (outfits.json structure) ---
+        // --- UPDATED SCHEMA MAP (outfits.json format with nested parameters) ---
         const initialFitsSeed = {
-            "LOOK_01_AUTUMN": [
-                "7b9d1468-b785-4b0e-bc6d-dfc5409d57a1",
-                "2c8e3194-c112-4a8f-bc6a-fae5409d57b2"
-            ],
-            "LOOK_02_FORMAL_MONO": [
-                "3d8e3194-c112-4a8f-bc6a-fae5409d57b3",
-                "7b9d1468-b785-4b0e-bc6d-dfc5409d57a1"
-            ]
+            "LOOK_01_AUTUMN": {
+                "occasion": "Editorial",
+                "items": [
+                    "7b9d1468-b785-4b0e-bc6d-dfc5409d57a1",
+                    "2c8e3194-c112-4a8f-bc6a-fae5409d57b2"
+                ]
+            },
+            "LOOK_02_FORMAL_MONO": {
+                "occasion": "Minimalist",
+                "items": [
+                    "3d8e3194-c112-4a8f-bc6a-fae5409d57b3",
+                    "7b9d1468-b785-4b0e-bc6d-dfc5409d57a1"
+                ]
+            }
         };
 
         // --- PERSISTENCE LAYER ---
@@ -229,10 +242,18 @@
             });
             populateSelect('filter-type', types, 'All Architecture');
             populateSelect('filter-occasion', occasions, 'All Settings');
+
+            // Parse and populate Outfit Occasions
+            const fitOccasions = new Set();
+            Object.values(outfits).forEach(fit => {
+                if (fit.occasion) fitOccasions.add(fit.occasion);
+            });
+            populateSelect('filter-fit-occasion', fitOccasions, 'All Occasions');
         }
 
         function populateSelect(elementId, dataset, defaultLabel) {
             const select = document.getElementById(elementId);
+            if (!select) return;
             select.innerHTML = `<option value="all">${defaultLabel}</option>`;
             dataset.forEach(value => {
                 select.innerHTML += `<option value="${value}">${value.toUpperCase()}</option>`;
@@ -266,7 +287,6 @@
                         <div class="relative aspect-[3/4] w-full bg-studio-bg overflow-hidden border border-studio-border transition-all duration-500 group-hover:border-studio-accent">
                             <img src="${item.image}" alt="${item.type}" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-102">
 
-                            <!-- Action overlay bar -->
                             <div class="absolute bottom-0 inset-x-0 bg-studio-paper/90 backdrop-blur-sm border-t border-studio-border p-2 flex justify-between transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                                 <button onclick="toggleLaundry('${uuid}')" class="text-[10px] uppercase tracking-widest text-studio-ink hover:text-studio-accent transition">
                                     ${item.isDirty ? '◌ Clear Care' : '● Mark Care'}
@@ -306,12 +326,20 @@
             }
         }
 
-        // --- RENDER EXTERNAL LOOKBOOKS ---
+        // --- RENDER EXTERNAL LOOKBOOKS FROM UPDATED OBJECT PIPELINE ---
         function renderFitsPage() {
             const grid = document.getElementById('outfits-grid');
             grid.innerHTML = '';
 
-            Object.entries(outfits).forEach(([outfitId, itemIds]) => {
+            const fitOccasionFilter = document.getElementById('filter-fit-occasion').value;
+
+            Object.entries(outfits).forEach(([outfitId, fitData]) => {
+                const fitOccasion = fitData.occasion || "General";
+                const itemIds = fitData.items || [];
+
+                // Filter Evaluation Block
+                if (fitOccasionFilter !== 'all' && fitOccasion !== fitOccasionFilter) return;
+
                 let textManifest = [];
                 let itemCardsHtml = '';
 
@@ -334,7 +362,10 @@
                     <div class="border border-studio-border p-6 bg-studio-paper space-y-6 flex flex-col justify-between">
                         <div class="space-y-2">
                             <div class="flex justify-between items-baseline border-b border-studio-border pb-2">
-                                <h2 class="text-xs uppercase tracking-[0.2em] font-medium text-studio-ink">${outfitId}</h2>
+                                <div class="flex flex-col">
+                                    <h2 class="text-xs uppercase tracking-[0.2em] font-medium text-studio-ink">${outfitId}</h2>
+                                    <span class="text-[10px] text-studio-accent uppercase tracking-wider mt-0.5 font-medium font-mono">${fitOccasion}</span>
+                                </div>
                                 <span class="text-[10px] font-serif text-studio-accent italic">${itemIds.length} Elements</span>
                             </div>
                             <p class="text-xs text-studio-muted lowercase tracking-wide leading-relaxed truncate">
@@ -342,7 +373,6 @@
                             </p>
                         </div>
 
-                        <!-- Visual collage structural row -->
                         <div class="grid grid-cols-3 gap-2">
                             ${itemCardsHtml || '<div class="col-span-3 text-center py-6 text-[11px] text-studio-muted italic font-serif">Structure vacant</div>'}
                         </div>
