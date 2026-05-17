@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Atelier — Digital Wardrobe</title>
     <!-- Premium Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap"
+          rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -32,257 +33,311 @@
         }
     </script>
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #FBFBFA; }
-        .editorial-header { font-family: 'Cormorant Garamond', serif; }
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-track { background: #FBFBFA; }
-        ::-webkit-scrollbar-thumb { background: #8C7A6B; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FBFBFA;
+        }
+
+        .editorial-header {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #FBFBFA;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #8C7A6B;
+        }
     </style>
 </head>
 <body class="text-studio-ink antialiased selection:bg-studio-accent selection:text-white">
 
-    <!-- Navigation Header -->
-    <header class="border-b border-studio-border bg-studio-paper/80 backdrop-blur-md sticky top-0 z-50 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
-            <div class="flex flex-col">
-                <span class="editorial-header text-2xl font-medium tracking-wide uppercase">Atelier</span>
-                <span class="text-[9px] uppercase tracking-[0.2em] text-studio-accent -mt-1">Digital Archive</span>
-            </div>
-            <nav class="flex space-x-10 text-xs uppercase tracking-widest font-medium">
-                <button onclick="switchView('closet')" class="nav-link text-studio-ink relative after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[1px] after:bg-studio-ink transition-colors">Collection</button>
-                <button onclick="switchView('fits')" class="nav-link text-studio-muted hover:text-studio-ink transition-colors">Lookbooks</button>
-                <button onclick="switchView('add-item')" class="nav-link text-studio-muted hover:text-studio-ink transition-colors">+ Curate Item</button>
-            </nav>
+<!-- Navigation Header -->
+<header class="border-b border-studio-border bg-studio-paper/80 backdrop-blur-md sticky top-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+        <div class="flex flex-col">
+            <span class="editorial-header text-2xl font-medium tracking-wide uppercase">Atelier</span>
+            <span class="text-[9px] uppercase tracking-[0.2em] text-studio-accent -mt-1">Digital Archive</span>
         </div>
-    </header>
+        <nav class="flex space-x-10 text-xs uppercase tracking-widest font-medium">
+            <button class="nav-link text-studio-ink relative after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[1px] after:bg-studio-ink transition-colors"
+                    onclick="switchView('closet')">
+                Collection
+            </button>
+            <button class="nav-link text-studio-muted hover:text-studio-ink transition-colors"
+                    onclick="switchView('fits')">Lookbooks
+            </button>
+            <button class="nav-link text-studio-muted hover:text-studio-ink transition-colors"
+                    onclick="switchView('add-item')">+ Curate Item
+            </button>
+        </nav>
+    </div>
+</header>
 
-    <main class="max-w-7xl mx-auto px-6 py-12">
+<main class="max-w-7xl mx-auto px-6 py-12">
 
-        <!-- ================= CLOSET / COLLECTION VIEW ================= -->
-        <section id="view-closet" class="space-y-10">
-            <!-- Filter Bar -->
-            <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-studio-border pb-6 gap-4">
-                <h1 class="editorial-header text-4xl italic font-medium">The Permanent Collection</h1>
+    <!-- Loading Indicator -->
+    <div class="fixed inset-0 bg-studio-bg z-40 flex flex-col items-center justify-center space-y-2 transition-opacity duration-500"
+         id="loading-overlay">
+        <span class="editorial-header text-xl italic animate-pulse">Syncing Archive...</span>
+    </div>
 
-                <div class="flex flex-wrap gap-3 items-center">
-                    <select id="filter-type" onchange="renderCloset()" class="bg-studio-paper border border-studio-border text-xs uppercase tracking-wider px-4 py-2 focus:outline-none focus:border-studio-accent transition">
-                        <option value="all">All Architecture</option>
-                    </select>
-                    <select id="filter-occasion" onchange="renderCloset()" class="bg-studio-paper border border-studio-border text-xs uppercase tracking-wider px-4 py-2 focus:outline-none focus:border-studio-accent transition">
-                        <option value="all">All Settings</option>
-                    </select>
-                    <select id="filter-status" onchange="renderCloset()" class="bg-studio-paper border border-studio-border text-xs uppercase tracking-wider px-4 py-2 focus:outline-none focus:border-studio-accent transition">
-                        <option value="all">All States</option>
-                        <option value="clean">Ready to Wear</option>
-                        <option value="dirty">In Care (Laundry)</option>
-                    </select>
-                    <button onclick="resetFilters()" class="text-xs uppercase tracking-widest text-studio-muted hover:text-studio-ink underline decoration-1 underline-offset-4 pl-2 transition">Clear</button>
-                </div>
+    <!-- ================= CLOSET / COLLECTION VIEW ================= -->
+    <section class="space-y-10" id="view-closet">
+        <!-- Filter Bar -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-studio-border pb-6 gap-4">
+            <h1 class="editorial-header text-4xl italic font-medium">The Permanent Collection</h1>
+
+            <div class="flex flex-wrap gap-3 items-center">
+                <select class="bg-studio-paper border border-studio-border text-xs uppercase tracking-wider px-4 py-2 focus:outline-none focus:border-studio-accent transition" id="filter-type"
+                        onchange="renderCloset()">
+                    <option value="all">All Architecture</option>
+                </select>
+                <select class="bg-studio-paper border border-studio-border text-xs uppercase tracking-wider px-4 py-2 focus:outline-none focus:border-studio-accent transition" id="filter-occasion"
+                        onchange="renderCloset()">
+                    <option value="all">All Settings</option>
+                </select>
+                <select class="bg-studio-paper border border-studio-border text-xs uppercase tracking-wider px-4 py-2 focus:outline-none focus:border-studio-accent transition" id="filter-status"
+                        onchange="renderCloset()">
+                    <option value="all">All States</option>
+                    <option value="clean">Ready to Wear</option>
+                    <option value="dirty">In Care (Laundry)</option>
+                </select>
+                <button class="text-xs uppercase tracking-widest text-studio-muted hover:text-studio-ink underline decoration-1 underline-offset-4 pl-2 transition"
+                        onclick="resetFilters()">
+                    Clear
+                </button>
+            </div>
+        </div>
+
+        <!-- Closet Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-y-12 gap-x-8"
+             id="closet-grid">
+            <!-- Dynamic Content -->
+        </div>
+    </section>
+
+    <!-- ================= LOOKBOOKS VIEW ================= -->
+    <section class="space-y-8 hidden" id="view-fits">
+        <!-- Lookbook Header & Filter -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-studio-border pb-6 gap-4">
+            <div>
+                <h1 class="editorial-header text-4xl italic font-medium">Compiled Lookbooks</h1>
+                <p class="text-xs text-studio-muted tracking-wide mt-1">Assembled and synced via studio backend
+                    pipeline.</p>
+            </div>
+            <div>
+                <select class="bg-studio-paper border border-studio-border text-xs uppercase tracking-wider px-4 py-2 focus:outline-none focus:border-studio-accent transition" id="filter-fit-occasion"
+                        onchange="renderFitsPage()">
+                    <option value="all">All Occasions</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10" id="outfits-grid">
+            <!-- Dynamic Outfits Structure -->
+        </div>
+    </section>
+
+    <!-- ================= ADD ITEM VIEW ================= -->
+    <section class="max-w-xl mx-auto bg-studio-paper border border-studio-border p-10 hidden" id="view-add-item">
+        <div class="text-center mb-8">
+            <h2 class="editorial-header text-3xl font-medium tracking-wide">Archive New Object</h2>
+            <p class="text-xs text-studio-muted tracking-wider mt-1 uppercase">Input system specifications below</p>
+        </div>
+
+        <form class="space-y-6" id="add-item-form" onsubmit="handleAddItem(event)">
+            <div class="border border-dashed border-studio-border p-6 text-center hover:border-studio-accent transition group cursor-pointer relative">
+                <input accept="image/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" id="item-file" required
+                       type="file">
+                <p class="text-xs text-studio-muted uppercase tracking-widest group-hover:text-studio-ink transition">
+                    Select Asset Image File</p>
+                <p class="text-[10px] text-studio-accent mt-1 italic">Converts natively to Base64 schema mapping</p>
             </div>
 
-            <!-- Closet Grid -->
-            <div id="closet-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-y-12 gap-x-8">
-                <!-- Dynamic Content -->
-            </div>
-        </section>
-
-        <!-- ================= LOOKBOOKS VIEW ================= -->
-        <section id="view-fits" class="space-y-8 hidden">
-            <!-- Lookbook Header & Filter -->
-            <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-studio-border pb-6 gap-4">
+            <div class="grid grid-cols-2 gap-4">
                 <div>
-                    <h1 class="editorial-header text-4xl italic font-medium">Compiled Lookbooks</h1>
-                    <p class="text-xs text-studio-muted tracking-wide mt-1">Assembled and synced via studio backend pipeline.</p>
+                    <label class="block text-[10px] uppercase tracking-widest text-studio-muted mb-1">Architecture /
+                        Type</label>
+                    <input class="w-full bg-studio-bg border border-studio-border p-3 text-xs focus:outline-none focus:border-studio-accent transition" id="item-type" placeholder="e.g., blazer, trousers" required
+                           type="text">
                 </div>
                 <div>
-                    <select id="filter-fit-occasion" onchange="renderFitsPage()" class="bg-studio-paper border border-studio-border text-xs uppercase tracking-wider px-4 py-2 focus:outline-none focus:border-studio-accent transition">
-                        <option value="all">All Occasions</option>
-                    </select>
+                    <label class="block text-[10px] uppercase tracking-widest text-studio-muted mb-1">Color
+                        Palette</label>
+                    <input class="w-full bg-studio-bg border border-studio-border p-3 text-xs focus:outline-none focus:border-studio-accent transition" id="item-color" placeholder="e.g., Espresso" required
+                           type="text">
                 </div>
             </div>
 
-            <div id="outfits-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                <!-- Dynamic Outfits Structure -->
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-[10px] uppercase tracking-widest text-studio-muted mb-1">House /
+                        Brand</label>
+                    <input class="w-full bg-studio-bg border border-studio-border p-3 text-xs focus:outline-none focus:border-studio-accent transition" id="item-brand" placeholder="e.g., Jil Sander"
+                           type="text">
+                </div>
+                <div>
+                    <label class="block text-[10px] uppercase tracking-widest text-studio-muted mb-1">Context /
+                        Occasion</label>
+                    <input class="w-full bg-studio-bg border border-studio-border p-3 text-xs focus:outline-none focus:border-studio-accent transition" id="item-occasion" placeholder="e.g., Formal" required
+                           type="text">
+                </div>
             </div>
-        </section>
 
-        <!-- ================= ADD ITEM VIEW ================= -->
-        <section id="view-add-item" class="max-w-xl mx-auto bg-studio-paper border border-studio-border p-10 hidden">
-            <div class="text-center mb-8">
-                <h2 class="editorial-header text-3xl font-medium tracking-wide">Archive New Object</h2>
-                <p class="text-xs text-studio-muted tracking-wider mt-1 uppercase">Input system specifications below</p>
-            </div>
+            <button class="w-full bg-studio-ink hover:bg-studio-accent text-white text-xs uppercase tracking-widest py-4 transition durations-300 font-medium"
+                    type="submit">
+                Commit to Inventory
+            </button>
+        </form>
+    </section>
 
-            <form id="add-item-form" class="space-y-6" onsubmit="handleAddItem(event)">
-                <div class="border border-dashed border-studio-border p-6 text-center hover:border-studio-accent transition group cursor-pointer relative">
-                    <input type="file" id="item-file" accept="image/*" required class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
-                    <p class="text-xs text-studio-muted uppercase tracking-widest group-hover:text-studio-ink transition">Select Asset Image File</p>
-                    <p class="text-[10px] text-studio-accent mt-1 italic">Converts natively to Base64 schema mapping</p>
-                </div>
+</main>
 
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-[10px] uppercase tracking-widest text-studio-muted mb-1">Architecture / Type</label>
-                        <input type="text" id="item-type" placeholder="e.g., blazer, trousers" required class="w-full bg-studio-bg border border-studio-border p-3 text-xs focus:outline-none focus:border-studio-accent transition">
-                    </div>
-                    <div>
-                        <label class="block text-[10px] uppercase tracking-widest text-studio-muted mb-1">Color Palette</label>
-                        <input type="text" id="item-color" placeholder="e.g., Espresso" required class="w-full bg-studio-bg border border-studio-border p-3 text-xs focus:outline-none focus:border-studio-accent transition">
-                    </div>
-                </div>
+<!-- ================= SYSTEM INFRASTRUCTURE ================= -->
+<script>
+    const CACHE_NAME = 'atelier-media-v1';
+    const MEDIA_URL = '/media.json';
+    const OUTFITS_URL = '/outfits.json';
 
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-[10px] uppercase tracking-widest text-studio-muted mb-1">House / Brand</label>
-                        <input type="text" id="item-brand" placeholder="e.g., Jil Sander" class="w-full bg-studio-bg border border-studio-border p-3 text-xs focus:outline-none focus:border-studio-accent transition">
-                    </div>
-                    <div>
-                        <label class="block text-[10px] uppercase tracking-widest text-studio-muted mb-1">Context / Occasion</label>
-                        <input type="text" id="item-occasion" placeholder="e.g., Formal" required class="w-full bg-studio-bg border border-studio-border p-3 text-xs focus:outline-none focus:border-studio-accent transition">
-                    </div>
-                </div>
+    // --- RUNTIME STATE ---
+    let clothes = {};
+    let outfits = {};
 
-                <button type="submit" class="w-full bg-studio-ink hover:bg-studio-accent text-white text-xs uppercase tracking-widest py-4 transition durations-300 font-medium">Commit to Inventory</button>
-            </form>
-        </section>
+    // --- ASYNC DATA INITIALIZATION PIPELINE ---
+    async function initializeArchive() {
+        console.log("Initializing Archive");
+        try {
+            // 1. Fetch Outfits (Always live from network)
+            const outfitsResponse = await fetch(OUTFITS_URL);
+            if (!outfitsResponse.ok) throw new Error('Outfits fetch failed');
+            outfits = await outfitsResponse.json();
 
-    </main>
+            // 2. Fetch Media with Indefinite Browser Cache Storage
+            const cache = await caches.open(CACHE_NAME);
+            // let cachedResponse = await cache.match(MEDIA_URL);
+            let cachedResponse = await fetch(MEDIA_URL);
 
-    <!-- ================= SYSTEM INFRASTRUCTURE ================= -->
-    <script>
-        // --- SEED DATA (media.json format) ---
-        const initialClothesSeed = {
-            "7b9d1468-b785-4b0e-bc6d-dfc5409d57a1": {
-                "type": "coat",
-                "image": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=500",
-                "color": "Camel",
-                "brand": "Lemaire",
-                "occasion": "Editorial",
-                "isDirty": false
-            },
-            "2c8e3194-c112-4a8f-bc6a-fae5409d57b2": {
-                "type": "trousers",
-                "image": "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=500",
-                "color": "Off-White",
-                "brand": "The Row",
-                "occasion": "Minimalist",
-                "isDirty": false
-            },
-            "3d8e3194-c112-4a8f-bc6a-fae5409d57b3": {
-                "type": "boots",
-                "image": "https://images.unsplash.com/photo-1608256246200-53e635b5b65f?w=500",
-                "color": "Nero Black",
-                "brand": "Bottega Veneta",
-                "occasion": "Formal",
-                "isDirty": true
-            }
-        };
+            // if (!cachedResponse) {
+            //     // Cache Miss: Query network, record response in cache storage permanently
+            //     // await cache.add(MEDIA_URL);
+            //     cachedResponse = await fetch(MEDIA_URL);
+            //     // cachedResponse = await cache.match(MEDIA_URL);
+            // }
 
-        // --- UPDATED SCHEMA MAP (outfits.json format with nested parameters) ---
-        const initialFitsSeed = {
-            "LOOK_01_AUTUMN": {
-                "occasion": "Editorial",
-                "items": [
-                    "7b9d1468-b785-4b0e-bc6d-dfc5409d57a1",
-                    "2c8e3194-c112-4a8f-bc6a-fae5409d57b2"
-                ]
-            },
-            "LOOK_02_FORMAL_MONO": {
-                "occasion": "Minimalist",
-                "items": [
-                    "3d8e3194-c112-4a8f-bc6a-fae5409d57b3",
-                    "7b9d1468-b785-4b0e-bc6d-dfc5409d57a1"
-                ]
-            }
-        };
+            clothes = await cachedResponse.json();
 
-        // --- PERSISTENCE LAYER ---
-        let clothes = JSON.parse(localStorage.getItem('studio_media')) || initialClothesSeed;
-        let outfits = JSON.parse(localStorage.getItem('studio_fits')) || initialFitsSeed;
+        } catch (error) {
+            console.error('System Data Sync Failure:', error);
+            // Graceful fallback to secondary local storage state if server goes offline
+            clothes = JSON.parse(localStorage.getItem('studio_media')) || {};
+            outfits = JSON.parse(localStorage.getItem('studio_fits')) || {};
+        } finally {
+            // Remove Loading Screen UI
+            const loader = document.getElementById('loading-overlay');
+            loader.classList.add('opacity-0', 'pointer-events-none');
 
-        function saveToStorage() {
-            localStorage.setItem('studio_media', JSON.stringify(clothes));
-            localStorage.setItem('studio_fits', JSON.stringify(outfits));
-        }
-
-        // --- VIEWS ROUTING ---
-        function switchView(viewName) {
-            document.getElementById('view-closet').classList.add('hidden');
-            document.getElementById('view-fits').classList.add('hidden');
-            document.getElementById('view-add-item').classList.add('hidden');
-
-            document.querySelectorAll('.nav-link').forEach(el => {
-                el.classList.replace('text-studio-ink', 'text-studio-muted');
-                el.classList.remove('after:absolute', 'after:bottom-[-4px]', 'after:left-0', 'after:w-full', 'after:h-[1px]', 'after:bg-studio-ink');
-            });
-
-            document.getElementById(`view-${viewName}`).classList.remove('hidden');
-
-            const activeNav = [...document.querySelectorAll('.nav-link')].find(el => {
-                const searchStr = viewName === 'closet' ? 'collection' : viewName === 'fits' ? 'lookbooks' : 'curate';
-                return el.textContent.toLowerCase().includes(searchStr);
-            });
-
-            if (activeNav) {
-                activeNav.classList.replace('text-studio-muted', 'text-studio-ink');
-                activeNav.classList.add('after:absolute', 'after:bottom-[-4px]', 'after:left-0', 'after:w-full', 'after:h-[1px]', 'after:bg-studio-ink');
-            }
-
-            if (viewName === 'closet') renderCloset();
-            if (viewName === 'fits') renderFitsPage();
-        }
-
-        // --- DATA FILTER ARCHITECTURE ---
-        function populateFilterDropdowns() {
-            const types = new Set();
-            const occasions = new Set();
-            Object.values(clothes).forEach(item => {
-                types.add(item.type);
-                occasions.add(item.occasion);
-            });
-            populateSelect('filter-type', types, 'All Architecture');
-            populateSelect('filter-occasion', occasions, 'All Settings');
-
-            // Parse and populate Outfit Occasions
-            const fitOccasions = new Set();
-            Object.values(outfits).forEach(fit => {
-                if (fit.occasion) fitOccasions.add(fit.occasion);
-            });
-            populateSelect('filter-fit-occasion', fitOccasions, 'All Occasions');
-        }
-
-        function populateSelect(elementId, dataset, defaultLabel) {
-            const select = document.getElementById(elementId);
-            if (!select) return;
-            select.innerHTML = `<option value="all">${defaultLabel}</option>`;
-            dataset.forEach(value => {
-                select.innerHTML += `<option value="${value}">${value.toUpperCase()}</option>`;
-            });
-        }
-
-        function resetFilters() {
-            document.getElementById('filter-type').value = 'all';
-            document.getElementById('filter-occasion').value = 'all';
-            document.getElementById('filter-status').value = 'all';
+            populateFilterDropdowns();
             renderCloset();
         }
+    }
 
-        // --- DOM RENDER PIPELINES ---
-        function renderCloset() {
-            const grid = document.getElementById('closet-grid');
-            grid.innerHTML = '';
+    // --- CACHE SYNCHRONIZATION FOR CLIENT MUTATIONS ---
+    async function updateMediaCache() {
+        localStorage.setItem('studio_media', JSON.stringify(clothes)); // Backup state
+        try {
+            const cache = await caches.open(CACHE_NAME);
+            const updatedResponse = new Response(JSON.stringify(clothes), {
+                headers: {'Content-Type': 'application/json'}
+            });
+            await cache.put(MEDIA_URL, updatedResponse);
+        } catch (e) {
+            console.error('Failed to commit mutations to Cache Storage:', e);
+        }
+    }
 
-            const typeFilter = document.getElementById('filter-type').value;
-            const occasionFilter = document.getElementById('filter-occasion').value;
-            const statusFilter = document.getElementById('filter-status').value;
+    // --- VIEWS ROUTING ---
+    function switchView(viewName) {
+        document.getElementById('view-closet').classList.add('hidden');
+        document.getElementById('view-fits').classList.add('hidden');
+        document.getElementById('view-add-item').classList.add('hidden');
 
-            Object.entries(clothes).forEach(([uuid, item]) => {
-                if (typeFilter !== 'all' && item.type !== typeFilter) return;
-                if (occasionFilter !== 'all' && item.occasion !== occasionFilter) return;
-                if (statusFilter === 'clean' && item.isDirty) return;
-                if (statusFilter === 'dirty' && !item.isDirty) return;
+        document.querySelectorAll('.nav-link').forEach(el => {
+            el.classList.replace('text-studio-ink', 'text-studio-muted');
+            el.classList.remove('after:absolute', 'after:bottom-[-4px]', 'after:left-0', 'after:w-full', 'after:h-[1px]', 'after:bg-studio-ink');
+        });
 
-                const cardHtml = `
+        document.getElementById(`view-${viewName}`).classList.remove('hidden');
+
+        const activeNav = [...document.querySelectorAll('.nav-link')].find(el => {
+            const searchStr = viewName === 'closet' ? 'collection' : viewName === 'fits' ? 'lookbooks' : 'curate';
+            return el.textContent.toLowerCase().includes(searchStr);
+        });
+
+        if (activeNav) {
+            activeNav.classList.replace('text-studio-muted', 'text-studio-ink');
+            activeNav.classList.add('after:absolute', 'after:bottom-[-4px]', 'after:left-0', 'after:w-full', 'after:h-[1px]', 'after:bg-studio-ink');
+        }
+
+        if (viewName === 'closet') renderCloset();
+        if (viewName === 'fits') renderFitsPage();
+    }
+
+    // --- DATA FILTER ARCHITECTURE ---
+    function populateFilterDropdowns() {
+        const types = new Set();
+        const occasions = new Set();
+        Object.values(clothes).forEach(item => {
+            types.add(item.type);
+            occasions.add(item.occasion);
+        });
+        populateSelect('filter-type', types, 'All Architecture');
+        populateSelect('filter-occasion', occasions, 'All Settings');
+
+        const fitOccasions = new Set();
+        Object.values(outfits).forEach(fit => {
+            if (fit.occasion) fitOccasions.add(fit.occasion);
+        });
+        populateSelect('filter-fit-occasion', fitOccasions, 'All Occasions');
+    }
+
+    function populateSelect(elementId, dataset, defaultLabel) {
+        const select = document.getElementById(elementId);
+        if (!select) return;
+        select.innerHTML = `<option value="all">${defaultLabel}</option>`;
+        dataset.forEach(value => {
+            select.innerHTML += `<option value="${value}">${value.toUpperCase()}</option>`;
+        });
+    }
+
+    function resetFilters() {
+        document.getElementById('filter-type').value = 'all';
+        document.getElementById('filter-occasion').value = 'all';
+        document.getElementById('filter-status').value = 'all';
+        renderCloset();
+    }
+
+    // --- DOM RENDER PIPELINES ---
+    function renderCloset() {
+        const grid = document.getElementById('closet-grid');
+        grid.innerHTML = '';
+
+        const typeFilter = document.getElementById('filter-type').value;
+        const occasionFilter = document.getElementById('filter-occasion').value;
+        const statusFilter = document.getElementById('filter-status').value;
+
+        Object.entries(clothes).forEach(([uuid, item]) => {
+            if (typeFilter !== 'all' && item.type !== typeFilter) return;
+            if (occasionFilter !== 'all' && item.occasion !== occasionFilter) return;
+            if (statusFilter === 'clean' && item.isDirty) return;
+            if (statusFilter === 'dirty' && !item.isDirty) return;
+
+            const cardHtml = `
                     <div class="group flex flex-col space-y-3 relative">
                         <div class="relative aspect-[3/4] w-full bg-studio-bg overflow-hidden border border-studio-border transition-all duration-500 group-hover:border-studio-accent">
                             <img src="${item.image}" alt="${item.type}" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-102">
@@ -307,48 +362,46 @@
                         </div>
                     </div>
                 `;
-                grid.innerHTML += cardHtml;
-            });
-        }
+            grid.innerHTML += cardHtml;
+        });
+    }
 
-        function toggleLaundry(uuid) {
-            clothes[uuid].isDirty = !clothes[uuid].isDirty;
-            saveToStorage();
+    function toggleLaundry(uuid) {
+        clothes[uuid].isDirty = !clothes[uuid].isDirty;
+        updateMediaCache();
+        renderCloset();
+    }
+
+    function deleteItem(uuid) {
+        if (confirm("Permanently strip this object from database records?")) {
+            delete clothes[uuid];
+            updateMediaCache();
+            populateFilterDropdowns();
             renderCloset();
         }
+    }
 
-        function deleteItem(uuid) {
-            if(confirm("Permanently strip this object from database records?")) {
-                delete clothes[uuid];
-                saveToStorage();
-                populateFilterDropdowns();
-                renderCloset();
-            }
-        }
+    function renderFitsPage() {
+        const grid = document.getElementById('outfits-grid');
+        grid.innerHTML = '';
 
-        // --- RENDER EXTERNAL LOOKBOOKS FROM UPDATED OBJECT PIPELINE ---
-        function renderFitsPage() {
-            const grid = document.getElementById('outfits-grid');
-            grid.innerHTML = '';
+        const fitOccasionFilter = document.getElementById('filter-fit-occasion').value;
 
-            const fitOccasionFilter = document.getElementById('filter-fit-occasion').value;
+        Object.entries(outfits).forEach(([outfitId, fitData]) => {
+            const fitOccasion = fitData.occasion || "General";
+            const itemIds = fitData.items || [];
 
-            Object.entries(outfits).forEach(([outfitId, fitData]) => {
-                const fitOccasion = fitData.occasion || "General";
-                const itemIds = fitData.items || [];
+            if (fitOccasionFilter !== 'all' && fitOccasion !== fitOccasionFilter) return;
 
-                // Filter Evaluation Block
-                if (fitOccasionFilter !== 'all' && fitOccasion !== fitOccasionFilter) return;
+            let textManifest = [];
+            let itemCardsHtml = '';
 
-                let textManifest = [];
-                let itemCardsHtml = '';
+            itemIds.forEach(uuid => {
+                const item = clothes[uuid];
+                if (!item) return;
 
-                itemIds.forEach(uuid => {
-                    const item = clothes[uuid];
-                    if (!item) return;
-
-                    textManifest.push(`${item.color} ${item.type}`);
-                    itemCardsHtml += `
+                textManifest.push(`${item.color} ${item.type}`);
+                itemCardsHtml += `
                         <div class="relative aspect-[3/4] bg-studio-bg border border-studio-border overflow-hidden">
                             <img src="${item.image}" class="w-full h-full object-cover">
                             <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-2 pt-6">
@@ -356,9 +409,9 @@
                             </div>
                         </div>
                     `;
-                });
+            });
 
-                const lookbookCard = `
+            const lookbookCard = `
                     <div class="border border-studio-border p-6 bg-studio-paper space-y-6 flex flex-col justify-between">
                         <div class="space-y-2">
                             <div class="flex justify-between items-baseline border-b border-studio-border pb-2">
@@ -378,44 +431,43 @@
                         </div>
                     </div>
                 `;
-                grid.innerHTML += lookbookCard;
-            });
-        }
+            grid.innerHTML += lookbookCard;
+        });
+    }
 
-        // --- MUTATION PIPELINES ---
-        function handleAddItem(e) {
-            e.preventDefault();
-            const fileInput = document.getElementById('item-file');
-            const file = fileInput.files[0];
+    function handleAddItem(e) {
+        e.preventDefault();
+        const fileInput = document.getElementById('item-file');
+        const file = fileInput.files[0];
 
-            if (!file) return;
+        if (!file) return;
 
-            const reader = new FileReader();
-            reader.onloadend = function () {
-                const base64String = reader.result;
-                const newUuid = crypto.randomUUID();
+        const reader = new FileReader();
+        reader.onloadend = function () {
+            const base64String = reader.result;
+            const newUuid = crypto.randomUUID();
 
-                clothes[newUuid] = {
-                    type: document.getElementById('item-type').value.toLowerCase().trim(),
-                    image: base64String,
-                    color: document.getElementById('item-color').value.trim(),
-                    brand: document.getElementById('item-brand').value.trim() || "Generic House",
-                    occasion: document.getElementById('item-occasion').value.trim(),
-                    isDirty: false
-                };
-
-                saveToStorage();
-                document.getElementById('add-item-form').reset();
-                populateFilterDropdowns();
-                switchView('closet');
+            clothes[newUuid] = {
+                type: document.getElementById('item-type').value.toLowerCase().trim(),
+                image: base64String,
+                color: document.getElementById('item-color').value.trim(),
+                brand: document.getElementById('item-brand').value.trim() || "Generic House",
+                occasion: document.getElementById('item-occasion').value.trim(),
+                isDirty: false
             };
 
-            reader.readAsDataURL(file);
-        }
+            updateMediaCache();
+            document.getElementById('add-item-form').reset();
+            populateFilterDropdowns();
+            switchView('closet');
+        };
 
-        // --- LIFECYCLE INITIALIZATION ---
-        populateFilterDropdowns();
-        renderCloset();
-    </script>
+        reader.readAsDataURL(file);
+    }
+
+    // --- BOOTSTRAP EXECUTABLE ---
+    // window.addEventListener('DOMContentLoaded', initializeArchive);
+    initializeArchive();
+</script>
 </body>
 </html>

@@ -1,0 +1,26 @@
+{
+  "7b9d1468-b785-4b0e-bc6d-dfc5409d57a1": {
+    "type": "coat",
+    "image": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=500",
+    "color": "Camel",
+    "brand": "Lemaire",
+    "occasion": "Editorial",
+    "isDirty": false
+  },
+  "2c8e3194-c112-4a8f-bc6a-fae5409d57b2": {
+    "type": "trousers",
+    "image": "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=500",
+    "color": "Off-White",
+    "brand": "The Row",
+    "occasion": "Minimalist",
+    "isDirty": false
+  },
+  "3d8e3194-c112-4a8f-bc6a-fae5409d57b3": {
+    "type": "boots",
+    "image": "https://images.unsplash.com/photo-1608256246200-53e635b5b65f?w=500",
+    "color": "Nero Black",
+    "brand": "Bottega Veneta",
+    "occasion": "Formal",
+    "isDirty": true
+  }
+}
