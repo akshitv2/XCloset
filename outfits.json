@@ -16,11 +16,7 @@
     "isDirty": false
   },
   "3d8e3194-c112-4a8f-bc6a-fae5409d57b3": {
-    "type": "boots",
-    "image": "https://images.unsplash.com/photo-1608256246200-53e635b5b65f?w=500",
-    "color": "Nero Black",
-    "brand": "Bottega Veneta",
-    "occasion": "Formal",
-    "isDirty": true
+    "occasion": "Casual",
+    "clothes": ["c174a2c3-4a6f-4d36-9268-2de4380b4fda","8c5bf934-8e03-412e-9fb3-004c693b89e1"]
   }
 }

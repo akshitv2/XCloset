@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en" class="motion-safe:scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Atelier — Digital Wardrobe</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'media',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'Segoe UI', 'sans-serif'],
+                    },
+                    colors: {
+                        lumia: {
+                            bg: '#000000',
+                            tile: '#1F1F1F',
+                            accent: '#0078D7',
+                            text: '#FFFFFF',
+                            muted: '#A2A2A2'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', '-apple-system', 'Segoe UI', sans-serif;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            @apply bg-zinc-100 dark:bg-black;
+        }
+        ::-webkit-scrollbar-thumb {
+            @apply bg-zinc-300 dark:bg-zinc-800;
+        }
+    </style>
+</head>
+<body class="antialiased bg-white dark:bg-black text-zinc-900 dark:text-white min-h-screen flex flex-col selection:bg-lumia-accent selection:text-white transition-colors duration-200">
+
+<header class="bg-white dark:bg-black pt-8 pb-4 px-4 sticky top-0 z-50 transition-colors duration-200">
+    <div class="w-full flex flex-col md:flex-row justify-between items-baseline gap-4">
+        <div class="flex items-baseline gap-3">
+            <span class="text-4xl font-light tracking-tight text-lumia-accent uppercase">Atelier</span>
+            <span class="text-xs font-semibold tracking-widest text-zinc-400 dark:text-lumia-muted uppercase">Wardrobe System</span>
+        </div>
+        <nav class="flex space-x-8 text-2xl font-light tracking-tight overflow-x-auto whitespace-nowrap w-full md:w-auto py-2">
+            <button class="nav-link text-zinc-900 dark:text-white transition-colors uppercase" id="nav-closet" onclick="switchView('closet')">
+                Collection
+            </button>
+            <button class="nav-link text-zinc-400 dark:text-lumia-muted hover:text-zinc-900 dark:hover:text-white transition-colors uppercase" id="nav-fits" onclick="switchView('fits')">
+                Lookbooks
+            </button>
+            <button class="nav-link text-zinc-400 dark:text-lumia-muted hover:text-zinc-900 dark:hover:text-white transition-colors uppercase" id="nav-add-item" onclick="switchView('add-item')">
+                + Add
+            </button>
+        </nav>
+    </div>
+</header>
+
+<main class="w-full flex-1">
+
+    <div class="fixed inset-0 bg-white dark:bg-black z-40 flex flex-col items-center justify-center transition-opacity duration-300" id="loading-overlay">
+        <span class="text-3xl font-light tracking-wide animate-pulse uppercase text-zinc-900 dark:text-white">Syncing Live Tiles...</span>
+    </div>
+
+    <section class="space-y-4" id="view-closet">
+        <div class="px-4 flex flex-wrap gap-2 items-center bg-zinc-100/80 dark:bg-zinc-900/50 py-3 border-y border-zinc-200 dark:border-zinc-800 transition-colors duration-200">
+            <select class="bg-white dark:bg-black border border-zinc-300 dark:border-zinc-700 text-xs text-zinc-900 dark:text-white uppercase tracking-wider px-3 py-2 focus:outline-none focus:border-lumia-accent transition rounded-none" id="filter-type" onchange="renderCloset()">
+                <option value="all">All Architecture</option>
+            </select>
+            <select class="bg-white dark:bg-black border border-zinc-300 dark:border-zinc-700 text-xs text-zinc-900 dark:text-white uppercase tracking-wider px-3 py-2 focus:outline-none focus:border-lumia-accent transition rounded-none" id="filter-occasion" onchange="renderCloset()">
+                <option value="all">All Settings</option>
+            </select>
+            <button class="text-xs uppercase tracking-widest text-zinc-500 dark:text-lumia-muted hover:text-zinc-900 dark:hover:text-white px-2 py-1 bg-zinc-200 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 transition rounded-none" onclick="resetFilters()">
+                Reset
+            </button>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-1 bg-zinc-100 dark:bg-black p-1 transition-colors duration-200" id="closet-grid">
+        </div>
+    </section>
+
+    <section class="space-y-4 hidden" id="view-fits">
+        <div class="px-4 flex justify-between items-center bg-zinc-100/80 dark:bg-zinc-900/50 py-3 border-y border-zinc-200 dark:border-zinc-800 transition-colors duration-200">
+            <span class="text-xs font-semibold tracking-widest text-zinc-500 dark:text-lumia-muted uppercase">Compiled Pairs</span>
+            <select class="bg-white dark:bg-black border border-zinc-300 dark:border-zinc-700 text-xs text-zinc-900 dark:text-white uppercase tracking-wider px-3 py-2 focus:outline-none focus:border-lumia-accent transition rounded-none" id="filter-fit-occasion" onchange="renderFitsPage()">
+                <option value="all">All Occasions</option>
+            </select>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-4 bg-zinc-100 dark:bg-black transition-colors duration-200" id="outfits-grid">
+        </div>
+    </section>
+
+    <section class="p-4 hidden max-w-xl mx-auto" id="view-add-item">
+        <div class="bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-6 space-y-6 transition-colors duration-200">
+            <div>
+                <h2 class="text-2xl font-light tracking-wide uppercase text-zinc-900 dark:text-white">Archive New Object</h2>
+                <p class="text-xs text-zinc-400 dark:text-lumia-muted uppercase tracking-wider mt-1">System Node Specification</p>
+            </div>
+
+            <form class="space-y-4" id="add-item-form" onsubmit="handleAddItem(event)">
+                <div class="border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-black p-6 text-center hover:border-lumia-accent transition cursor-pointer relative">
+                    <input accept="image/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" id="item-file" required type="file">
+                    <p class="text-xs text-zinc-500 dark:text-lumia-muted uppercase tracking-widest">Select Asset Image File</p>
+                    <p class="text-[10px] text-lumia-accent mt-1 uppercase">Direct Base64 Schema Mapping</p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[10px] uppercase tracking-widest text-zinc-400 dark:text-lumia-muted mb-1">Architecture / Type</label>
+                        <input class="w-full bg-white dark:bg-black border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white p-3 text-xs focus:outline-none focus:border-lumia-accent transition rounded-none" id="item-type" placeholder="e.g., blazer, trousers" required type="text">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] uppercase tracking-widest text-zinc-400 dark:text-lumia-muted mb-1">Color Palette</label>
+                        <input class="w-full bg-white dark:bg-black border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white p-3 text-xs focus:outline-none focus:border-lumia-accent transition rounded-none" id="item-color" placeholder="e.g., Espresso" required type="text">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[10px] uppercase tracking-widest text-zinc-400 dark:text-lumia-muted mb-1">House / Brand</label>
+                        <input class="w-full bg-white dark:bg-black border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white p-3 text-xs focus:outline-none focus:border-lumia-accent transition rounded-none" id="item-brand" placeholder="e.g., Jil Sander" type="text">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] uppercase tracking-widest text-zinc-400 dark:text-lumia-muted mb-1">Context / Occasion</label>
+                        <input class="w-full bg-white dark:bg-black border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white p-3 text-xs focus:outline-none focus:border-lumia-accent transition rounded-none" id="item-occasion" placeholder="e.g., Formal" required type="text">
+                    </div>
+                </div>
+
+                <button class="w-full bg-lumia-accent hover:bg-blue-600 text-white text-xs uppercase tracking-widest py-4 transition font-semibold rounded-none" type="submit">
+                    Commit to Inventory
+                </button>
+            </form>
+        </div>
+    </section>
+
+</main>
+
+<script>
+    const CACHE_NAME = 'atelier-media-v1';
+    const MEDIA_URL = '/media.json';
+    const OUTFITS_URL = '/outfits.json';
+
+    let clothes = {};
+    let outfits = {};
+
+    async function initializeArchive() {
+        try {
+            const outfitsResponse = await fetch(OUTFITS_URL);
+            if (!outfitsResponse.ok) throw new Error('Outfits fetch failed');
+            outfits = await outfitsResponse.json();
+
+            const cachedResponse = await fetch(MEDIA_URL);
+            clothes = await cachedResponse.json();
+        } catch (error) {
+            console.error('System Data Sync Failure:', error);
+            clothes = JSON.parse(localStorage.getItem('studio_media')) || {};
+            outfits = JSON.parse(localStorage.getItem('studio_fits')) || {};
+        } finally {
+            const loader = document.getElementById('loading-overlay');
+            loader.classList.add('opacity-0', 'pointer-events-none');
+
+            populateFilterDropdowns();
+            renderCloset();
+        }
+    }
+
+    async function updateMediaCache() {
+        localStorage.setItem('studio_media', JSON.stringify(clothes));
+        try {
+            const cache = await caches.open(CACHE_NAME);
+            const updatedResponse = new Response(JSON.stringify(clothes), {
+                headers: {'Content-Type': 'application/json'}
+            });
+            await cache.put(MEDIA_URL, updatedResponse);
+        } catch (e) {
+            console.error('Failed to commit mutations to Cache Storage:', e);
+        }
+    }
+
+    function switchView(viewName) {
+        document.getElementById('view-closet').classList.add('hidden');
+        document.getElementById('view-fits').classList.add('hidden');
+        document.getElementById('view-add-item').classList.add('hidden');
+
+        document.querySelectorAll('.nav-link').forEach(el => {
+            el.classList.remove('text-zinc-900', 'text-white');
+            el.classList.add('text-zinc-400', 'dark:text-lumia-muted');
+        });
+
+        document.getElementById(`view-${viewName}`).classList.remove('hidden');
+
+        const targetBtn = document.getElementById(`nav-${viewName}`);
+        if (targetBtn) {
+            targetBtn.classList.remove('text-zinc-400', 'dark:text-lumia-muted');
+            targetBtn.classList.add('text-zinc-900', 'dark:text-white');
+        }
+
+        if (viewName === 'closet') renderCloset();
+        if (viewName === 'fits') renderFitsPage();
+    }
+
+    function populateFilterDropdowns() {
+        const types = new Set();
+        const occasions = new Set();
+        Object.values(clothes).forEach(item => {
+            types.add(item.type);
+            occasions.add(item.occasion);
+        });
+        populateSelect('filter-type', types, 'All Architecture');
+        populateSelect('filter-occasion', occasions, 'All Settings');
+
+        const fitOccasions = new Set();
+        Object.values(outfits).forEach(fit => {
+            if (fit.occasion) fitOccasions.add(fit.occasion);
+        });
+        populateSelect('filter-fit-occasion', fitOccasions, 'All Occasions');
+    }
+
+    function populateSelect(elementId, dataset, defaultLabel) {
+        const select = document.getElementById(elementId);
+        if (!select) return;
+        select.innerHTML = `<option value="all">${defaultLabel}</option>`;
+        dataset.forEach(value => {
+            select.innerHTML += `<option value="${value}">${value.toUpperCase()}</option>`;
+        });
+    }
+
+    function resetFilters() {
+        document.getElementById('filter-type').value = 'all';
+        document.getElementById('filter-occasion').value = 'all';
+        renderCloset();
+    }
+
+    function copyId(uuid, btnElement) {
+        navigator.clipboard.writeText(uuid).then(() => {
+            const originalText = btnElement.innerText;
+            btnElement.innerText = 'COPIED';
+            btnElement.classList.replace('text-lumia-accent', 'text-green-600');
+            setTimeout(() => {
+                btnElement.innerText = originalText;
+                btnElement.classList.replace('text-green-600', 'text-lumia-accent');
+            }, 1000);
+        }).catch(err => {
+            console.error('Failed to copy ID: ', err);
+        });
+    }
+
+    function renderCloset() {
+        const grid = document.getElementById('closet-grid');
+        grid.innerHTML = '';
+
+        const typeFilter = document.getElementById('filter-type').value;
+        const occasionFilter = document.getElementById('filter-occasion').value;
+
+        Object.entries(clothes).forEach(([uuid, item]) => {
+            if (typeFilter !== 'all' && item.type !== typeFilter) return;
+            if (occasionFilter !== 'all' && item.occasion !== occasionFilter) return;
+
+            const cardHtml = `
+                    <div class="group relative aspect-square bg-zinc-100 dark:bg-zinc-950 overflow-hidden border border-transparent hover:border-zinc-900 dark:hover:border-white transition-all duration-200">
+                        <img src="${item.image}" alt="${item.type}" class="w-full h-full object-cover">
+
+                        <div class="absolute top-2 left-2 right-2 flex justify-between items-start pointer-events-none">
+                            <span class="bg-white dark:bg-black border border-zinc-200 dark:border-zinc-800 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-zinc-900 dark:text-white">
+                                ${item.brand || 'GENERIC'}
+                            </span>
+                        </div>
+
+                        <div class="absolute bottom-0 inset-x-0 bg-white dark:bg-black border-t border-zinc-200 dark:border-transparent p-2 transform translate-y-full group-hover:translate-y-0 transition-transform duration-200 ease-in-out">
+                            <h3 class="text-xs font-bold uppercase tracking-tight text-zinc-900 dark:text-white truncate">${item.color} ${item.type}</h3>
+                            <p class="text-[10px] text-zinc-500 dark:text-lumia-muted uppercase tracking-wider truncate mt-0.5">${item.occasion}</p>
+
+                            <div class="flex mt-2 pt-2 border-t border-zinc-200 dark:border-zinc-800 text-[10px] font-bold uppercase tracking-widest justify-center">
+                                <button onclick="event.stopPropagation(); copyId('${uuid}', this)" class="w-full text-center text-lumia-accent dark:text-lumia-accent hover:text-zinc-900 dark:hover:text-white transition py-1">
+                                    COPY ID
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            grid.innerHTML += cardHtml;
+        });
+    }
+
+    function renderFitsPage() {
+        const grid = document.getElementById('outfits-grid');
+        grid.innerHTML = '';
+
+        const fitOccasionFilter = document.getElementById('filter-fit-occasion').value;
+
+        Object.entries(outfits).forEach(([outfitId, fitData]) => {
+            const fitOccasion = fitData.occasion || "General";
+            const itemIds = fitData.clothes || [];
+
+            if (fitOccasionFilter !== 'all' && fitOccasion !== fitOccasionFilter) return;
+
+            let itemCardsHtml = '';
+
+            itemIds.forEach(uuid => {
+                const item = clothes[uuid];
+                if (!item) return;
+
+                itemCardsHtml += `
+                        <div class="relative w-full aspect-square bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-900 overflow-hidden">
+                            <img src="${item.image}" class="w-full h-full object-cover">
+                            <div class="absolute bottom-1 left-1 bg-white/90 dark:bg-black/80 border border-zinc-200 dark:border-transparent px-1 text-[9px] text-zinc-600 dark:text-lumia-muted uppercase tracking-wide truncate max-w-[90%]">
+                                ${item.brand} // ${item.color} ${item.type}
+                            </div>
+                        </div>
+                    `;
+            });
+
+            const lookbookCard = `
+                    <div class="bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 p-3 space-y-3 flex flex-col justify-between transition-colors duration-200">
+                        <div class="space-y-1">
+                            <div class="flex justify-between items-baseline border-b border-zinc-200 dark:border-zinc-800 pb-1">
+                                <span class="text-[10px] text-lumia-accent uppercase tracking-widest font-semibold">${fitOccasion}</span>
+                                <span class="text-[10px] font-mono text-zinc-400 dark:text-lumia-muted uppercase">${itemIds.length} Layers</span>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col gap-1 bg-zinc-100 dark:bg-black p-1 w-full">
+                            ${itemCardsHtml || '<div class="text-center py-8 text-[10px] text-zinc-400 dark:text-lumia-muted uppercase tracking-widest">Stack vacant</div>'}
+                        </div>
+                    </div>
+                `;
+            grid.innerHTML += lookbookCard;
+        });
+    }
+
+    function handleAddItem(e) {
+        e.preventDefault();
+        const fileInput = document.getElementById('item-file');
+        const file = fileInput.files[0];
+
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onloadend = function () {
+            const base64String = reader.result;
+            const newUuid = crypto.randomUUID();
+
+            clothes[newUuid] = {
+                type: document.getElementById('item-type').value.toLowerCase().trim(),
+                image: base64String,
+                color: document.getElementById('item-color').value.trim(),
+                brand: document.getElementById('item-brand').value.trim() || "Generic House",
+                occasion: document.getElementById('item-occasion').value.trim()
+            };
+
+            updateMediaCache();
+            document.getElementById('add-item-form').reset();
+            populateFilterDropdowns();
+            switchView('closet');
+        };
+
+        reader.readAsDataURL(file);
+    }
+
+    initializeArchive();
+</script>
+</body>
+</html>
