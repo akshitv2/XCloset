@@ -1,22 +1,10 @@
 {
-  "7b9d1468-b785-4b0e-bc6d-dfc5409d57a1": {
-    "type": "coat",
-    "image": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=500",
-    "color": "Camel",
-    "brand": "Lemaire",
-    "occasion": "Editorial",
-    "isDirty": false
-  },
-  "2c8e3194-c112-4a8f-bc6a-fae5409d57b2": {
-    "type": "trousers",
-    "image": "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=500",
-    "color": "Off-White",
-    "brand": "The Row",
-    "occasion": "Minimalist",
-    "isDirty": false
-  },
   "3d8e3194-c112-4a8f-bc6a-fae5409d57b3": {
     "occasion": "Casual",
     "clothes": ["c174a2c3-4a6f-4d36-9268-2de4380b4fda","8c5bf934-8e03-412e-9fb3-004c693b89e1"]
+  },
+  "2": {
+    "occasion": "Casual",
+    "clothes": ["d4d2fec7-23ae-46b5-bc62-105fa953506c","70482477-b391-4559-bcff-1a9598fc6b67"]
   }
 }
