@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="motion-safe:scroll-smooth">
+<html class="motion-safe:scroll-smooth" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -33,13 +33,16 @@
         body {
             font-family: 'Inter', '-apple-system', 'Segoe UI', sans-serif;
         }
+
         ::-webkit-scrollbar {
             width: 6px;
             height: 6px;
         }
+
         ::-webkit-scrollbar-track {
             @apply bg-zinc-100 dark:bg-black;
         }
+
         ::-webkit-scrollbar-thumb {
             @apply bg-zinc-300 dark:bg-zinc-800;
         }
@@ -54,13 +57,16 @@
             <span class="text-xs font-semibold tracking-widest text-zinc-400 dark:text-lumia-muted uppercase">Wardrobe System</span>
         </div>
         <nav class="flex space-x-8 text-2xl font-light tracking-tight overflow-x-auto whitespace-nowrap w-full md:w-auto py-2">
-            <button class="nav-link text-zinc-900 dark:text-white transition-colors uppercase" id="nav-closet" onclick="switchView('closet')">
+            <button class="nav-link text-zinc-900 dark:text-white transition-colors uppercase" id="nav-closet"
+                    onclick="switchView('closet')">
                 Collection
             </button>
-            <button class="nav-link text-zinc-400 dark:text-lumia-muted hover:text-zinc-900 dark:hover:text-white transition-colors uppercase" id="nav-fits" onclick="switchView('fits')">
+            <button class="nav-link text-zinc-400 dark:text-lumia-muted hover:text-zinc-900 dark:hover:text-white transition-colors uppercase"
+                    id="nav-fits" onclick="switchView('fits')">
                 Lookbooks
             </button>
-            <button class="nav-link text-zinc-400 dark:text-lumia-muted hover:text-zinc-900 dark:hover:text-white transition-colors uppercase" id="nav-add-item" onclick="switchView('add-item')">
+            <button class="nav-link text-zinc-400 dark:text-lumia-muted hover:text-zinc-900 dark:hover:text-white transition-colors uppercase"
+                    id="nav-add-item" onclick="switchView('add-item')">
                 + Add
             </button>
         </nav>
@@ -69,76 +75,96 @@
 
 <main class="w-full flex-1">
 
-    <div class="fixed inset-0 bg-white dark:bg-black z-40 flex flex-col items-center justify-center transition-opacity duration-300" id="loading-overlay">
+    <div class="fixed inset-0 bg-white dark:bg-black z-40 flex flex-col items-center justify-center transition-opacity duration-300"
+         id="loading-overlay">
         <span class="text-3xl font-light tracking-wide animate-pulse uppercase text-zinc-900 dark:text-white">Syncing Live Tiles...</span>
     </div>
 
     <section class="space-y-4" id="view-closet">
         <div class="px-4 flex flex-wrap gap-2 items-center bg-zinc-100/80 dark:bg-zinc-900/50 py-3 border-y border-zinc-200 dark:border-zinc-800 transition-colors duration-200">
-            <select class="bg-white dark:bg-black border border-zinc-300 dark:border-zinc-700 text-xs text-zinc-900 dark:text-white uppercase tracking-wider px-3 py-2 focus:outline-none focus:border-lumia-accent transition rounded-none" id="filter-type" onchange="renderCloset()">
+            <select class="bg-white dark:bg-black border border-zinc-300 dark:border-zinc-700 text-xs text-zinc-900 dark:text-white uppercase tracking-wider px-3 py-2 focus:outline-none focus:border-lumia-accent transition rounded-none"
+                    id="filter-type" onchange="renderCloset()">
                 <option value="all">All Architecture</option>
             </select>
-            <select class="bg-white dark:bg-black border border-zinc-300 dark:border-zinc-700 text-xs text-zinc-900 dark:text-white uppercase tracking-wider px-3 py-2 focus:outline-none focus:border-lumia-accent transition rounded-none" id="filter-occasion" onchange="renderCloset()">
+            <select class="bg-white dark:bg-black border border-zinc-300 dark:border-zinc-700 text-xs text-zinc-900 dark:text-white uppercase tracking-wider px-3 py-2 focus:outline-none focus:border-lumia-accent transition rounded-none"
+                    id="filter-occasion" onchange="renderCloset()">
                 <option value="all">All Settings</option>
             </select>
-            <button class="text-xs uppercase tracking-widest text-zinc-500 dark:text-lumia-muted hover:text-zinc-900 dark:hover:text-white px-2 py-1 bg-zinc-200 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 transition rounded-none" onclick="resetFilters()">
+            <button class="text-xs uppercase tracking-widest text-zinc-500 dark:text-lumia-muted hover:text-zinc-900 dark:hover:text-white px-2 py-1 bg-zinc-200 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 transition rounded-none"
+                    onclick="resetFilters()">
                 Reset
             </button>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-1 bg-zinc-100 dark:bg-black p-1 transition-colors duration-200" id="closet-grid">
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-1 bg-zinc-100 dark:bg-black p-1 transition-colors duration-200"
+             id="closet-grid">
         </div>
     </section>
 
     <section class="space-y-4 hidden" id="view-fits">
         <div class="px-4 flex justify-between items-center bg-zinc-100/80 dark:bg-zinc-900/50 py-3 border-y border-zinc-200 dark:border-zinc-800 transition-colors duration-200">
             <span class="text-xs font-semibold tracking-widest text-zinc-500 dark:text-lumia-muted uppercase">Compiled Pairs</span>
-            <select class="bg-white dark:bg-black border border-zinc-300 dark:border-zinc-700 text-xs text-zinc-900 dark:text-white uppercase tracking-wider px-3 py-2 focus:outline-none focus:border-lumia-accent transition rounded-none" id="filter-fit-occasion" onchange="renderFitsPage()">
+            <select class="bg-white dark:bg-black border border-zinc-300 dark:border-zinc-700 text-xs text-zinc-900 dark:text-white uppercase tracking-wider px-3 py-2 focus:outline-none focus:border-lumia-accent transition rounded-none"
+                    id="filter-fit-occasion" onchange="renderFitsPage()">
                 <option value="all">All Occasions</option>
             </select>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-4 bg-zinc-100 dark:bg-black transition-colors duration-200" id="outfits-grid">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-4 bg-zinc-100 dark:bg-black transition-colors duration-200"
+             id="outfits-grid">
         </div>
     </section>
 
     <section class="p-4 hidden max-w-xl mx-auto" id="view-add-item">
         <div class="bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-6 space-y-6 transition-colors duration-200">
             <div>
-                <h2 class="text-2xl font-light tracking-wide uppercase text-zinc-900 dark:text-white">Archive New Object</h2>
-                <p class="text-xs text-zinc-400 dark:text-lumia-muted uppercase tracking-wider mt-1">System Node Specification</p>
+                <h2 class="text-2xl font-light tracking-wide uppercase text-zinc-900 dark:text-white">Archive New
+                    Object</h2>
+                <p class="text-xs text-zinc-400 dark:text-lumia-muted uppercase tracking-wider mt-1">System Node
+                    Specification</p>
             </div>
 
             <form class="space-y-4" id="add-item-form" onsubmit="handleAddItem(event)">
                 <div class="border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-black p-6 text-center hover:border-lumia-accent transition cursor-pointer relative">
-                    <input accept="image/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" id="item-file" required type="file">
-                    <p class="text-xs text-zinc-500 dark:text-lumia-muted uppercase tracking-widest">Select Asset Image File</p>
+                    <input accept="image/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                           id="item-file" required type="file">
+                    <p class="text-xs text-zinc-500 dark:text-lumia-muted uppercase tracking-widest">Select Asset Image
+                        File</p>
                     <p class="text-[10px] text-lumia-accent mt-1 uppercase">Direct Base64 Schema Mapping</p>
                 </div>
 
                 <div class="grid grid-cols-2 gap-3">
                     <div>
-                        <label class="block text-[10px] uppercase tracking-widest text-zinc-400 dark:text-lumia-muted mb-1">Architecture / Type</label>
-                        <input class="w-full bg-white dark:bg-black border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white p-3 text-xs focus:outline-none focus:border-lumia-accent transition rounded-none" id="item-type" placeholder="e.g., blazer, trousers" required type="text">
+                        <label class="block text-[10px] uppercase tracking-widest text-zinc-400 dark:text-lumia-muted mb-1">Architecture
+                            / Type</label>
+                        <input class="w-full bg-white dark:bg-black border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white p-3 text-xs focus:outline-none focus:border-lumia-accent transition rounded-none"
+                               id="item-type" placeholder="e.g., blazer, trousers" required type="text">
                     </div>
                     <div>
-                        <label class="block text-[10px] uppercase tracking-widest text-zinc-400 dark:text-lumia-muted mb-1">Color Palette</label>
-                        <input class="w-full bg-white dark:bg-black border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white p-3 text-xs focus:outline-none focus:border-lumia-accent transition rounded-none" id="item-color" placeholder="e.g., Espresso" required type="text">
+                        <label class="block text-[10px] uppercase tracking-widest text-zinc-400 dark:text-lumia-muted mb-1">Color
+                            Palette</label>
+                        <input class="w-full bg-white dark:bg-black border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white p-3 text-xs focus:outline-none focus:border-lumia-accent transition rounded-none"
+                               id="item-color" placeholder="e.g., Espresso" required type="text">
                     </div>
                 </div>
 
                 <div class="grid grid-cols-2 gap-3">
                     <div>
-                        <label class="block text-[10px] uppercase tracking-widest text-zinc-400 dark:text-lumia-muted mb-1">House / Brand</label>
-                        <input class="w-full bg-white dark:bg-black border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white p-3 text-xs focus:outline-none focus:border-lumia-accent transition rounded-none" id="item-brand" placeholder="e.g., Jil Sander" type="text">
+                        <label class="block text-[10px] uppercase tracking-widest text-zinc-400 dark:text-lumia-muted mb-1">House
+                            / Brand</label>
+                        <input class="w-full bg-white dark:bg-black border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white p-3 text-xs focus:outline-none focus:border-lumia-accent transition rounded-none"
+                               id="item-brand" placeholder="e.g., Jil Sander" type="text">
                     </div>
                     <div>
-                        <label class="block text-[10px] uppercase tracking-widest text-zinc-400 dark:text-lumia-muted mb-1">Context / Occasion</label>
-                        <input class="w-full bg-white dark:bg-black border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white p-3 text-xs focus:outline-none focus:border-lumia-accent transition rounded-none" id="item-occasion" placeholder="e.g., Formal" required type="text">
+                        <label class="block text-[10px] uppercase tracking-widest text-zinc-400 dark:text-lumia-muted mb-1">Context
+                            / Occasion</label>
+                        <input class="w-full bg-white dark:bg-black border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white p-3 text-xs focus:outline-none focus:border-lumia-accent transition rounded-none"
+                               id="item-occasion" placeholder="e.g., Formal" required type="text">
                     </div>
                 </div>
 
-                <button class="w-full bg-lumia-accent hover:bg-blue-600 text-white text-xs uppercase tracking-widest py-4 transition font-semibold rounded-none" type="submit">
+                <button class="w-full bg-lumia-accent hover:bg-blue-600 text-white text-xs uppercase tracking-widest py-4 transition font-semibold rounded-none"
+                        type="submit">
                     Commit to Inventory
                 </button>
             </form>
@@ -152,8 +178,27 @@
     const MEDIA_URL = '/XCloset/media.json';
     const OUTFITS_URL = '/XCloset/outfits.json';
 
+    // Type order mapping for sorting
+    const TYPE_ORDER = ['cap', 'tshirt', 'tanktop', 'sweatshirt', 'shirt', 'pants', 'jeans', 'joggers', 'shorts', 'pajamas', 'jacket', 'sweater', 'shoes'];
+
     let clothes = {};
     let outfits = {};
+
+    // Helper function to sort the clothes object by type hierarchy
+    function sortClothes(clothesObj) {
+        const sortedEntries = Object.entries(clothesObj).sort(([, a], [, b]) => {
+            let indexA = TYPE_ORDER.indexOf(a.type);
+            let indexB = TYPE_ORDER.indexOf(b.type);
+
+            // Move unknown types to the end
+            if (indexA === -1) indexA = TYPE_ORDER.length;
+            if (indexB === -1) indexB = TYPE_ORDER.length;
+
+            return indexA - indexB;
+        });
+
+        return Object.fromEntries(sortedEntries);
+    }
 
     async function initializeArchive() {
         try {
@@ -162,10 +207,12 @@
             outfits = await outfitsResponse.json();
 
             const cachedResponse = await fetch(MEDIA_URL);
-            clothes = await cachedResponse.json();
+            const rawClothes = await cachedResponse.json();
+            clothes = sortClothes(rawClothes);
         } catch (error) {
             console.error('System Data Sync Failure:', error);
-            clothes = JSON.parse(localStorage.getItem('studio_media')) || {};
+            const rawClothes = JSON.parse(localStorage.getItem('studio_media')) || {};
+            clothes = sortClothes(rawClothes);
             outfits = JSON.parse(localStorage.getItem('studio_fits')) || {};
         } finally {
             const loader = document.getElementById('loading-overlay');
