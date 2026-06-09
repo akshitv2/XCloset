@@ -262,8 +262,8 @@
         const types = new Set();
         const occasions = new Set();
         Object.values(clothes).forEach(item => {
-            types.add(item.type);
-            occasions.add(item.occasion);
+            types.add(item.type.toUpperCase());
+            occasions.add(item.occasion.toUpperCase());
         });
         populateSelect('filter-type', types, 'All Architecture');
         populateSelect('filter-occasion', occasions, 'All Settings');
