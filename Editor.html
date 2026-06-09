@@ -163,6 +163,7 @@
     const OCCASIONS = ['formal', 'semiformal', 'casual', 'party', 'leisure'];
     const COLORS = ['Black', 'White', 'Gray', 'Navy', 'Blue', 'Red', 'Green', 'Yellow', 'Pink', 'Purple', 'Orange', 'Brown', 'Beige', 'Khaki', 'Maroon', 'Olive', 'Teal'];
 
+    // Internal flat array structure used strictly to manage orderly visual listing and index mapping
     let originalData = [];
 
     // Initialize the Add New Entry dropdown options on load
@@ -177,7 +178,7 @@
         optionsArray.forEach(option => {
             const optElement = document.createElement('option');
             optElement.value = option;
-            optElement.textContent = option.charAt(0).toUpperCase() + option.slice(1); // Capitalize first letter for UI
+            optElement.textContent = option.charAt(0).toUpperCase() + option.slice(1);
             if (option.toLowerCase() === selectedValue.toLowerCase()) {
                 optElement.selected = true;
             }
@@ -185,7 +186,7 @@
         });
     }
 
-    // Parse Uploaded JSON
+    // Parse Uploaded JSON (Handles both incoming Arrays or giant Object maps gracefully)
     document.getElementById('upload-json').addEventListener('change', function(e) {
         const file = e.target.files[0];
         if (!file) return;
@@ -194,11 +195,6 @@
         reader.onload = function(evt) {
             try {
                 let rawText = evt.target.result.trim();
-
-                if (rawText.startsWith('[') && rawText.endsWith(']') && !rawText.includes('},{') && rawText.includes('": {')) {
-                    rawText = rawText.replace(/^\[/, '{').replace(/\]$/, '}');
-                }
-
                 const parsed = JSON.parse(rawText);
 
                 if (Array.isArray(parsed)) {
@@ -215,14 +211,14 @@
 
                 renderList();
             } catch (err) {
-                alert('Error parsing JSON file. Please ensure it matches standard array/object syntax.');
+                alert('Error parsing JSON file. Please ensure it contains valid syntax.');
                 console.error(err);
             }
         };
         reader.readAsText(file);
     });
 
-    // Render standard and modified items
+    // Render data elements
     function renderList() {
         const container = document.getElementById('clothing-list');
         container.innerHTML = '';
@@ -266,13 +262,12 @@
                 `;
             container.appendChild(card);
 
-            // Populate the specific dropdowns for this item card with current selections
             populateDropdown(document.getElementById(`type-select-${index}`), CLOTHING_TYPES, item.type);
             populateDropdown(document.getElementById(`color-select-${index}`), COLORS, item.color);
             populateDropdown(document.getElementById(`occasion-select-${index}`), OCCASIONS, item.occasion);
         });
 
-        // Bind text input fields to track changes (including IDs and Brand)
+        // Bind inputs
         container.querySelectorAll('.inline-input').forEach(input => {
             input.addEventListener('input', function() {
                 const idx = this.getAttribute('data-index');
@@ -281,7 +276,7 @@
             });
         });
 
-        // Bind dropdown menus to track changes
+        // Bind dropdown selects
         container.querySelectorAll('.inline-select').forEach(select => {
             select.addEventListener('change', function() {
                 const idx = this.getAttribute('data-index');
@@ -290,7 +285,7 @@
             });
         });
 
-        // Bind inline image changes
+        // Bind file uploads
         container.querySelectorAll('.inline-img-uploader').forEach(uploader => {
             uploader.addEventListener('change', function(e) {
                 const idx = this.getAttribute('data-index');
@@ -347,26 +342,27 @@
         document.getElementById('new-id').value = '';
         document.getElementById('new-brand').value = '';
         document.getElementById('new-image').value = '';
-        // Reset selects to first option
         document.getElementById('new-type').selectedIndex = 0;
         document.getElementById('new-color').selectedIndex = 0;
         document.getElementById('new-occasion').selectedIndex = 0;
     }
 
-    // Export data back to original wrapped JSON configuration
+    // Export data back as one single Object (no outer arrays)
     document.getElementById('export-json').addEventListener('click', function() {
-        const outputData = originalData.map(item => {
+        const outputDataObject = {};
+
+        originalData.forEach(item => {
             const { id, ...fields } = item;
             const finalId = id ? id.trim() : crypto.randomUUID();
-            return { [finalId]: fields };
+            outputDataObject[finalId] = fields;
         });
 
-        const blob = new Blob([JSON.stringify(outputData, null, 2)], { type: "application/json" });
+        const blob = new Blob([JSON.stringify(outputDataObject, null, 2)], { type: "application/json" });
         const url = URL.createObjectURL(blob);
 
         const downloadAnchor = document.createElement('a');
         downloadAnchor.setAttribute("href", url);
-        downloadAnchor.setAttribute("download", "clothes_updated.json");
+        downloadAnchor.setAttribute("download", "media.json");
         document.body.appendChild(downloadAnchor);
         downloadAnchor.click();
         downloadAnchor.remove();
