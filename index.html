@@ -304,6 +304,48 @@
         });
     }
 
+    async function copyImage(uuid, btnElement) {
+        const item = clothes[uuid];
+        if (!item || !item.image) return;
+
+        const originalText = btnElement.innerText;
+        btnElement.innerText = 'COP...';
+
+        try {
+            const response = await fetch(item.image);
+            const blob = await response.blob();
+            let targetBlob = blob;
+
+            // Normalize non-PNG files via canvas to satisfy cross-platform Clipboard requirements
+            if (!blob.type.includes('png')) {
+                const img = new Image();
+                img.src = item.image;
+                await new Promise(resolve => img.onload = resolve);
+                const canvas = document.createElement('canvas');
+                canvas.width = img.width;
+                canvas.height = img.height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0);
+                targetBlob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+            }
+
+            await navigator.clipboard.write([
+                new ClipboardItem({ [targetBlob.type]: targetBlob })
+            ]);
+
+            btnElement.innerText = 'COPIED';
+            btnElement.classList.replace('text-lumia-accent', 'text-green-600');
+            setTimeout(() => {
+                btnElement.innerText = originalText;
+                btnElement.classList.replace('text-green-600', 'text-lumia-accent');
+            }, 1000);
+        } catch (err) {
+            console.error('Failed to copy image payload: ', err);
+            btnElement.innerText = 'ERR';
+            setTimeout(() => { btnElement.innerText = originalText; }, 1000);
+        }
+    }
+
     function renderCloset() {
         const grid = document.getElementById('closet-grid');
         grid.innerHTML = '';
@@ -329,9 +371,13 @@
                             <h3 class="text-xs font-bold uppercase tracking-tight text-zinc-900 dark:text-white truncate">${item.color} ${item.type}</h3>
                             <p class="text-[10px] text-zinc-500 dark:text-lumia-muted uppercase tracking-wider truncate mt-0.5">${item.occasion}</p>
 
-                            <div class="flex mt-2 pt-2 border-t border-zinc-200 dark:border-zinc-800 text-[10px] font-bold uppercase tracking-widest justify-center">
-                                <button onclick="event.stopPropagation(); copyId('${uuid}', this)" class="w-full text-center text-lumia-accent dark:text-lumia-accent hover:text-zinc-900 dark:hover:text-white transition py-1">
+                            <!-- Dual Output Action Bar -->
+                            <div class="flex mt-2 pt-2 border-t border-zinc-200 dark:border-zinc-800 text-[9px] font-bold uppercase tracking-widest gap-2 justify-between">
+                                <button onclick="event.stopPropagation(); copyId('${uuid}', this)" class="w-1/2 text-center text-lumia-accent hover:text-zinc-900 dark:hover:text-white transition py-1">
                                     COPY ID
+                                </button>
+                                <button onclick="event.stopPropagation(); copyImage('${uuid}', this)" class="w-1/2 text-center text-lumia-accent hover:text-zinc-900 dark:hover:text-white transition py-1">
+                                    COPY IMG
                                 </button>
                             </div>
                         </div>
@@ -360,14 +406,16 @@
                 if (!item) return;
 
                 itemCardsHtml += `
-                        <div class="relative w-full aspect-square bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-900 overflow-hidden">
-                            <img src="${item.image}" class="w-full h-full object-cover">
-                            <div class="absolute bottom-1 left-1 bg-white/90 dark:bg-black/80 border border-zinc-200 dark:border-transparent px-1 text-[9px] text-zinc-600 dark:text-lumia-muted uppercase tracking-wide truncate max-w-[90%]">
-                                ${item.brand} // ${item.color} ${item.type}
+                        <div class="relative w-full aspect-square bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-900 overflow-hidden group/item">
+                            <img src="${item.image}" class="w-full h-full object-contain" title="${item.brand} // ${item.color} ${item.type}">
+                            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover/item:opacity-100 transition-opacity flex items-center justify-center p-1 text-[8px] text-center text-white uppercase tracking-tight pointer-events-none">
+                                ${item.type}
                             </div>
                         </div>
                     `;
             });
+
+            const outfitMainImage = fitData.image || (itemIds.length > 0 && clothes[itemIds[0]] ? clothes[itemIds[0]].image : '');
 
             const lookbookCard = `
                     <div class="bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 p-3 space-y-3 flex flex-col justify-between transition-colors duration-200">
@@ -378,8 +426,12 @@
                             </div>
                         </div>
 
-                        <div class="flex flex-col gap-1 bg-zinc-100 dark:bg-black p-1 w-full">
-                            ${itemCardsHtml || '<div class="text-center py-8 text-[10px] text-zinc-400 dark:text-lumia-muted uppercase tracking-widest">Stack vacant</div>'}
+                        <div class="relative w-full aspect-square bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 overflow-hidden">
+                            ${outfitMainImage ? `<img src="${outfitMainImage}" class="w-full h-full object-contain mx-auto" alt="${fitOccasion} Full Look">` : `<div class="w-full h-full flex items-center justify-center text-[10px] uppercase tracking-widest text-zinc-400">No Outfit Image</div>`}
+                        </div>
+
+                        <div class="grid grid-cols-4 gap-1 bg-zinc-100 dark:bg-black p-1 w-full">
+                            ${itemCardsHtml || '<div class="col-span-4 text-center py-4 text-[10px] text-zinc-400 dark:text-lumia-muted uppercase tracking-widest">Stack vacant</div>'}
                         </div>
                     </div>
                 `;
