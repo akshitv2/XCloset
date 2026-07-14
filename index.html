@@ -115,66 +115,9 @@
         </div>
     </section>
 
-    <section class="p-4 hidden max-w-xl mx-auto" id="view-add-item">
-        <div class="bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-6 space-y-6 transition-colors duration-200">
-            <div>
-                <h2 class="text-2xl font-light tracking-wide uppercase text-zinc-900 dark:text-white">Archive New
-                    Object</h2>
-                <p class="text-xs text-zinc-400 dark:text-lumia-muted uppercase tracking-wider mt-1">System Node
-                    Specification</p>
-            </div>
-
-            <form class="space-y-4" id="add-item-form" onsubmit="handleAddItem(event)">
-                <div class="border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-black p-6 text-center hover:border-lumia-accent transition cursor-pointer relative">
-                    <input accept="image/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                           id="item-file" required type="file">
-                    <p class="text-xs text-zinc-500 dark:text-lumia-muted uppercase tracking-widest">Select Asset Image
-                        File</p>
-                    <p class="text-[10px] text-lumia-accent mt-1 uppercase">Direct Base64 Schema Mapping</p>
-                </div>
-
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
-                        <label class="block text-[10px] uppercase tracking-widest text-zinc-400 dark:text-lumia-muted mb-1">Architecture
-                            / Type</label>
-                        <input class="w-full bg-white dark:bg-black border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white p-3 text-xs focus:outline-none focus:border-lumia-accent transition rounded-none"
-                               id="item-type" placeholder="e.g., blazer, trousers" required type="text">
-                    </div>
-                    <div>
-                        <label class="block text-[10px] uppercase tracking-widest text-zinc-400 dark:text-lumia-muted mb-1">Color
-                            Palette</label>
-                        <input class="w-full bg-white dark:bg-black border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white p-3 text-xs focus:outline-none focus:border-lumia-accent transition rounded-none"
-                               id="item-color" placeholder="e.g., Espresso" required type="text">
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
-                        <label class="block text-[10px] uppercase tracking-widest text-zinc-400 dark:text-lumia-muted mb-1">House
-                            / Brand</label>
-                        <input class="w-full bg-white dark:bg-black border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white p-3 text-xs focus:outline-none focus:border-lumia-accent transition rounded-none"
-                               id="item-brand" placeholder="e.g., Jil Sander" type="text">
-                    </div>
-                    <div>
-                        <label class="block text-[10px] uppercase tracking-widest text-zinc-400 dark:text-lumia-muted mb-1">Context
-                            / Occasion</label>
-                        <input class="w-full bg-white dark:bg-black border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white p-3 text-xs focus:outline-none focus:border-lumia-accent transition rounded-none"
-                               id="item-occasion" placeholder="e.g., Formal" required type="text">
-                    </div>
-                </div>
-
-                <button class="w-full bg-lumia-accent hover:bg-blue-600 text-white text-xs uppercase tracking-widest py-4 transition font-semibold rounded-none"
-                        type="submit">
-                    Commit to Inventory
-                </button>
-            </form>
-        </div>
-    </section>
-
 </main>
 
 <script>
-    const CACHE_NAME = 'atelier-media-v1';
     const MEDIA_URL = '/XCloset/media.json';
     const OUTFITS_URL = '/XCloset/outfits.json';
 
@@ -205,7 +148,7 @@
             const outfitsResponse = await fetch(OUTFITS_URL);
             const cachedResponse = await fetch(MEDIA_URL);
 
-            // if (!outfitsResponse.ok) throw new Error('Outfits fetch failed');
+            if (!outfitsResponse.ok) throw new Error('Outfits fetch failed');
             outfits = await outfitsResponse.json();
             const rawClothes = await cachedResponse.json();
             clothes = sortClothes(rawClothes);
@@ -220,19 +163,6 @@
 
             populateFilterDropdowns();
             renderCloset();
-        }
-    }
-
-    async function updateMediaCache() {
-        localStorage.setItem('studio_media', JSON.stringify(clothes));
-        try {
-            const cache = await caches.open(CACHE_NAME);
-            const updatedResponse = new Response(JSON.stringify(clothes), {
-                headers: {'Content-Type': 'application/json'}
-            });
-            await cache.put(MEDIA_URL, updatedResponse);
-        } catch (e) {
-            console.error('Failed to commit mutations to Cache Storage:', e);
         }
     }
 
@@ -437,35 +367,6 @@
                 `;
             grid.innerHTML += lookbookCard;
         });
-    }
-
-    function handleAddItem(e) {
-        e.preventDefault();
-        const fileInput = document.getElementById('item-file');
-        const file = fileInput.files[0];
-
-        if (!file) return;
-
-        const reader = new FileReader();
-        reader.onloadend = function () {
-            const base64String = reader.result;
-            const newUuid = crypto.randomUUID();
-
-            clothes[newUuid] = {
-                type: document.getElementById('item-type').value.toLowerCase().trim(),
-                image: base64String,
-                color: document.getElementById('item-color').value.trim(),
-                brand: document.getElementById('item-brand').value.trim() || "Generic House",
-                occasion: document.getElementById('item-occasion').value.trim()
-            };
-
-            updateMediaCache();
-            document.getElementById('add-item-form').reset();
-            populateFilterDropdowns();
-            switchView('closet');
-        };
-
-        reader.readAsDataURL(file);
     }
 
     initializeArchive();
