@@ -203,14 +203,14 @@
     async function initializeArchive() {
         try {
             const outfitsResponse = await fetch(OUTFITS_URL);
-            if (!outfitsResponse.ok) throw new Error('Outfits fetch failed');
-            outfits = await outfitsResponse.json();
-
             const cachedResponse = await fetch(MEDIA_URL);
+
+            // if (!outfitsResponse.ok) throw new Error('Outfits fetch failed');
+            outfits = await outfitsResponse.json();
             const rawClothes = await cachedResponse.json();
             clothes = sortClothes(rawClothes);
         } catch (error) {
-            console.error('System Data Sync Failure:', error);
+            console.error("System Data Sync Failure:", error);
             const rawClothes = JSON.parse(localStorage.getItem('studio_media')) || {};
             clothes = sortClothes(rawClothes);
             outfits = JSON.parse(localStorage.getItem('studio_fits')) || {};
