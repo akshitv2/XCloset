@@ -1260,5 +1260,13 @@
   "5e39434c-a070-4bae-b4ef-2533f45a12ad": {
     "type": "pants",
     "brand": "Arrow"
+  },
+  "d4dc9bba-9208-44b0-9b65-33e67263f33f": {
+    "type": "pants",
+    "brand": "Van Heusen"
+  },
+  "593a208c-8715-464b-aea0-45d0fde62a94": {
+    "type": "tshirt",
+    "brand": "Snitch"
   }
 }
