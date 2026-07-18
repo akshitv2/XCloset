@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clothing Metadata Editor</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .actions {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        .btn {
+            background-color: #0066cc;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        #downloadBtn {
+            background-color: #28a745;
+        }
+        .item-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            display: flex;
+            gap: 20px;
+        }
+        .image-container {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-items: center;
+            width: 120px;
+        }
+        .item-image {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 4px;
+            background-color: #eee;
+            border: 1px solid #ddd;
+        }
+        .btn-copy {
+            background-color: #6c757d;
+            color: white;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85em;
+            width: 100%;
+            text-align: center;
+        }
+        .btn-copy.success {
+            background-color: #198754;
+        }
+        .item-details {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .item-header {
+            margin: 0;
+            font-size: 1.1em;
+            color: #555;
+            font-family: monospace;
+        }
+        .meta-container {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        label {
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        textarea {
+            width: 100%;
+            height: 70px;
+            font-family: monospace;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        textarea.invalid {
+            border-color: #dc3545;
+            background-color: #fff8f8;
+        }
+        .error-msg {
+            color: #dc3545;
+            font-size: 0.85em;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Clothing Metadata Editor</h1>
+
+<div class="actions">
+    <input type="file" id="uploadInput" accept=".json">
+    <button id="downloadBtn" class="btn" disabled>Download Edited JSON</button>
+</div>
+
+<div id="listContainer"></div>
+
+<script>
+    let currentData = null;
+
+    document.getElementById('uploadInput').addEventListener('change', handleUpload);
+    document.getElementById('downloadBtn').addEventListener('click', downloadJSON);
+
+    function handleUpload(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            try {
+                currentData = JSON.parse(e.target.result);
+                renderList();
+                document.getElementById('downloadBtn').disabled = false;
+            } catch (err) {
+                alert('Invalid JSON file.');
+                console.error(err);
+            }
+        };
+        reader.readAsText(file);
+    }
+
+    function copyTemplate(type, brand, buttonElement) {
+        // Edit this string to change what text gets copied to the clipboard
+        const template = `You are an expert fashion data-entry assistant. Your job is to analyze an image of a clothing item and convert it into a strictly structured JSON object based on the provided schema.
+
+### User Context Indicator:
+The user says: The clothing in question is the {CLOTHTYPE} of the brand {CLOTHBRAND}
+Use this statement to isolate the correct clothing item if the image contains multiple items, background clutter, or if the user is wearing the outfit. Focus ONLY on the item they specify.
+
+### JSON Schema:
+Output MUST be a single, raw JSON object matching this exact format. Do not include markdown code blocks, do not include explanations. Only return the JSON.
+
+{
+  "sub_category": "e.g., t-shirt, button-down, jeans, chinos, boots, sneakers, blazer",
+  "color": "Primary dominant color name in lowercase (e.g., navy_blue, olive_green, white, charcoal)",
+  "pattern": "Must be exactly one of: solid, striped, plaid, graphic, floral, textured, distressed",
+  "fabric": "Estimate the fabric type based on texture (e.g., denim, cotton_jersey, linen, wool, leather, canvas, knit). If impossible to tell, use 'unknown'",
+  "fit": "Must be exactly one of: skinny, slim, straight, relaxed, oversized, cropped",
+  "formality": 1, // Integer from 1 to 5: 1 (Athletic/Sleepwear), 2 (Casual/Streetwear), 3 (Smart Casual), 4 (Business Casual), 5 (Formal/Black Tie)
+  "tags": ["A list of 2 to 4 lowercase descriptive tags, e.g., 'summer', 'breathable', 'streetwear', 'cozy', 'minimalist'" (do not limit yourself to these examples)],
+  "description": "A 3-5 line detailed description giving more context and details missed in the schema fields, mentioning details like fabric, pattern, neck, sleeve length etc. Mention how or where it could be worn or what it might pair up well with."
+}
+
+### Extraction Rules:
+1. Objectiveness: Base your categorization on visual evidence. If a shirt looks loose and baggy, the fit is "oversized" or "relaxed".
+2. Formality Guide: Be consistent. Standard blue jeans are a 2. Dark crisp chinos are a 3. A wool blazer is a 4. A graphic t-shirt is a 2.
+3. Strictness: Do not add any keys to the JSON that are not defined in the schema above.
+4. Research: Make sure to try find the clothing online to help you narrow down even more details. Use the image + brand name provided to you
+        `;
+
+        const processedText = template
+            .replace(/{CLOTHTYPE}/g, type || 'unknown type')
+            .replace(/{CLOTHBRAND}/g, brand || 'unknown brand');
+
+        navigator.clipboard.writeText(processedText).then(() => {
+            const originalText = buttonElement.textContent;
+            buttonElement.textContent = "Copied!";
+            buttonElement.classList.add('success');
+
+            setTimeout(() => {
+                buttonElement.textContent = originalText;
+                buttonElement.classList.remove('success');
+            }, 1500);
+        }).catch(err => {
+            console.error('Failed to copy text: ', err);
+        });
+    }
+
+    function renderList() {
+        const container = document.getElementById('listContainer');
+        container.innerHTML = '';
+
+        Object.keys(currentData).forEach(uuid => {
+            const item = currentData[uuid];
+
+            const card = document.createElement('div');
+            card.className = 'item-card';
+
+            // Image column setup
+            const imageContainer = document.createElement('div');
+            imageContainer.className = 'image-container';
+
+            const img = document.createElement('img');
+            img.className = 'item-image';
+            img.src = `media/clothes/${uuid}.png`;
+            img.alt = `${item.brand} ${item.type}`;
+            img.onerror = function() {
+                this.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23eee"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="12" fill="%23aaa">No Image</text></svg>';
+            };
+
+            const copyBtn = document.createElement('button');
+            copyBtn.className = 'btn-copy';
+            copyBtn.textContent = 'Copy Info';
+            copyBtn.addEventListener('click', () => {
+                copyTemplate(item.type, item.brand, copyBtn);
+            });
+
+            imageContainer.appendChild(img);
+            imageContainer.appendChild(copyBtn);
+
+            // Details column setup
+            const details = document.createElement('div');
+            details.className = 'item-details';
+
+            const header = document.createElement('h3');
+            header.className = 'item-header';
+            header.textContent = `${item.brand || 'Unknown Brand'} - ${item.type || 'Unknown Type'} (${uuid.substring(0,8)}...)`;
+
+            const metaContainer = document.createElement('div');
+            metaContainer.className = 'meta-container';
+
+            const label = document.createElement('label');
+            label.textContent = 'Metadata (JSON format):';
+
+            const textarea = document.createElement('textarea');
+            textarea.value = JSON.stringify(item.metadata, null, 2);
+
+            const errorMsg = document.createElement('div');
+            errorMsg.className = 'error-msg';
+            errorMsg.textContent = 'Invalid JSON structure';
+
+            textarea.addEventListener('input', (e) => {
+                try {
+                    const parsed = JSON.parse(e.target.value);
+                    currentData[uuid].metadata = parsed;
+                    textarea.classList.remove('invalid');
+                    errorMsg.style.display = 'none';
+                    document.getElementById('downloadBtn').disabled = false;
+                } catch (err) {
+                    textarea.classList.add('invalid');
+                    errorMsg.style.display = 'block';
+                    document.getElementById('downloadBtn').disabled = true;
+                }
+            });
+
+            metaContainer.appendChild(label);
+            metaContainer.appendChild(textarea);
+            metaContainer.appendChild(errorMsg);
+
+            details.appendChild(header);
+            details.appendChild(metaContainer);
+
+            card.appendChild(imageContainer);
+            card.appendChild(details);
+            container.appendChild(card);
+        });
+    }
+
+    function downloadJSON() {
+        if (!currentData) return;
+
+        const jsonString = JSON.stringify(currentData, null, 2);
+        const blob = new Blob([jsonString], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'edited_clothes.json';
+        document.body.appendChild(a);
+        a.click();
+
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
+</script>
+</body>
+</html>
