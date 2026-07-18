@@ -1,6 +1,6 @@
 import json
 
-file_path = "media.json"
+file_path = "wardrobe.json"
 
 # 1. Read the original data
 with open(file_path, "r", encoding="utf-8") as f:

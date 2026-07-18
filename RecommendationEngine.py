@@ -8,7 +8,7 @@ user_context = (
     "Preferences: Professional but relaxed."
 )
 
-with open("media.json", "r", encoding="utf-8") as f:
+with open("wardrobe.json", "r", encoding="utf-8") as f:
     wardrobe_data = json.load(f)
 
 # 3. API Configuration
@@ -37,7 +37,8 @@ Instructions:
 payload = {
     "contents": [{"parts": [{"text": prompt}]}],
     # ADD THE TOOLS OPTION HERE
-    "tools": [{"googleSearch": {}}],
+    "tools": [],
+    # "tools": [{"googleSearch": {}}],
     "generationConfig": {
         "responseMimeType": "application/json",
         "responseSchema": {

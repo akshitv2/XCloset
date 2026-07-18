@@ -1,6 +1,6 @@
 import json
 
-file_path = "../media.json"
+file_path = "../wardrobe.json"
 metadata_path = "../metadata.json"
 
 # 1. Read the original data

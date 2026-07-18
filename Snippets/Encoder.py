@@ -6,7 +6,7 @@ LOG_LEVEL = "INFO"
 
 
 def get_media(buffer = 5):
-    media_json_path = "../media.json"
+    media_json_path = "../wardrobe.json"
     with open(media_json_path, "r", encoding="utf-8") as f:
         media_json_data = json.load(f)
     if LOG_LEVEL == "DEBUG":
