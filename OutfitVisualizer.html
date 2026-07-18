@@ -20,7 +20,7 @@
         }
         textarea {
             width: 100%;
-            height: 80px;
+            height: 100px;
             margin-bottom: 10px;
             font-family: monospace;
             box-sizing: border-box;
@@ -42,7 +42,6 @@
         }
         .gallery-container {
             width: 100%;
-            overflow-x: auto; /* Enables horizontal scrolling if images overflow */
             background: white;
             padding: 20px;
             border-radius: 8px;
@@ -51,18 +50,25 @@
         }
         .gallery {
             display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        .gallery-row {
+            display: flex;
             flex-direction: row;
             gap: 15px;
-            align-items: center;
+            align-items: flex-start;
+            overflow-x: auto;
+            padding-bottom: 10px;
         }
         .image-wrapper {
             display: flex;
             flex-direction: column;
             align-items: center;
-            flex-shrink: 0; /* Prevents images from squeezing/shrinking */
+            flex-shrink: 0;
         }
         .gallery img {
-            height: 300px; /* Fixed height, variable width maintaining aspect ratio */
+            height: 300px;
             object-fit: contain;
             border-radius: 4px;
             border: 1px solid #eee;
@@ -76,13 +82,22 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
+        .row-label {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
     </style>
 </head>
 <body>
 
 <div class="controls">
-    <h3>Input ID Array (JSON format)</h3>
-    <textarea id="jsonInput">["279f7430-9043-4ec4-99fb-2f871fb7bd35", "246433b0-802b-45f2-99a0-bf37a07dc976", "d8d053db-4a01-4de7-a610-e4248f04d9c3", "334ed90f-6458-47fb-b65f-3449d46ae07e", "77801729-301b-4fcb-9837-517871dfcaf0"]</textarea>
+    <h3>Input ID Array (Supports single or double quotes)</h3>
+    <textarea id="jsonInput">[
+  ['279f7430-9043-4ec4-99fb-2f871fb7bd35', "246433b0-802b-45f2-99a0-bf37a07dc976"],
+  ["d8d053db-4a01-4de7-a610-e4248f04d9c3", '334ed90f-6458-47fb-b65f-3449d46ae07e']
+]</textarea>
     <button onclick="renderImages()">Display Images</button>
 </div>
 
@@ -91,57 +106,77 @@
 </div>
 
 <script>
-    // Configure your server path here
     const BASE_URL = "/media/clothes/";
-    const IMAGE_EXTENSION = ".png"; // e.g., '.jpg', '.png', or leave empty '' if URLs don't require it
+    const IMAGE_EXTENSION = ".png";
 
     function renderImages() {
         const gallery = document.getElementById('gallery');
-        const rawInput = document.getElementById('jsonInput').value;
-        gallery.innerHTML = ''; // Clear previous images
+        const rawInput = document.getElementById('jsonInput').value.trim();
+        gallery.innerHTML = '';
 
         try {
-            const ids = JSON.parse(rawInput);
+            // Evaluates the string as a native JavaScript array literal, allowing single & double quotes
+            const parsedData = new Function(`return ${rawInput}`)();
 
-            if (!Array.isArray(ids)) {
-                alert('Input must be a valid JSON array.');
+            if (!Array.isArray(parsedData)) {
+                alert('Input must be a valid array.');
                 return;
             }
 
-            ids.forEach(id => {
-                const cleanId = id.trim();
-                if (!cleanId) return;
+            const is2D = parsedData.length > 0 && Array.isArray(parsedData[0]);
+            const matrix = is2D ? parsedData : [parsedData];
 
-                const wrapper = document.createElement('div');
-                wrapper.className = 'image-wrapper';
+            matrix.forEach((row, rowIndex) => {
+                if (!Array.isArray(row)) return;
 
-                const img = document.createElement('img');
-                img.src = `${BASE_URL}${cleanId}${IMAGE_EXTENSION}`;
-                img.alt = `Image ${cleanId}`;
-                img.onerror = () => {
-                    // Fallback handling if an image fails to load
-                    img.style.display = 'none';
-                    const errorDiv = document.createElement('div');
-                    errorDiv.style.cssText = 'height:300px; width:200px; background:#f0f0f0; display:flex; align-items:center; justify-content:center; text-align:center; font-size:12px; color:#999; border:1px dashed #ccc;';
-                    errorDiv.innerText = 'Image Not Found';
-                    wrapper.insertBefore(errorDiv, wrapper.firstChild);
-                };
+                const rowBlock = document.createElement('div');
 
-                const idLabel = document.createElement('div');
-                idLabel.className = 'image-id';
-                idLabel.innerText = cleanId;
+                if (is2D) {
+                    const label = document.createElement('div');
+                    label.className = 'row-label';
+                    label.innerText = `Row ${rowIndex + 1}`;
+                    rowBlock.appendChild(label);
+                }
 
-                wrapper.appendChild(img);
-                wrapper.appendChild(idLabel);
-                gallery.appendChild(wrapper);
+                const rowFlex = document.createElement('div');
+                rowFlex.className = 'gallery-row';
+
+                row.forEach(id => {
+                    const cleanId = String(id).trim();
+                    if (!cleanId) return;
+
+                    const wrapper = document.createElement('div');
+                    wrapper.className = 'image-wrapper';
+
+                    const img = document.createElement('img');
+                    img.src = `${BASE_URL}${cleanId}${IMAGE_EXTENSION}`;
+                    img.alt = `Image ${cleanId}`;
+                    img.onerror = () => {
+                        img.style.display = 'none';
+                        const errorDiv = document.createElement('div');
+                        errorDiv.style.cssText = 'height:300px; width:200px; background:#f0f0f0; display:flex; align-items:center; justify-content:center; text-align:center; font-size:12px; color:#999; border:1px dashed #ccc;';
+                        errorDiv.innerText = 'Image Not Found';
+                        wrapper.insertBefore(errorDiv, wrapper.firstChild);
+                    };
+
+                    const idLabel = document.createElement('div');
+                    idLabel.className = 'image-id';
+                    idLabel.innerText = cleanId;
+
+                    wrapper.appendChild(img);
+                    wrapper.appendChild(idLabel);
+                    rowFlex.appendChild(wrapper);
+                });
+
+                rowBlock.appendChild(rowFlex);
+                gallery.appendChild(rowBlock);
             });
 
         } catch (e) {
-            alert('Invalid JSON format. Ensure it uses double quotes: ["id1", "id2"]');
+            alert('Invalid Array format. Ensure brackets and quotes match properly.');
         }
     }
 
-    // Run on initial load
     window.onload = renderImages;
 </script>
 </body>
