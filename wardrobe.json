@@ -1212,5 +1212,53 @@
       "description": "A rugged mid-top athletic trail boot featuring a water-repellent leather and tight-knit mesh panel upper. Built with an all-black monochromatic design, it showcases the signature brand logo on the quarter panel, classic lace-up front, and a durable textured Goodyear rubber outsole for enhanced traction. Excellent for outdoor hiking, rainy day trekking, or paired casually with technical cargo pants."
     },
     "type": "shoes"
+  },
+  "49bc8e02-c130-4e15-a025-eca45214dabe": {
+    "type": "sweatshirt",
+    "brand": "Dennis Lingo"
+  },
+  "49bc8e02-c130-4e15-a025-eca45214dabc": {
+    "type": "jacket",
+    "brand": "Here&Now"
+  },
+  "49bc8e02-c130-4e15-a025-eca45214dabd": {
+    "type": "shirt",
+    "brand": "Rare Rabbit"
+  },
+  "fbf2109f-55a0-4016-b580-29b8761d8f23": {
+    "type": "pants",
+    "brand": "Decathlon"
+  },
+  "fbf2109f-55a0-4016-b580-29b8761d8f24": {
+    "type": "sweatshirt",
+    "brand": "Decathlon"
+  },
+  "fbf2109f-55a0-4016-b580-29b8761d8f25": {
+    "type": "sweatshirt",
+    "brand": "Indian Garage"
+  },
+  "bfa40f17-7541-4f82-a989-903395901c97": {
+    "type": "tanktop",
+    "brand": "H&M"
+  },
+  "07918a4d-b520-4b3f-be7e-a440dc1ea8e6": {
+    "type": "pants",
+    "brand": "Kite Club"
+  },
+  "1f4ad706-5bb2-4d2e-ae62-ca8af4b76149": {
+    "type": "pants",
+    "brand": "Arrow"
+  },
+  "30398b2c-de0d-4be4-9c6b-74cbc6d83990": {
+    "type": "tshirt",
+    "brand": "Marks & Spencer"
+  },
+  "aea71320-b863-4f44-9924-56ad6be27a6a": {
+    "type": "pants",
+    "brand": "Arrow"
+  },
+  "5e39434c-a070-4bae-b4ef-2533f45a12ad": {
+    "type": "pants",
+    "brand": "Arrow"
   }
 }
