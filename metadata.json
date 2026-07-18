@@ -1,0 +1,1084 @@
+{
+  "0db4aa3d-b03c-49d6-83b8-09cb0f4508b1": {
+    "id": "top_88",
+    "category": "top",
+    "sub_category": "sweatshirt",
+    "color": "blue",
+    "pattern": "solid",
+    "fabric": "knit",
+    "fit": "straight",
+    "formality": 3,
+    "tags": [
+      "layered",
+      "cozy",
+      "smart_casual",
+      "minimalist"
+    ],
+    "description": "A classic blue knit pullover or sweatshirt featuring a structured polo collar and a relaxed, straight fit, perfect for smart-casual layering."
+  },
+  "3ee4290c-46b8-40ae-ac05-156d91347079": {
+    "id": "bottom_74",
+    "category": "bottom",
+    "sub_category": "joggers",
+    "color": "taupe",
+    "pattern": "solid",
+    "fabric": "cotton_jersey",
+    "fit": "slim",
+    "formality": 1,
+    "tags": [
+      "loungewear",
+      "athleisure",
+      "cozy",
+      "minimalist"
+    ],
+    "description": "Slim-fit knit joggers in a neutral taupe shade featuring an elastic ribbed waistband and cuffed ankles."
+  },
+  "07bdf28e-be67-4f45-b9b8-e4247b6c72cf": {
+    "id": "top_01",
+    "category": "top",
+    "sub_category": "button-down",
+    "color": "navy_blue",
+    "pattern": "textured",
+    "fabric": "linen",
+    "fit": "relaxed",
+    "formality": 3,
+    "tags": [
+      "summer",
+      "breathable",
+      "smart-casual",
+      "minimalist"
+    ],
+    "description": "A navy blue long-sleeve shirt featuring a mandarin collar and a subtly textured fabric, perfect for a relaxed yet polished summer look."
+  },
+  "0c39a4a2-ec80-4a1a-921b-8517e49c2ca4": {
+    "id": "shoe_01",
+    "category": "footwear",
+    "sub_category": "loafers",
+    "color": "black",
+    "pattern": "solid",
+    "fabric": "leather",
+    "fit": "slim",
+    "formality": 4,
+    "tags": [
+      "formal",
+      "professional",
+      "minimalist",
+      "sleek"
+    ],
+    "description": "A pair of sleek black leather slip-on loafers with a polished finish and a subtle low heel, ideal for business formal or office attire."
+  },
+  "246433b0-802b-45f2-99a0-bf37a07dc976": {
+    "id": "outerwear_01",
+    "category": "outerwear",
+    "sub_category": "hoodie",
+    "color": "burgundy",
+    "pattern": "solid",
+    "fabric": "cotton_jersey",
+    "fit": "relaxed",
+    "formality": 2,
+    "tags": [
+      "casual",
+      "cozy",
+      "streetwear",
+      "layering"
+    ],
+    "description": "A solid burgundy pullover hoodie with a drawstring hood and a front kangaroo pocket, featuring a relaxed fit for comfortable daily wear."
+  },
+  "279f7430-9043-4ec4-99fb-2f871fb7bd34": {
+    "id": "top_01",
+    "category": "top",
+    "sub_category": "button-down",
+    "color": "blue",
+    "pattern": "solid",
+    "fabric": "cotton",
+    "fit": "slim",
+    "formality": 4,
+    "tags": [
+      "business",
+      "professional",
+      "minimalist",
+      "crisp"
+    ],
+    "description": "A classic long-sleeve light blue button-down dress shirt with a pointed collar and a single chest pocket."
+  },
+  "279f7430-9043-4ec4-99fb-2f871fb7bd35": {
+    "id": "top_01",
+    "category": "top",
+    "sub_category": "t-shirt",
+    "color": "white",
+    "pattern": "solid",
+    "fabric": "cotton_jersey",
+    "fit": "slim",
+    "formality": 2,
+    "tags": [
+      "minimalist",
+      "casual",
+      "basic",
+      "summer"
+    ],
+    "description": "A classic white crew-neck t-shirt featuring a slim fit and a subtle logo detail on the chest."
+  },
+  "2ec58542-dac3-4175-957a-5cd3af9728c0": {
+    "id": "footwear_01",
+    "category": "footwear",
+    "sub_category": "boots",
+    "color": "black",
+    "pattern": "solid",
+    "fabric": "leather",
+    "fit": "slim",
+    "formality": 3,
+    "tags": [
+      "chelsea",
+      "minimalist",
+      "sleek",
+      "versatile"
+    ],
+    "description": "Black leather Chelsea boots with elastic side panels and pull tabs, featuring a sleek, almond-toe silhouette suitable for smart casual wear."
+  },
+  "334ed90f-6458-47fb-b65f-3449d46ae07e": {
+    "id": "shoe_01",
+    "category": "footwear",
+    "sub_category": "sneakers",
+    "color": "black",
+    "pattern": "solid",
+    "fabric": "leather",
+    "fit": "straight",
+    "formality": 2,
+    "tags": [
+      "athletic",
+      "streetwear",
+      "casual",
+      "comfortable"
+    ],
+    "description": "Classic New Balance 574 lifestyle sneakers in black with grey detailing and a supportive ENCAP midsole."
+  },
+  "376d0173-e683-489b-87c1-341b92715a3e": {
+    "id": "top_01",
+    "category": "top",
+    "sub_category": "button-down",
+    "color": "light_grey",
+    "pattern": "striped",
+    "fabric": "linen",
+    "fit": "relaxed",
+    "formality": 3,
+    "tags": [
+      "summer",
+      "breathable",
+      "casual",
+      "smart-casual"
+    ],
+    "description": "A short-sleeved linen button-down shirt featuring vertical stripes and a relaxed fit, ideal for warm weather styling."
+  },
+  "386759b5-1a86-47d2-9b7c-874f86a8be89": {
+    "id": "top_01",
+    "category": "top",
+    "sub_category": "button-down",
+    "color": "black",
+    "pattern": "plaid",
+    "fabric": "cotton",
+    "fit": "slim",
+    "formality": 3,
+    "tags": [
+      "plaid",
+      "button-down",
+      "smart-casual",
+      "layered"
+    ],
+    "description": "A long-sleeved black plaid button-down shirt featuring a classic collar, worn as a layering piece over a black base shirt."
+  },
+  "3f8782f6-5853-4fc7-b1d3-1cf9033f7cdc": {
+    "id": "bottom_01",
+    "category": "bottom",
+    "sub_category": "trousers",
+    "color": "black",
+    "pattern": "solid",
+    "fabric": "wool",
+    "fit": "slim",
+    "formality": 4,
+    "tags": [
+      "professional",
+      "minimalist",
+      "business"
+    ],
+    "description": "Black slim-fit dress trousers with a clean silhouette, suitable for professional and formal environments."
+  },
+  "4520ff0d-d567-467c-b7af-0b5d9a6668fa": {
+    "id": "top_01",
+    "category": "top",
+    "sub_category": "button-down",
+    "color": "navy_blue",
+    "pattern": "solid",
+    "fabric": "cotton",
+    "fit": "slim",
+    "formality": 4,
+    "tags": [
+      "professional",
+      "minimalist",
+      "classic",
+      "business-casual"
+    ],
+    "description": "A crisp navy blue long-sleeve button-down dress shirt with a standard collar and a clean, slim-fit silhouette."
+  },
+  "46f6bd34-3c85-400e-a293-e290facd108b": {
+    "id": "bottom_01",
+    "category": "bottom",
+    "sub_category": "chinos",
+    "color": "white",
+    "pattern": "solid",
+    "fabric": "cotton",
+    "fit": "slim",
+    "formality": 3,
+    "tags": [
+      "summer",
+      "minimalist",
+      "smart-casual",
+      "clean"
+    ],
+    "description": "Crisp white chino shorts with a tailored slim fit, featuring a clean solid finish and versatile design perfect for warm-weather outfits."
+  },
+  "4797e580-69da-45a9-93a1-8a8fe700bc6e": {
+    "id": "outerwear_01",
+    "category": "outerwear",
+    "sub_category": "cardigan",
+    "color": "black",
+    "pattern": "solid",
+    "fabric": "knit",
+    "fit": "slim",
+    "formality": 3,
+    "tags": [
+      "minimalist",
+      "smart-casual",
+      "layering",
+      "versatile"
+    ],
+    "description": "A classic black long-sleeved button-up cardigan featuring a clean shawl collar and ribbed cuffs, perfect for smart-casual layering."
+  },
+  "4932dd4b-3c0c-45e3-85b2-f3a8850120d7": {
+    "id": "top_01",
+    "category": "top",
+    "sub_category": "button-down",
+    "color": "brown",
+    "pattern": "solid",
+    "fabric": "linen",
+    "fit": "relaxed",
+    "formality": 3,
+    "tags": [
+      "summer",
+      "breathable",
+      "smart-casual",
+      "versatile"
+    ],
+    "description": "A long-sleeved button-down shirt in a rich brown tone, featuring a clean collar and a relaxed, lightweight linen construction ideal for warm weather."
+  },
+  "50a4856f-bb29-43b2-ba3b-b2b372d2d4e0": {
+    "id": "outerwear_01",
+    "category": "outerwear",
+    "sub_category": "cardigan",
+    "color": "beige",
+    "pattern": "textured",
+    "fabric": "knit",
+    "fit": "relaxed",
+    "formality": 3,
+    "tags": [
+      "cozy",
+      "minimalist",
+      "layering",
+      "v-neck"
+    ],
+    "description": "A ribbed knit button-up cardigan in a neutral beige tone, featuring a classic v-neck design and a relaxed fit."
+  },
+  "5640e893-b9f4-44c9-8958-5ed363e1af3a": {
+    "id": "top_01",
+    "category": "top",
+    "sub_category": "t-shirt",
+    "color": "taupe",
+    "pattern": "solid",
+    "fabric": "cotton_jersey",
+    "fit": "slim",
+    "formality": 2,
+    "tags": [
+      "minimalist",
+      "casual",
+      "everyday",
+      "breathable"
+    ],
+    "description": "A solid-colored slim-fit crew neck t-shirt in a neutral taupe shade, featuring a lightweight cotton-jersey fabric."
+  },
+  "58369c9c-b15b-437a-bfcb-6acac802efaf": {
+    "id": "top_01",
+    "category": "top",
+    "sub_category": "t-shirt",
+    "color": "dusty_rose",
+    "pattern": "solid",
+    "fabric": "cotton_jersey",
+    "fit": "slim",
+    "formality": 2,
+    "tags": [
+      "casual",
+      "minimalist",
+      "everyday",
+      "breathable"
+    ],
+    "description": "A short-sleeved slim-fit t-shirt in a muted dusty rose color featuring a raw-edge neckline detail."
+  },
+  "60bdf523-15fd-4d41-9c91-bc146c76b823": {
+    "id": "top_01",
+    "category": "top",
+    "sub_category": "polo-shirt",
+    "color": "black",
+    "pattern": "solid",
+    "fabric": "cotton_jersey",
+    "fit": "slim",
+    "formality": 3,
+    "tags": [
+      "smart-casual",
+      "classic",
+      "minimalist",
+      "short-sleeve"
+    ],
+    "description": "A black polo shirt with a refined collar and subtle contrasting trim on the cuffs and collar edges, featuring a small embroidered logo on the chest."
+  },
+  "61af3553-325c-444b-9319-2c54ac1cdeb1": {
+    "id": "shoe_01",
+    "category": "footwear",
+    "sub_category": "sneakers",
+    "color": "white",
+    "pattern": "solid",
+    "fabric": "leather",
+    "fit": "slim",
+    "formality": 2,
+    "tags": [
+      "sporty",
+      "minimalist",
+      "casual",
+      "retro"
+    ],
+    "description": "Low-top leather sneakers with a contrast brown swoosh, textured suede toe overlay, and a classic vulcanized sole."
+  },
+  "65599a0a-8558-41f9-8b49-4bae78cb758f": {
+    "id": "top_01",
+    "category": "top",
+    "sub_category": "quarter-zip sweatshirt",
+    "color": "off_white",
+    "pattern": "solid",
+    "fabric": "cotton_jersey",
+    "fit": "relaxed",
+    "formality": 2,
+    "tags": [
+      "cozy",
+      "minimalist",
+      "layering",
+      "sporty"
+    ],
+    "description": "A clean, off-white quarter-zip sweatshirt featuring a mock neck and ribbed cuffs, perfect for casual layering."
+  },
+  "690dfc24-5df5-4793-8a07-f31dc41dfbd8": {
+    "id": "top_01",
+    "category": "top",
+    "sub_category": "polo shirt",
+    "color": "black",
+    "pattern": "textured",
+    "fabric": "knit",
+    "fit": "slim",
+    "formality": 3,
+    "tags": [
+      "smart-casual",
+      "textured",
+      "fitted",
+      "modern"
+    ],
+    "description": "A slim-fitting black polo shirt featuring a distinct vertical ribbed knit texture and a refined collar design."
+  },
+  "70482477-b391-4559-bcff-1a9598fc6b67": {
+    "id": "bottom_01",
+    "category": "bottom",
+    "sub_category": "chinos",
+    "color": "brown",
+    "pattern": "solid",
+    "fabric": "cotton",
+    "fit": "slim",
+    "formality": 3,
+    "tags": [
+      "smart-casual",
+      "drawstring",
+      "versatile",
+      "comfortable"
+    ],
+    "description": "Solid brown slim-fit chinos featuring a convenient drawstring elastic waist, perfect for a smart-casual or elevated daily look."
+  },
+  "75d44345-b131-4bfc-b3a2-4762c92fb6ea": {
+    "id": "top_01",
+    "category": "top",
+    "sub_category": "button-down",
+    "color": "olive_green",
+    "pattern": "solid",
+    "fabric": "linen",
+    "fit": "slim",
+    "formality": 3,
+    "tags": [
+      "smart-casual",
+      "breathable",
+      "summer",
+      "minimalist"
+    ],
+    "description": "A long-sleeved olive green linen button-down shirt featuring a classic collar, buttoned cuffs, and a single chest pocket."
+  },
+  "77801729-301b-4fcb-9837-517871dfcaf0": {
+    "id": "accessory_01",
+    "category": "accessory",
+    "sub_category": "baseball cap",
+    "color": "navy_blue",
+    "pattern": "textured",
+    "fabric": "suede",
+    "fit": "relaxed",
+    "formality": 2,
+    "tags": [
+      "streetwear",
+      "sporty",
+      "minimalist",
+      "branded"
+    ],
+    "description": "A navy blue baseball cap featuring a premium suede-like texture and a subtle embossed pattern on the brim, finished with a metallic gold Puma logo."
+  },
+  "7b9d1468-b785-4b0e-bc6d-dfc5409d57a1": {
+    "id": "top_01",
+    "category": "top",
+    "sub_category": "t-shirt",
+    "color": "charcoal",
+    "pattern": "solid",
+    "fabric": "knit",
+    "fit": "slim",
+    "formality": 3,
+    "tags": [
+      "minimalist",
+      "smart-casual",
+      "versatile",
+      "refined"
+    ],
+    "description": "A charcoal grey slim-fit t-shirt featuring a fine-gauge knit texture, suitable for smart-casual layering."
+  },
+  "7c32d3fc-d5bd-422d-96fe-ee97b4d2e319": {
+    "id": "top_01",
+    "category": "top",
+    "sub_category": "sweatshirt",
+    "color": "light_blue",
+    "pattern": "solid",
+    "fabric": "knit",
+    "fit": "relaxed",
+    "formality": 2,
+    "tags": [
+      "cozy",
+      "minimalist",
+      "casual",
+      "soft"
+    ],
+    "description": "A light blue long-sleeved crew neck sweater with a refined knit texture and ribbed cuffs and hem."
+  },
+  "7d4d5e31-db66-4873-be91-86b4a31049c3": {
+    "id": "outerwear_01",
+    "category": "outerwear",
+    "sub_category": "jacket",
+    "color": "black",
+    "pattern": "solid",
+    "fabric": "leather",
+    "fit": "slim",
+    "formality": 3,
+    "tags": [
+      "biker",
+      "edgy",
+      "minimalist",
+      "sleek"
+    ],
+    "description": "A classic black leather biker-style jacket featuring a zip-up front, stand-up collar with a snap button, and subtle quilted panel detailing on the sleeves."
+  },
+  "7f15f0ca-d30a-4792-b75d-49139b3d0abb": {
+    "id": "top_01",
+    "category": "top",
+    "sub_category": "button-down",
+    "color": "black",
+    "pattern": "floral",
+    "fabric": "cotton",
+    "fit": "slim",
+    "formality": 3,
+    "tags": [
+      "floral",
+      "smart-casual",
+      "long-sleeve",
+      "statement"
+    ],
+    "description": "A long-sleeved button-down shirt featuring a vibrant, dark-based floral print with contrasting cuff details."
+  },
+  "81159da1-c6e9-4ae7-9c07-eaa7f31665d0": {
+    "id": "footwear_01",
+    "category": "footwear",
+    "sub_category": "boots",
+    "color": "tan",
+    "pattern": "solid",
+    "fabric": "leather",
+    "fit": "straight",
+    "formality": 2,
+    "tags": [
+      "outdoor",
+      "rugged",
+      "durable",
+      "winter"
+    ],
+    "description": "Tan leather outdoor boots featuring a rugged sole, metal lace eyelets, and a reinforced cap toe design."
+  },
+  "88fbe5d6-042d-4fb7-b9c7-fce9c1b96cc1": {
+    "id": "outerwear_01",
+    "category": "outerwear",
+    "sub_category": "bomber jacket",
+    "color": "black",
+    "pattern": "floral",
+    "fabric": "polyester",
+    "fit": "relaxed",
+    "formality": 2,
+    "tags": [
+      "floral",
+      "streetwear",
+      "bomber",
+      "casual"
+    ],
+    "description": "A black bomber-style jacket featuring a vibrant, multi-colored floral pattern, ribbed cuffs, and a full front zipper closure."
+  },
+  "8c5bf934-8e03-412e-9fb3-004c693b89e1": {
+    "id": "bottom_01",
+    "category": "bottom",
+    "sub_category": "chinos",
+    "color": "dark_brown",
+    "pattern": "solid",
+    "fabric": "cotton",
+    "fit": "straight",
+    "formality": 4,
+    "tags": [
+      "business",
+      "professional",
+      "minimalist",
+      "crisp"
+    ],
+    "description": "Solid dark brown trousers with a straight-leg cut, suitable for business casual office environments."
+  },
+  "914329a0-8650-4ca3-bd75-1e2e521f7860": {
+    "id": "bottom_01",
+    "category": "bottom",
+    "sub_category": "joggers",
+    "color": "navy_blue",
+    "pattern": "solid",
+    "fabric": "cotton_jersey",
+    "fit": "slim",
+    "formality": 1,
+    "tags": [
+      "athletic",
+      "cozy",
+      "drawstring",
+      "minimalist"
+    ],
+    "description": "Solid navy blue athletic joggers featuring a comfortable elasticated waistband with a drawstring closure and ribbed ankle cuffs."
+  },
+  "97cb1f74-076b-4717-bb11-21f1fd09d2d2": {
+    "id": "top_01",
+    "category": "top",
+    "sub_category": "t-shirt",
+    "color": "black_and_white",
+    "pattern": "striped",
+    "fabric": "cotton_jersey",
+    "fit": "slim",
+    "formality": 2,
+    "tags": [
+      "long-sleeve",
+      "striped",
+      "casual",
+      "minimalist"
+    ],
+    "description": "A long-sleeved crew neck t-shirt featuring a classic black and white horizontal stripe pattern with a ribbed collar."
+  },
+  "98267c11-7045-45c7-a8d4-5237ebad7897": {
+    "id": "top_01",
+    "category": "top",
+    "sub_category": "button-down",
+    "color": "dusty_pink",
+    "pattern": "solid",
+    "fabric": "cotton",
+    "fit": "slim",
+    "formality": 4,
+    "tags": [
+      "business",
+      "professional",
+      "minimalist",
+      "clean"
+    ],
+    "description": "A long-sleeve, slim-fit button-down shirt in a muted dusty pink tone, featuring a standard collar and polished finish."
+  },
+  "9837c519-a3f9-430b-8210-ba5f03a5362c": {
+    "id": "top_01",
+    "category": "top",
+    "sub_category": "button-down",
+    "color": "maroon",
+    "pattern": "solid",
+    "fabric": "silk",
+    "fit": "slim",
+    "formality": 4,
+    "tags": [
+      "formal",
+      "evening-wear",
+      "elegant",
+      "smart"
+    ],
+    "description": "A deep maroon long-sleeved button-down shirt with a subtle sheen, featuring a classic point collar and a tailored slim fit suitable for formal occasions."
+  },
+  "a0a4cfcc-c713-4d60-a77e-39f574e4133e": {
+    "id": "shoe_01",
+    "category": "footwear",
+    "sub_category": "sneakers",
+    "color": "white",
+    "pattern": "solid",
+    "fabric": "knit",
+    "fit": "slim",
+    "formality": 1,
+    "tags": [
+      "athletic",
+      "breathable",
+      "minimalist",
+      "streetwear"
+    ],
+    "description": "A performance-focused white knit sneaker featuring a chunky, lightweight midsole with geometric cutouts and a sleek, low-top silhouette."
+  },
+  "a57eecb3-9913-44b6-a5e0-74cf4c6e1830": {
+    "id": "top_01",
+    "category": "top",
+    "sub_category": "t-shirt",
+    "color": "off_white",
+    "pattern": "textured",
+    "fabric": "knit",
+    "fit": "relaxed",
+    "formality": 2,
+    "tags": [
+      "minimalist",
+      "casual",
+      "textured",
+      "neutral"
+    ],
+    "description": "A short-sleeved, off-white t-shirt featuring a subtle waffle-knit texture and a relaxed, comfortable fit."
+  },
+  "a65e3098-03d2-409e-b986-885addb4c31c": {
+    "id": "top_01",
+    "category": "top",
+    "sub_category": "button-down",
+    "color": "light_pink",
+    "pattern": "solid",
+    "fabric": "cotton",
+    "fit": "slim",
+    "formality": 4,
+    "tags": [
+      "smart-casual",
+      "minimalist",
+      "professional",
+      "clean"
+    ],
+    "description": "A light pink long-sleeve button-down shirt with a classic collar and smooth finish, suitable for business casual attire."
+  },
+  "a79b2b10-bf11-45bd-9d60-51b15700fc44": {
+    "id": "outerwear_01",
+    "category": "outerwear",
+    "sub_category": "zip-up hoodie",
+    "color": "navy_blue",
+    "pattern": "solid",
+    "fabric": "cotton_jersey",
+    "fit": "slim",
+    "formality": 2,
+    "tags": [
+      "casual",
+      "sporty",
+      "layered",
+      "hoodie"
+    ],
+    "description": "A navy blue zip-up hoodie featuring a hood, vertical and horizontal zippered chest pockets, and contrasting grey inner cuffs."
+  },
+  "b425a848-72a5-40b5-b83c-214cc43bc30f": {
+    "id": "bottom_01",
+    "category": "bottom",
+    "sub_category": "chinos",
+    "color": "black",
+    "pattern": "solid",
+    "fabric": "cotton",
+    "fit": "slim",
+    "formality": 3,
+    "tags": [
+      "minimalist",
+      "smart-casual",
+      "versatile"
+    ],
+    "description": "Solid black slim-fit chinos featuring a clean, tailored silhouette and cuffed hems, suitable for both casual and smart-casual settings."
+  },
+  "b68273d5-1b74-4991-81b4-989a6c3600fa": {
+    "id": "bottom_joggers_01",
+    "category": "bottom",
+    "sub_category": "joggers",
+    "color": "light_grey",
+    "pattern": "solid",
+    "fabric": "cotton_jersey",
+    "fit": "slim",
+    "formality": 1,
+    "tags": [
+      "athletic",
+      "cozy",
+      "loungewear",
+      "minimalist"
+    ],
+    "description": "Light grey slim-fit joggers featuring an elasticated drawstring waistband and cuffed ankles, designed for comfort and activewear."
+  },
+  "be3c1eca-8224-4438-85cc-234153a77c56": {
+    "id": "bottom_01",
+    "category": "bottom",
+    "sub_category": "jeans",
+    "color": "navy_blue",
+    "pattern": "solid",
+    "fabric": "denim",
+    "fit": "straight",
+    "formality": 2,
+    "tags": [
+      "versatile",
+      "classic",
+      "minimalist"
+    ],
+    "description": "Dark wash denim jeans with a straight-leg cut and contrast stitching, suitable for a smart-casual or everyday look."
+  },
+  "be55f357-8e04-4fea-80c4-e809b099e680": {
+    "id": "bottom_01",
+    "category": "bottom",
+    "sub_category": "pajamas",
+    "color": "brown",
+    "pattern": "striped",
+    "fabric": "cotton",
+    "fit": "relaxed",
+    "formality": 1,
+    "tags": [
+      "cozy",
+      "loungewear",
+      "breathable",
+      "striped"
+    ],
+    "description": "Brown pinstriped pajama bottoms featuring an elasticated drawstring waistband and a relaxed, comfortable fit."
+  },
+  "c174a2c3-4a6f-4d36-9268-2de4380b4fda": {
+    "id": "top_01",
+    "category": "top",
+    "sub_category": "button-down",
+    "color": "beige",
+    "pattern": "solid",
+    "fabric": "linen",
+    "fit": "relaxed",
+    "formality": 3,
+    "tags": [
+      "summer",
+      "breathable",
+      "minimalist",
+      "coastal"
+    ],
+    "description": "A light beige linen button-down shirt featuring a chest pocket and roll-up sleeves, ideal for warm weather and casual smart styling."
+  },
+  "c5c87b0e-40e7-45ff-8be9-9d662fb86172": {
+    "id": "outerwear_01",
+    "category": "outerwear",
+    "sub_category": "bomber jacket",
+    "color": "brown",
+    "pattern": "solid",
+    "fabric": "polyester",
+    "fit": "slim",
+    "formality": 3,
+    "tags": [
+      "minimalist",
+      "smart-casual",
+      "versatile",
+      "lightweight"
+    ],
+    "description": "A classic solid-colored brown bomber jacket with a clean zip-front closure, ribbed hem and cuffs, and a minimal aesthetic."
+  },
+  "d2da3998-11c1-44d2-a266-e4a223c870ea": {
+    "id": "top_01",
+    "category": "top",
+    "sub_category": "t-shirt",
+    "color": "grey",
+    "pattern": "graphic",
+    "fabric": "cotton_jersey",
+    "fit": "slim",
+    "formality": 2,
+    "tags": [
+      "casual",
+      "streetwear",
+      "everyday",
+      "branded"
+    ],
+    "description": "A grey short-sleeved crew neck t-shirt featuring the Jack & Jones brand logo in a graphic print on the chest."
+  },
+  "d4d2fec7-23ae-46b5-bc62-105fa953506c": {
+    "id": "top_01",
+    "category": "top",
+    "sub_category": "button-down",
+    "color": "white",
+    "pattern": "solid",
+    "fabric": "cotton",
+    "fit": "slim",
+    "formality": 3,
+    "tags": [
+      "minimalist",
+      "classic",
+      "versatile",
+      "clean"
+    ],
+    "description": "A crisp, long-sleeved white button-down shirt featuring a classic collar and a single chest pocket."
+  },
+  "d8d053db-4a01-4de7-a610-e4248f04d9c3": {
+    "id": "bottom_01",
+    "category": "bottom",
+    "sub_category": "jeans",
+    "color": "charcoal",
+    "pattern": "solid",
+    "fabric": "denim",
+    "fit": "slim",
+    "formality": 2,
+    "tags": [
+      "casual",
+      "versatile",
+      "denim"
+    ],
+    "description": "A pair of slim-fit charcoal grey jeans with a washed finish and a standard five-pocket construction."
+  },
+  "d927eff2-2a00-48f8-b7b0-9aac564182b8": {
+    "id": "bottom_01",
+    "category": "bottom",
+    "sub_category": "chinos",
+    "color": "black",
+    "pattern": "solid",
+    "fabric": "cotton",
+    "fit": "slim",
+    "formality": 3,
+    "tags": [
+      "summer",
+      "smart-casual",
+      "versatile",
+      "minimalist"
+    ],
+    "description": "Black chino shorts with a clean, tailored finish and a mid-thigh length. Ideal for elevated casual warm-weather outfits."
+  },
+  "dd5b52fa-4ba6-4657-9c84-c5befb94d007": {
+    "id": "top_01",
+    "category": "top",
+    "sub_category": "button-down",
+    "color": "black",
+    "pattern": "textured",
+    "fabric": "cotton",
+    "fit": "slim",
+    "formality": 3,
+    "tags": [
+      "geometric",
+      "smart-casual",
+      "patterned",
+      "long-sleeve"
+    ],
+    "description": "A dark, long-sleeved button-down shirt featuring a repeating geometric architectural pattern with a slim tailored fit."
+  },
+  "e1b72e27-e1a9-473d-b0ac-9b1194dcec8b": {
+    "id": "bottom_01",
+    "category": "bottom",
+    "sub_category": "chinos",
+    "color": "navy_blue",
+    "pattern": "solid",
+    "fabric": "cotton",
+    "fit": "straight",
+    "formality": 4,
+    "tags": [
+      "professional",
+      "office",
+      "minimalist",
+      "structured"
+    ],
+    "description": "These navy blue straight-fit chinos feature a clean, crisp finish suitable for business casual attire."
+  },
+  "e5724051-c77a-40f8-ac97-47f092405a37": {
+    "id": "top_01",
+    "category": "top",
+    "sub_category": "sweatshirt",
+    "color": "black",
+    "pattern": "textured",
+    "fabric": "knit",
+    "fit": "slim",
+    "formality": 2,
+    "tags": [
+      "cozy",
+      "quarter-zip",
+      "textured",
+      "smart-casual"
+    ],
+    "description": "A black long-sleeve quarter-zip sweatshirt featuring a vertical cable-knit textured pattern and a slim-fitting silhouette."
+  },
+  "e89ad6b5-9b5f-4435-b880-900be600af33": {
+    "id": "top_01",
+    "category": "top",
+    "sub_category": "sweatshirt",
+    "color": "charcoal",
+    "pattern": "solid",
+    "fabric": "cotton_jersey",
+    "fit": "relaxed",
+    "formality": 1,
+    "tags": [
+      "athletic",
+      "cozy",
+      "streetwear",
+      "minimalist"
+    ],
+    "description": "A charcoal grey long-sleeve crewneck sweatshirt featuring a small white Reebok logo on the chest and ribbed cuffs."
+  },
+  "e9c37798-bc13-4700-a76b-b9e84d8064a7": {
+    "id": "bottom_01",
+    "category": "bottom",
+    "sub_category": "cargo shorts",
+    "color": "brown",
+    "pattern": "solid",
+    "fabric": "cotton",
+    "fit": "relaxed",
+    "formality": 2,
+    "tags": [
+      "summer",
+      "cargo",
+      "casual",
+      "utility"
+    ],
+    "description": "Solid brown cargo-style shorts featuring an elasticated waistband and utilitarian side pocket detailing."
+  },
+  "e9c52a9a-0c1a-4b28-b295-b7d584cb9cd2": {
+    "id": "bottom_01",
+    "category": "bottom",
+    "sub_category": "chinos",
+    "color": "beige",
+    "pattern": "solid",
+    "fabric": "cotton_twill",
+    "fit": "straight",
+    "formality": 3,
+    "tags": [
+      "versatile",
+      "smart-casual",
+      "classic",
+      "minimalist"
+    ],
+    "description": "Clean, flat-front beige chinos with a classic straight-leg cut, suitable for both professional and casual environments."
+  },
+  "eb6ef946-95d1-4085-ae0b-6a7cd6223222": {
+    "id": "top_01",
+    "category": "top",
+    "sub_category": "t-shirt",
+    "color": "mauve",
+    "pattern": "solid",
+    "fabric": "knit",
+    "fit": "slim",
+    "formality": 3,
+    "tags": [
+      "smart-casual",
+      "minimalist",
+      "breathable"
+    ],
+    "description": "A refined short-sleeve polo-style knit top in a soft mauve hue, featuring a clean collar and button placket."
+  },
+  "ecbf7d68-7b03-4171-af2d-aab695006533": {
+    "id": "top_01",
+    "category": "top",
+    "sub_category": "button-down",
+    "color": "black",
+    "pattern": "solid",
+    "fabric": "cotton",
+    "fit": "slim",
+    "formality": 4,
+    "tags": [
+      "professional",
+      "minimalist",
+      "sleek",
+      "versatile"
+    ],
+    "description": "A crisp, long-sleeved black button-down shirt featuring a classic point collar and a clean, slim-fit silhouette."
+  },
+  "f321ed35-bca4-4344-a856-8884186a9dee": {
+    "id": "top_01",
+    "category": "top",
+    "sub_category": "t-shirt",
+    "color": "beige",
+    "pattern": "solid",
+    "fabric": "knit",
+    "fit": "slim",
+    "formality": 2,
+    "tags": [
+      "minimalist",
+      "smart-casual",
+      "textured",
+      "versatile"
+    ],
+    "description": "A fine-gauge knit t-shirt in a neutral beige tone with a clean crew neck and refined texture, suitable for layered or standalone styling."
+  },
+  "f704ec63-fd07-4955-9755-167e05132637": {
+    "id": "shoe_01",
+    "category": "footwear",
+    "sub_category": "derby",
+    "color": "brown",
+    "pattern": "textured",
+    "fabric": "leather",
+    "fit": "slim",
+    "formality": 4,
+    "tags": [
+      "formal",
+      "classic",
+      "polished",
+      "business"
+    ],
+    "description": "A pair of brown leather derby shoes featuring a textured side panel and a sleek, formal silhouette."
+  },
+  "f84b353c-b88e-4de5-9cde-7c39437662bd": {
+    "id": "top_01",
+    "category": "top",
+    "sub_category": "t-shirt",
+    "color": "black",
+    "pattern": "solid",
+    "fabric": "cotton_jersey",
+    "fit": "slim",
+    "formality": 2,
+    "tags": [
+      "minimalist",
+      "essential",
+      "long-sleeve",
+      "casual"
+    ],
+    "description": "A long-sleeved solid black t-shirt with a thin crew neckline, featuring a slim fit and smooth cotton construction."
+  },
+  "f92d04f2-aaec-4dd0-8879-7e579e364ccf": {
+    "id": "bottom_01",
+    "category": "bottom",
+    "sub_category": "chinos",
+    "color": "beige",
+    "pattern": "solid",
+    "fabric": "cotton",
+    "fit": "slim",
+    "formality": 3,
+    "tags": [
+      "smart-casual",
+      "professional",
+      "versatile"
+    ],
+    "description": "Slim-fit light beige trousers featuring a clean, tailored silhouette suitable for office or smart-casual settings."
+  },
+  "fbf2109f-55a0-4016-b580-29b8761d8f22": {
+    "id": "shoe_01",
+    "category": "footwear",
+    "sub_category": "boots",
+    "color": "black",
+    "pattern": "solid",
+    "fabric": "leather",
+    "fit": "relaxed",
+    "formality": 2,
+    "tags": [
+      "water-repellent",
+      "hiking",
+      "durable",
+      "athletic"
+    ],
+    "description": "Black high-top hiking-style boots featuring Goodyear rubber outsoles and a water-repellent design."
+  }
+}
