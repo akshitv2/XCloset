@@ -1,386 +1,386 @@
 {
-  "7b9d1468-b785-4b0e-bc6d-dfc5409d57a1": {
-    "type": "tshirt",
-    "color": "Gray",
-    "brand": "Snitch",
-    "occasion": "Casual"
-  },
-  "0db4aa3d-b03c-49d6-83b8-09cb0f4508b1": {
-    "type": "sweatshirt",
-    "color": "blue",
-    "brand": "Snitch",
-    "occasion": "Semiformal"
-  },
-  "97cb1f74-076b-4717-bb11-21f1fd09d2d2": {
-    "type": "tshirt",
-    "color": "black",
-    "brand": "Snitch",
-    "occasion": "Casual"
-  },
-  "eb6ef946-95d1-4085-ae0b-6a7cd6223222": {
-    "type": "tshirt",
-    "color": "pink",
-    "brand": "Snitch",
-    "occasion": "Casual"
-  },
-  "f321ed35-bca4-4344-a856-8884186a9dee": {
-    "type": "tshirt",
-    "color": "beige",
-    "brand": "Snitch",
-    "occasion": "Casual"
-  },
-  "50a4856f-bb29-43b2-ba3b-b2b372d2d4e0": {
-    "type": "sweater",
-    "color": "beige",
-    "brand": "Snitch",
-    "occasion": "Casual"
-  },
-  "7d4d5e31-db66-4873-be91-86b4a31049c3": {
-    "type": "jacket",
-    "color": "black",
-    "brand": "JustTanned",
-    "occasion": "Casual"
-  },
-  "c5c87b0e-40e7-45ff-8be9-9d662fb86172": {
-    "type": "jacket",
-    "color": "brown",
-    "brand": "Peter England",
-    "occasion": "Casual"
-  },
-  "246433b0-802b-45f2-99a0-bf37a07dc976": {
-    "type": "jacket",
-    "color": "red",
-    "brand": "Generic",
-    "occasion": "Casual"
-  },
-  "88fbe5d6-042d-4fb7-b9c7-fce9c1b96cc1": {
-    "type": "jacket",
-    "color": "black",
-    "brand": "TokyoTalkies",
-    "occasion": "Casual"
-  },
-  "75d44345-b131-4bfc-b3a2-4762c92fb6ea": {
-    "type": "shirt",
-    "color": "green",
-    "brand": "Celio",
-    "occasion": "Casual"
-  },
-  "f84b353c-b88e-4de5-9cde-7c39437662bd": {
-    "type": "tshirt",
-    "color": "black",
-    "brand": "Snitch",
-    "occasion": "Casual"
-  },
-  "be55f357-8e04-4fea-80c4-e809b099e680": {
-    "type": "pajamas",
-    "color": "brown",
-    "brand": "Snitch",
-    "occasion": "Casual"
-  },
-  "07bdf28e-be67-4f45-b9b8-e4247b6c72cf": {
-    "type": "shirt",
-    "color": "blue",
-    "brand": "Snitch",
-    "occasion": "Casual"
-  },
-  "d4d2fec7-23ae-46b5-bc62-105fa953506c": {
-    "type": "shirt",
-    "color": "white",
-    "brand": "Snitch",
-    "occasion": "Casual"
-  },
-  "e5724051-c77a-40f8-ac97-47f092405a37": {
-    "type": "sweatshirt",
-    "color": "black",
-    "brand": "Snitch",
-    "occasion": "Casual"
-  },
-  "b68273d5-1b74-4991-81b4-989a6c3600fa": {
-    "type": "joggers",
-    "color": "gray",
-    "brand": "VanHeusen",
-    "occasion": "Casual"
-  },
-  "5640e893-b9f4-44c9-8958-5ed363e1af3a": {
-    "type": "tshirt",
-    "color": "gray",
-    "brand": "Snitch",
-    "occasion": "Casual"
-  },
-  "58369c9c-b15b-437a-bfcb-6acac802efaf": {
-    "type": "tshirt",
-    "color": "pink",
-    "brand": "Snitch",
-    "occasion": "Casual"
-  },
-  "a79b2b10-bf11-45bd-9d60-51b15700fc44": {
-    "type": "jacket",
-    "color": "blue",
-    "brand": "Nobero",
-    "occasion": "Casual"
-  },
-  "4797e580-69da-45a9-93a1-8a8fe700bc6e": {
-    "type": "jacket",
-    "color": "black",
-    "brand": "Snitch",
-    "occasion": "Casual"
-  },
-  "914329a0-8650-4ca3-bd75-1e2e521f7860": {
-    "type": "joggers",
-    "color": "Dark Blue",
-    "brand": "Generic",
-    "occasion": "Casual"
-  },
-  "4932dd4b-3c0c-45e3-85b2-f3a8850120d7": {
-    "type": "shirt",
-    "color": "brown",
-    "brand": "Highlander",
-    "occasion": "Casual"
-  },
-  "376d0173-e683-489b-87c1-341b92715a3e": {
-    "type": "shirt",
-    "color": "gray",
-    "brand": "Highlander",
-    "occasion": "Casual"
-  },
-  "60bdf523-15fd-4d41-9c91-bc146c76b823": {
-    "type": "tshirt",
-    "color": "black",
-    "brand": "VanHeusen",
-    "occasion": "Casual"
-  },
-  "8c5bf934-8e03-412e-9fb3-004c693b89e1": {
-    "type": "pants",
-    "color": "brown",
-    "brand": "Arrow",
-    "occasion": "Formal"
-  },
-  "d2da3998-11c1-44d2-a266-e4a223c870ea": {
-    "type": "tshirt",
-    "color": "gray",
-    "brand": "Jack&Jones",
-    "occasion": "Casual"
-  },
-  "a57eecb3-9913-44b6-a5e0-74cf4c6e1830": {
-    "type": "tshirt",
-    "color": "white",
-    "brand": "Jack&Jones",
-    "occasion": "Formal"
-  },
-  "e89ad6b5-9b5f-4435-b880-900be600af33": {
-    "type": "sweatshirt",
-    "color": "gray",
-    "brand": "Reebok",
-    "occasion": "Casual"
-  },
-  "77801729-301b-4fcb-9837-517871dfcaf0": {
-    "type": "cap",
-    "color": "blue",
-    "brand": "Puma",
-    "occasion": "Casual"
-  },
-  "be3c1eca-8224-4438-85cc-234153a77c56": {
-    "type": "jeans",
-    "color": "blue",
-    "brand": "PepeJeans",
-    "occasion": "Casual"
-  },
-  "c174a2c3-4a6f-4d36-9268-2de4380b4fda": {
-    "type": "shirt",
-    "color": "beige",
-    "brand": "IndianGarage",
-    "occasion": "Casual"
-  },
-  "f92d04f2-aaec-4dd0-8879-7e579e364ccf": {
-    "type": "jeans",
-    "color": "white",
-    "brand": "Arrow",
-    "occasion": "Casual"
-  },
-  "690dfc24-5df5-4793-8a07-f31dc41dfbd8": {
-    "type": "tshirt",
-    "color": "black",
-    "brand": "Generic",
-    "occasion": "Casual"
-  },
-  "fbf2109f-55a0-4016-b580-29b8761d8f22": {
-    "type": "shoes",
-    "color": "black",
-    "brand": "Skecher",
-    "occasion": "Casual"
-  },
-  "d8d053db-4a01-4de7-a610-e4248f04d9c3": {
-    "type": "jeans",
-    "color": "black",
-    "brand": "PepeJeans",
-    "occasion": "Casual"
-  },
-  "334ed90f-6458-47fb-b65f-3449d46ae07e": {
-    "type": "shoes",
-    "color": "black",
-    "brand": "NewBalance",
-    "occasion": "Casual"
-  },
-  "3f8782f6-5853-4fc7-b1d3-1cf9033f7cdc": {
-    "type": "pants",
-    "color": "black",
-    "brand": "LouisPhilippe",
-    "occasion": "Formal"
-  },
-  "386759b5-1a86-47d2-9b7c-874f86a8be89": {
-    "type": "shirt",
-    "color": "black",
-    "brand": "BearHouse",
-    "occasion": "Casual"
-  },
-  "b425a848-72a5-40b5-b83c-214cc43bc30f": {
-    "type": "pants",
-    "color": "black",
-    "brand": "Arrow",
-    "occasion": "Semiformal"
-  },
-  "e9c52a9a-0c1a-4b28-b295-b7d584cb9cd2": {
-    "type": "pants",
-    "color": "beige",
-    "brand": "VanHeusen",
-    "occasion": "Semiformal"
-  },
-  "65599a0a-8558-41f9-8b49-4bae78cb758f": {
-    "type": "sweatshirt",
-    "color": "white",
-    "brand": "Celio",
-    "occasion": "Casual"
-  },
-  "7c32d3fc-d5bd-422d-96fe-ee97b4d2e319": {
-    "type": "sweatshirt",
-    "color": "blue",
-    "brand": "Celio",
-    "occasion": "Casual"
-  },
-  "d927eff2-2a00-48f8-b7b0-9aac564182b8": {
-    "type": "shorts",
-    "color": "black",
-    "brand": "XYXX",
-    "occasion": "Casual"
-  },
-  "46f6bd34-3c85-400e-a293-e290facd108b": {
-    "type": "shorts",
-    "color": "white",
-    "brand": "IndianGarage",
-    "occasion": "Casual"
-  },
-  "e9c37798-bc13-4700-a76b-b9e84d8064a7": {
-    "type": "shorts",
-    "color": "brown",
-    "brand": "ThomasScott",
-    "occasion": "Casual"
-  },
-  "3ee4290c-46b8-40ae-ac05-156d91347079": {
-    "type": "joggers",
-    "color": "beige",
-    "brand": "FameForever",
-    "occasion": "Casual"
-  },
-  "e1b72e27-e1a9-473d-b0ac-9b1194dcec8b": {
-    "type": "pants",
-    "color": "Dark Blue",
-    "brand": "Arrow",
-    "occasion": "Formal"
-  },
-  "70482477-b391-4559-bcff-1a9598fc6b67": {
-    "type": "pants",
-    "color": "Brown",
-    "brand": "IndianGarage",
-    "occasion": "Casual"
-  },
-  "61af3553-325c-444b-9319-2c54ac1cdeb1": {
-    "type": "shoes",
-    "color": "white",
-    "brand": "Nike",
-    "occasion": "Casual"
-  },
-  "0c39a4a2-ec80-4a1a-921b-8517e49c2ca4": {
-    "type": "shoes",
-    "color": "black",
-    "brand": "Bata",
-    "occasion": "Formal"
-  },
-  "f704ec63-fd07-4955-9755-167e05132637": {
-    "type": "shoes",
-    "color": "brown",
-    "brand": "Louis philippe",
-    "occasion": "Formal"
-  },
-  "a0a4cfcc-c713-4d60-a77e-39f574e4133e": {
-    "type": "shoes",
-    "color": "white",
-    "brand": "Cult",
-    "occasion": "Semiformal"
-  },
-  "2ec58542-dac3-4175-957a-5cd3af9728c0": {
-    "type": "shoes",
-    "color": "black",
-    "brand": "Louis Stitch",
-    "occasion": "Formal"
-  },
-  "81159da1-c6e9-4ae7-9c07-eaa7f31665d0": {
-    "type": "shoes",
-    "color": "brown",
-    "brand": "Woodland",
-    "occasion": "Formal"
-  },
-  "a65e3098-03d2-409e-b986-885addb4c31c": {
-    "type": "shirt",
-    "color": "Pink",
-    "brand": "RareRabbit",
-    "occasion": "party"
-  },
-  "98267c11-7045-45c7-a8d4-5237ebad7897": {
-    "type": "shirt",
-    "color": "Pink",
-    "brand": "Peter England",
-    "occasion": "formal"
-  },
-  "dd5b52fa-4ba6-4657-9c84-c5befb94d007": {
-    "type": "shirt",
-    "color": "Black",
-    "brand": "RareRabbit",
-    "occasion": "party"
-  },
-  "7f15f0ca-d30a-4792-b75d-49139b3d0abb": {
-    "type": "shirt",
-    "color": "Black",
-    "brand": "BlackBerrys",
-    "occasion": "party"
-  },
-  "9837c519-a3f9-430b-8210-ba5f03a5362c": {
-    "type": "shirt",
-    "color": "Red",
-    "brand": "BlackBerrys",
-    "occasion": "party"
-  },
-  "4520ff0d-d567-467c-b7af-0b5d9a6668fa": {
-    "type": "shirt",
-    "color": "Blue",
-    "brand": "BlackBerrys",
-    "occasion": "formal"
-  },
-  "ecbf7d68-7b03-4171-af2d-aab695006533": {
-    "type": "shirt",
-    "color": "Black",
-    "brand": "BlackBerrys",
-    "occasion": "formal"
-  },
-  "279f7430-9043-4ec4-99fb-2f871fb7bd34": {
-    "type": "shirt",
-    "color": "Blue",
-    "brand": "Raymond",
-    "occasion": "formal"
-  },
-  "279f7430-9043-4ec4-99fb-2f871fb7bd35": {
-    "type": "tshirt",
-    "color": "White",
-    "brand": "PepeJeans",
-    "occasion": "casual"
-  }
+    "07bdf28e-be67-4f45-b9b8-e4247b6c72cf": {
+        "brand": "Snitch",
+        "color": "blue",
+        "occasion": "Casual",
+        "type": "shirt"
+    },
+    "0c39a4a2-ec80-4a1a-921b-8517e49c2ca4": {
+        "brand": "Bata",
+        "color": "black",
+        "occasion": "Formal",
+        "type": "shoes"
+    },
+    "0db4aa3d-b03c-49d6-83b8-09cb0f4508b1": {
+        "brand": "Snitch",
+        "color": "blue",
+        "occasion": "Semiformal",
+        "type": "sweatshirt"
+    },
+    "246433b0-802b-45f2-99a0-bf37a07dc976": {
+        "brand": "Generic",
+        "color": "red",
+        "occasion": "Casual",
+        "type": "jacket"
+    },
+    "279f7430-9043-4ec4-99fb-2f871fb7bd34": {
+        "brand": "Raymond",
+        "color": "Blue",
+        "occasion": "formal",
+        "type": "shirt"
+    },
+    "279f7430-9043-4ec4-99fb-2f871fb7bd35": {
+        "brand": "PepeJeans",
+        "color": "White",
+        "occasion": "casual",
+        "type": "tshirt"
+    },
+    "2ec58542-dac3-4175-957a-5cd3af9728c0": {
+        "brand": "Louis Stitch",
+        "color": "black",
+        "occasion": "Formal",
+        "type": "shoes"
+    },
+    "334ed90f-6458-47fb-b65f-3449d46ae07e": {
+        "brand": "NewBalance",
+        "color": "black",
+        "occasion": "Casual",
+        "type": "shoes"
+    },
+    "376d0173-e683-489b-87c1-341b92715a3e": {
+        "brand": "Highlander",
+        "color": "gray",
+        "occasion": "Casual",
+        "type": "shirt"
+    },
+    "386759b5-1a86-47d2-9b7c-874f86a8be89": {
+        "brand": "BearHouse",
+        "color": "black",
+        "occasion": "Casual",
+        "type": "shirt"
+    },
+    "3ee4290c-46b8-40ae-ac05-156d91347079": {
+        "brand": "FameForever",
+        "color": "beige",
+        "occasion": "Casual",
+        "type": "joggers"
+    },
+    "3f8782f6-5853-4fc7-b1d3-1cf9033f7cdc": {
+        "brand": "LouisPhilippe",
+        "color": "black",
+        "occasion": "Formal",
+        "type": "pants"
+    },
+    "4520ff0d-d567-467c-b7af-0b5d9a6668fa": {
+        "brand": "BlackBerrys",
+        "color": "Blue",
+        "occasion": "formal",
+        "type": "shirt"
+    },
+    "46f6bd34-3c85-400e-a293-e290facd108b": {
+        "brand": "IndianGarage",
+        "color": "white",
+        "occasion": "Casual",
+        "type": "shorts"
+    },
+    "4797e580-69da-45a9-93a1-8a8fe700bc6e": {
+        "brand": "Snitch",
+        "color": "black",
+        "occasion": "Casual",
+        "type": "jacket"
+    },
+    "4932dd4b-3c0c-45e3-85b2-f3a8850120d7": {
+        "brand": "Highlander",
+        "color": "brown",
+        "occasion": "Casual",
+        "type": "shirt"
+    },
+    "50a4856f-bb29-43b2-ba3b-b2b372d2d4e0": {
+        "brand": "Snitch",
+        "color": "beige",
+        "occasion": "Casual",
+        "type": "sweater"
+    },
+    "5640e893-b9f4-44c9-8958-5ed363e1af3a": {
+        "brand": "Snitch",
+        "color": "gray",
+        "occasion": "Casual",
+        "type": "tshirt"
+    },
+    "58369c9c-b15b-437a-bfcb-6acac802efaf": {
+        "brand": "Snitch",
+        "color": "pink",
+        "occasion": "Casual",
+        "type": "tshirt"
+    },
+    "60bdf523-15fd-4d41-9c91-bc146c76b823": {
+        "brand": "VanHeusen",
+        "color": "black",
+        "occasion": "Casual",
+        "type": "tshirt"
+    },
+    "61af3553-325c-444b-9319-2c54ac1cdeb1": {
+        "brand": "Nike",
+        "color": "white",
+        "occasion": "Casual",
+        "type": "shoes"
+    },
+    "65599a0a-8558-41f9-8b49-4bae78cb758f": {
+        "brand": "Celio",
+        "color": "white",
+        "occasion": "Casual",
+        "type": "sweatshirt"
+    },
+    "690dfc24-5df5-4793-8a07-f31dc41dfbd8": {
+        "brand": "Generic",
+        "color": "black",
+        "occasion": "Casual",
+        "type": "tshirt"
+    },
+    "70482477-b391-4559-bcff-1a9598fc6b67": {
+        "brand": "IndianGarage",
+        "color": "Brown",
+        "occasion": "Casual",
+        "type": "pants"
+    },
+    "75d44345-b131-4bfc-b3a2-4762c92fb6ea": {
+        "brand": "Celio",
+        "color": "green",
+        "occasion": "Casual",
+        "type": "shirt"
+    },
+    "77801729-301b-4fcb-9837-517871dfcaf0": {
+        "brand": "Puma",
+        "color": "blue",
+        "occasion": "Casual",
+        "type": "cap"
+    },
+    "7b9d1468-b785-4b0e-bc6d-dfc5409d57a1": {
+        "brand": "Snitch",
+        "color": "Gray",
+        "occasion": "Casual",
+        "type": "tshirt"
+    },
+    "7c32d3fc-d5bd-422d-96fe-ee97b4d2e319": {
+        "brand": "Celio",
+        "color": "blue",
+        "occasion": "Casual",
+        "type": "sweatshirt"
+    },
+    "7d4d5e31-db66-4873-be91-86b4a31049c3": {
+        "brand": "JustTanned",
+        "color": "black",
+        "occasion": "Casual",
+        "type": "jacket"
+    },
+    "7f15f0ca-d30a-4792-b75d-49139b3d0abb": {
+        "brand": "BlackBerrys",
+        "color": "Black",
+        "occasion": "party",
+        "type": "shirt"
+    },
+    "81159da1-c6e9-4ae7-9c07-eaa7f31665d0": {
+        "brand": "Woodland",
+        "color": "brown",
+        "occasion": "Formal",
+        "type": "shoes"
+    },
+    "88fbe5d6-042d-4fb7-b9c7-fce9c1b96cc1": {
+        "brand": "TokyoTalkies",
+        "color": "black",
+        "occasion": "Casual",
+        "type": "jacket"
+    },
+    "8c5bf934-8e03-412e-9fb3-004c693b89e1": {
+        "brand": "Arrow",
+        "color": "brown",
+        "occasion": "Formal",
+        "type": "pants"
+    },
+    "914329a0-8650-4ca3-bd75-1e2e521f7860": {
+        "brand": "Generic",
+        "color": "Dark Blue",
+        "occasion": "Casual",
+        "type": "joggers"
+    },
+    "97cb1f74-076b-4717-bb11-21f1fd09d2d2": {
+        "brand": "Snitch",
+        "color": "black",
+        "occasion": "Casual",
+        "type": "tshirt"
+    },
+    "98267c11-7045-45c7-a8d4-5237ebad7897": {
+        "brand": "Peter England",
+        "color": "Pink",
+        "occasion": "formal",
+        "type": "shirt"
+    },
+    "9837c519-a3f9-430b-8210-ba5f03a5362c": {
+        "brand": "BlackBerrys",
+        "color": "Red",
+        "occasion": "party",
+        "type": "shirt"
+    },
+    "a0a4cfcc-c713-4d60-a77e-39f574e4133e": {
+        "brand": "Cult",
+        "color": "white",
+        "occasion": "Semiformal",
+        "type": "shoes"
+    },
+    "a57eecb3-9913-44b6-a5e0-74cf4c6e1830": {
+        "brand": "Jack&Jones",
+        "color": "white",
+        "occasion": "Formal",
+        "type": "tshirt"
+    },
+    "a65e3098-03d2-409e-b986-885addb4c31c": {
+        "brand": "RareRabbit",
+        "color": "Pink",
+        "occasion": "party",
+        "type": "shirt"
+    },
+    "a79b2b10-bf11-45bd-9d60-51b15700fc44": {
+        "brand": "Nobero",
+        "color": "blue",
+        "occasion": "Casual",
+        "type": "jacket"
+    },
+    "b425a848-72a5-40b5-b83c-214cc43bc30f": {
+        "brand": "Arrow",
+        "color": "black",
+        "occasion": "Semiformal",
+        "type": "pants"
+    },
+    "b68273d5-1b74-4991-81b4-989a6c3600fa": {
+        "brand": "VanHeusen",
+        "color": "gray",
+        "occasion": "Casual",
+        "type": "joggers"
+    },
+    "be3c1eca-8224-4438-85cc-234153a77c56": {
+        "brand": "PepeJeans",
+        "color": "blue",
+        "occasion": "Casual",
+        "type": "jeans"
+    },
+    "be55f357-8e04-4fea-80c4-e809b099e680": {
+        "brand": "Snitch",
+        "color": "brown",
+        "occasion": "Casual",
+        "type": "pajamas"
+    },
+    "c174a2c3-4a6f-4d36-9268-2de4380b4fda": {
+        "brand": "IndianGarage",
+        "color": "beige",
+        "occasion": "Casual",
+        "type": "shirt"
+    },
+    "c5c87b0e-40e7-45ff-8be9-9d662fb86172": {
+        "brand": "Peter England",
+        "color": "brown",
+        "occasion": "Casual",
+        "type": "jacket"
+    },
+    "d2da3998-11c1-44d2-a266-e4a223c870ea": {
+        "brand": "Jack&Jones",
+        "color": "gray",
+        "occasion": "Casual",
+        "type": "tshirt"
+    },
+    "d4d2fec7-23ae-46b5-bc62-105fa953506c": {
+        "brand": "Snitch",
+        "color": "white",
+        "occasion": "Casual",
+        "type": "shirt"
+    },
+    "d8d053db-4a01-4de7-a610-e4248f04d9c3": {
+        "brand": "PepeJeans",
+        "color": "black",
+        "occasion": "Casual",
+        "type": "jeans"
+    },
+    "d927eff2-2a00-48f8-b7b0-9aac564182b8": {
+        "brand": "XYXX",
+        "color": "black",
+        "occasion": "Casual",
+        "type": "shorts"
+    },
+    "dd5b52fa-4ba6-4657-9c84-c5befb94d007": {
+        "brand": "RareRabbit",
+        "color": "Black",
+        "occasion": "party",
+        "type": "shirt"
+    },
+    "e1b72e27-e1a9-473d-b0ac-9b1194dcec8b": {
+        "brand": "Arrow",
+        "color": "Dark Blue",
+        "occasion": "Formal",
+        "type": "pants"
+    },
+    "e5724051-c77a-40f8-ac97-47f092405a37": {
+        "brand": "Snitch",
+        "color": "black",
+        "occasion": "Casual",
+        "type": "sweatshirt"
+    },
+    "e89ad6b5-9b5f-4435-b880-900be600af33": {
+        "brand": "Reebok",
+        "color": "gray",
+        "occasion": "Casual",
+        "type": "sweatshirt"
+    },
+    "e9c37798-bc13-4700-a76b-b9e84d8064a7": {
+        "brand": "ThomasScott",
+        "color": "brown",
+        "occasion": "Casual",
+        "type": "shorts"
+    },
+    "e9c52a9a-0c1a-4b28-b295-b7d584cb9cd2": {
+        "brand": "VanHeusen",
+        "color": "beige",
+        "occasion": "Semiformal",
+        "type": "pants"
+    },
+    "eb6ef946-95d1-4085-ae0b-6a7cd6223222": {
+        "brand": "Snitch",
+        "color": "pink",
+        "occasion": "Casual",
+        "type": "tshirt"
+    },
+    "ecbf7d68-7b03-4171-af2d-aab695006533": {
+        "brand": "BlackBerrys",
+        "color": "Black",
+        "occasion": "formal",
+        "type": "shirt"
+    },
+    "f321ed35-bca4-4344-a856-8884186a9dee": {
+        "brand": "Snitch",
+        "color": "beige",
+        "occasion": "Casual",
+        "type": "tshirt"
+    },
+    "f704ec63-fd07-4955-9755-167e05132637": {
+        "brand": "Louis philippe",
+        "color": "brown",
+        "occasion": "Formal",
+        "type": "shoes"
+    },
+    "f84b353c-b88e-4de5-9cde-7c39437662bd": {
+        "brand": "Snitch",
+        "color": "black",
+        "occasion": "Casual",
+        "type": "tshirt"
+    },
+    "f92d04f2-aaec-4dd0-8879-7e579e364ccf": {
+        "brand": "Arrow",
+        "color": "white",
+        "occasion": "Casual",
+        "type": "jeans"
+    },
+    "fbf2109f-55a0-4016-b580-29b8761d8f22": {
+        "brand": "Skecher",
+        "color": "black",
+        "occasion": "Casual",
+        "type": "shoes"
+    }
 }
