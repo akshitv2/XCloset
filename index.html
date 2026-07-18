@@ -69,6 +69,10 @@
                     id="nav-add-item" onclick="switchView('add-item')">
                 + Add
             </button>
+            <button class="nav-link text-zinc-400 dark:text-lumia-muted hover:text-zinc-900 dark:hover:text-white transition-colors uppercase"
+                    id="nav-go-to-viz" onclick="switchView('go-to-viz')">
+                Vizualizer
+            </button>
         </nav>
     </div>
 </header>
@@ -167,6 +171,10 @@
     }
 
     function switchView(viewName) {
+        if(viewName === 'go-to-viz'){
+            window.location.href = "/OutfitVisualizer.html";
+        }
+
         document.getElementById('view-closet').classList.add('hidden');
         document.getElementById('view-fits').classList.add('hidden');
         document.getElementById('view-add-item').classList.add('hidden');
