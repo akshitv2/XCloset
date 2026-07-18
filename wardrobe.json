@@ -532,182 +532,685 @@
   },
   "7d4d5e31-db66-4873-be91-86b4a31049c3": {
     "brand": "JustTanned",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "jacket",
+      "color": "black",
+      "pattern": "solid",
+      "fabric": "leather",
+      "fit": "straight",
+      "formality": 2,
+      "tags": [
+        "biker",
+        "winterwear",
+        "streetwear",
+        "edgy"
+      ],
+      "description": "This premium black leather jacket features a clean solid design with a high mandarin collar and a secure front zipper closure. It is tailored with full sleeves that showcase ribbed padding details on the forearms and functional side zip pockets. Perfect for creating a sharp casual look, it pairs effortlessly with distressed jeans and casual boots or sneakers."
+    },
     "type": "jacket"
   },
   "7f15f0ca-d30a-4792-b75d-49139b3d0abb": {
     "brand": "BlackBerrys",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "button-down",
+      "color": "black",
+      "pattern": "floral",
+      "fabric": "cotton_jersey",
+      "fit": "slim",
+      "formality": 3,
+      "tags": [
+        "partywear",
+        "floral",
+        "statement",
+        "evening"
+      ],
+      "description": "A stylish long-sleeve button-down shirt featuring an all-over dense pink and white floral pattern against a solid black base. It features a sharp classic collar and contrasting floral-printed inner cuffs that look great when rolled up. Perfect for evening outings, casual parties, or smart-casual dates when paired with dark grey or black slim-fit denim."
+    },
     "type": "shirt"
   },
   "81159da1-c6e9-4ae7-9c07-eaa7f31665d0": {
     "brand": "Woodland",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "boots",
+      "color": "tan",
+      "pattern": "textured",
+      "fabric": "leather",
+      "fit": "straight",
+      "formality": 2,
+      "tags": [
+        "rugged",
+        "outdoor",
+        "casual",
+        "winter"
+      ],
+      "description": "These are Woodland tan nubuck leather boots featuring a rugged, high-top lace-up silhouette. The design includes textured suede panels, contrast stitching, and a durable lugged rubber sole. Ideal for outdoor adventures or casual winter wear, they pair well with dark denim jeans and a flannel shirt."
+    },
     "type": "shoes"
   },
   "88fbe5d6-042d-4fb7-b9c7-fce9c1b96cc1": {
     "brand": "TokyoTalkies",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "blazer",
+      "color": "black",
+      "pattern": "floral",
+      "fabric": "polyester",
+      "fit": "relaxed",
+      "formality": 2,
+      "tags": [
+        "streetwear",
+        "floral",
+        "outerwear",
+        "casual"
+      ],
+      "description": "This black floral printed bomber jacket features vibrant multi-colored pixelated rose motifs throughout. Designed with a front zip closure, mock collar, long sleeves, and ribbed cuffs and hem, it offers a regular yet comfortable fit. Perfect for layering over a simple tee or turtleneck, this piece pairs exceptionally well with dark denims or cargo pants for an effortless streetwear look."
+    },
     "type": "jacket"
   },
   "8c5bf934-8e03-412e-9fb3-004c693b89e1": {
     "brand": "Arrow",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "pants",
+      "color": "black",
+      "pattern": "solid",
+      "fabric": "polyester_blend",
+      "fit": "slim",
+      "formality": 4,
+      "tags": [
+        "formal",
+        "officewear",
+        "classic",
+        "business"
+      ],
+      "description": "These men's formal trousers from Arrow offer a sharp, tailored look featuring a clean flat-front design. Crafted from a smooth, solid-colored fabrication, they include standard belt loops, a button closure, and functional slip pockets. Their streamlined slim fit makes them highly versatile for corporate environments or semi-formal gatherings. They pair exceptionally well with a crisp button-down shirt, a matching leather belt, and classic leather loafers or oxfords."
+    },
     "type": "pants"
   },
   "914329a0-8650-4ca3-bd75-1e2e521f7860": {
     "brand": "Generic",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "joggers",
+      "color": "navy_blue",
+      "pattern": "solid",
+      "fabric": "cotton_jersey",
+      "fit": "slim",
+      "formality": 1,
+      "tags": [
+        "athleisure",
+        "loungewear",
+        "minimalist",
+        "comfortable"
+      ],
+      "description": "These slim-fit joggers feature a solid navy blue color crafted from a soft cotton jersey fabric. They are designed with an adjustable drawstring waistband, side slant pockets, and ribbed cuffed ankles for a clean taper. Ideal for casual streetwear, light workouts, or lounging at home, they pair exceptionally well with minimalist white sneakers and a relaxed t-shirt."
+    },
     "type": "joggers"
   },
   "97cb1f74-076b-4717-bb11-21f1fd09d2d2": {
     "brand": "Snitch",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "t-shirt",
+      "color": "black",
+      "pattern": "striped",
+      "fabric": "cotton_jersey",
+      "fit": "slim",
+      "formality": 2,
+      "tags": [
+        "streetwear",
+        "casual",
+        "monochrome",
+        "layering"
+      ],
+      "description": "A versatile slim-fit T-shirt featuring bold black and white horizontal stripes throughout. Designed with a clean crew neck and long sleeves, it offers a contemporary silhouette crafted from a comfortable cotton-poly blend fabric. This minimalist staple works perfectly on its own for everyday casual outings or layered under a jacket, pairing effortlessly with dark jeans or chinos."
+    },
     "type": "tshirt"
   },
   "98267c11-7045-45c7-a8d4-5237ebad7897": {
     "brand": "Peter England",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "button-down",
+      "color": "pink",
+      "pattern": "solid",
+      "fabric": "cotton",
+      "fit": "slim",
+      "formality": 4,
+      "tags": [
+        "formal",
+        "officewear",
+        "classic",
+        "minimalist"
+      ],
+      "description": "A solid light pink long-sleeve button-down shirt with a spread collar and slim fit. Crafted from smooth, crisp cotton fabric. Perfect for business casual or formal settings, pairing easily with dark trousers or a blazer."
+    },
     "type": "shirt"
   },
   "9837c519-a3f9-430b-8210-ba5f03a5362c": {
     "brand": "BlackBerrys",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "button-down",
+      "color": "red",
+      "pattern": "textured",
+      "fabric": "cotton_jersey",
+      "fit": "slim",
+      "formality": 4,
+      "tags": [
+        "formal",
+        "festive",
+        "lustrous",
+        "structured"
+      ],
+      "description": "A vibrant red formal button-down shirt featuring a distinct slub-like texture and subtle lustrous finish. It is tailored with a sharp cutaway collar, a clean seamless front placket, a structured chest layout, and full sleeves with crisp mitered cuffs. Designed with a sharp slim silhouette, it pairs perfectly with black formal trousers and polished dress shoes for gala events, evening celebrations, or upscale corporate gatherings."
+    },
     "type": "shirt"
   },
   "a0a4cfcc-c713-4d60-a77e-39f574e4133e": {
     "brand": "Cult",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "sneakers",
+      "color": "white",
+      "pattern": "textured",
+      "fabric": "mesh",
+      "fit": "straight",
+      "formality": 1,
+      "tags": [
+        "athletic",
+        "breathable",
+        "streetwear",
+        "minimalist"
+      ],
+      "description": "A stylish white athletic running shoe featuring a breathable mesh upper with supportive overlays. It is designed with a classic lace-up closure, a thick cushioned sole with modern cutout detailing, and subtle black accents around the collar. Perfect for gym sessions, morning runs, or pairing casually with joggers and a sports tee."
+    },
     "type": "shoes"
   },
   "a57eecb3-9913-44b6-a5e0-74cf4c6e1830": {
     "brand": "Jack&Jones",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "t-shirt",
+      "color": "off_white",
+      "pattern": "textured",
+      "fabric": "knit",
+      "fit": "relaxed",
+      "formality": 2,
+      "tags": [
+        "minimalist",
+        "textured",
+        "streetwear",
+        "casual"
+      ],
+      "description": "This Jack&Jones crew neck t-shirt is crafted from a micro-textured waffle knit fabric in a versatile off-white tone. It features a relaxed silhouette with roomy short sleeves and a slightly thick, structured neckline. An excellent contemporary streetwear staple, it pairs perfectly with relaxed denim, dark chinos, or cargo pants for an elevated casual look."
+    },
     "type": "tshirt"
   },
   "a65e3098-03d2-409e-b986-885addb4c31c": {
     "brand": "RareRabbit",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "button-down",
+      "color": "pink",
+      "pattern": "solid",
+      "fabric": "cotton",
+      "fit": "slim",
+      "formality": 4,
+      "tags": [
+        "formal",
+        "smart_casual",
+        "minimalist",
+        "office_wear"
+      ],
+      "description": "A solid pink long-sleeve button-down shirt with a crisp collar and tailored cuffs. Made from smooth premium cotton for a clean look. Pairs well with formal dark trousers or blazers for business casual settings."
+    },
     "type": "shirt"
   },
   "a79b2b10-bf11-45bd-9d60-51b15700fc44": {
     "brand": "Nobero",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "hoodie",
+      "color": "navy_blue",
+      "pattern": "solid",
+      "fabric": "cotton_jersey",
+      "fit": "straight",
+      "formality": 2,
+      "tags": [
+        "travel",
+        "streetwear",
+        "cozy",
+        "minimalist"
+      ],
+      "description": "This solid navy blue zip-up jacket features an attached hood with adjustable drawcords, long cuffed sleeves, and dual zip chest pockets alongside a split kangaroo pouch. The interior lining and contrasting inner cuffs are a soft heather gray fabric. It provides a clean, everyday athleisure look that pairs perfectly with gray joggers or classic denim."
+    },
     "type": "jacket"
   },
   "b425a848-72a5-40b5-b83c-214cc43bc30f": {
     "brand": "Arrow",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "chinos",
+      "color": "black",
+      "pattern": "solid",
+      "fabric": "cotton",
+      "fit": "slim",
+      "formality": 4,
+      "tags": [
+        "minimalist",
+        "versatile",
+        "classic",
+        "officewear"
+      ],
+      "description": "These Arrow black trousers feature a clean, solid pattern and a refined slim fit. Crafted from a structured cotton fabric, they feature side pockets, a flat-front design, and a sleek silhouette that transitions effortlessly from the office to evening events. They pair exceptionally well with a crisp white button-down shirt and leather dress shoes for a business casual look, or can be dressed down with a premium tee and white sneakers."
+    },
     "type": "pants"
   },
   "b68273d5-1b74-4991-81b4-989a6c3600fa": {
     "brand": "VanHeusen",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "joggers",
+      "color": "grey",
+      "pattern": "solid",
+      "fabric": "cotton_jersey",
+      "fit": "straight",
+      "formality": 1,
+      "tags": [
+        "athleisure",
+        "loungewear",
+        "cozy",
+        "minimalist"
+      ],
+      "description": "These Van Heusen men's joggers feature a classic grey color in a versatile solid design. They come equipped with an elasticated waistband, adjustable drawstring fastening, and ribbed cuffed ankles for a structured yet comfortable fit. Perfect for casual lounging or active days, these pair excellently with a simple t-shirt and athletic sneakers."
+    },
     "type": "joggers"
   },
   "be3c1eca-8224-4438-85cc-234153a77c56": {
     "brand": "PepeJeans",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "jeans",
+      "color": "navy_blue",
+      "pattern": "solid",
+      "fabric": "denim",
+      "fit": "straight",
+      "formality": 2,
+      "tags": [
+        "classic",
+        "casual",
+        "everyday",
+        "minimalist"
+      ],
+      "description": "Classic dark navy blue denim jeans from Pepe Jeans featuring a solid pattern and a straight-leg fit. Designed with contrast stitching and standard five-pocket styling. Perfect for casual everyday wear, pairing well with knitwear and leather boots."
+    },
     "type": "jeans"
   },
   "be55f357-8e04-4fea-80c4-e809b099e680": {
     "brand": "Snitch",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "chinos",
+      "color": "brown",
+      "pattern": "striped",
+      "fabric": "viscose_blend",
+      "fit": "relaxed",
+      "formality": 2,
+      "tags": [
+        "cozy",
+        "breathable",
+        "minimalist",
+        "summer"
+      ],
+      "description": "These relaxed-fit brown trousers feature a lightweight, pinstriped design crafted from a breathable viscose blend. Outfitted with an elasticated drawstring waistband and a straight-leg silhouette, they offer maximum comfort while remaining stylishly tailored. Ideal for casual outings, warm-weather wear, or a laid-back lounge aesthetic, they pair perfectly with a plain white tank or cotton tee."
+    },
     "type": "pajamas"
   },
   "c174a2c3-4a6f-4d36-9268-2de4380b4fda": {
     "brand": "IndianGarage",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "button-down",
+      "color": "beige",
+      "pattern": "textured",
+      "fabric": "linen",
+      "fit": "straight",
+      "formality": 3,
+      "tags": [
+        "summer",
+        "breathable",
+        "resortwear",
+        "minimalist"
+      ],
+      "description": "A classic beige button-down shirt crafted from a breathable slub-textured linen fabric. It features a standard spread collar, full-length button placket, a single open patch pocket on the chest, and long sleeves shown here styled with roll-up cuffs. Ideal for warm weather or coastal getaways, it pairs seamlessly with brown linen trousers or casual chinos for a polished smart-casual look."
+    },
     "type": "shirt"
   },
   "c5c87b0e-40e7-45ff-8be9-9d662fb86172": {
     "brand": "Peter England",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "jacket",
+      "color": "brown",
+      "pattern": "solid",
+      "fabric": "polyester",
+      "fit": "straight",
+      "formality": 2,
+      "tags": [
+        "outerwear",
+        "layering",
+        "minimalist",
+        "casual"
+      ],
+      "description": "This brown bomber jacket by Peter England Casuals is crafted from durable polyester fabric with a clean, solid pattern. It features a zip-front closure, a stand collar, side pockets, and ribbed details at the cuffs and hemline. The long-sleeve silhouette provides a neat, straight fit that pairs perfectly with casual chinos or denim jeans for an understated, stylish everyday look."
+    },
     "type": "jacket"
   },
   "d2da3998-11c1-44d2-a266-e4a223c870ea": {
     "brand": "Jack&Jones",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "t-shirt",
+      "color": "grey",
+      "pattern": "graphic",
+      "fabric": "cotton_jersey",
+      "fit": "straight",
+      "formality": 2,
+      "tags": [
+        "casual",
+        "streetwear",
+        "branding",
+        "everyday"
+      ],
+      "description": "A grey melange short-sleeve crew neck t-shirt featuring a dark Jack & Jones graphic logo print across the chest. Made from soft cotton jersey, it offers a regular straight fit suitable for everyday wear. Ideal for casual outings, it pairs easily with dark denim or shorts."
+    },
     "type": "tshirt"
   },
   "d4d2fec7-23ae-46b5-bc62-105fa953506c": {
     "brand": "Snitch",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "button-down",
+      "color": "white",
+      "pattern": "solid",
+      "fabric": "cotton",
+      "fit": "slim",
+      "formality": 3,
+      "tags": [
+        "minimalist",
+        "classic",
+        "versatile",
+        "smart-casual"
+      ],
+      "description": "This crisp white long-sleeve button-down shirt from Snitch is designed in a neat slim fit. It features a traditional button-down collar, a single patch pocket on the left chest, and a curved hemline that allows for easy tucking. Crafted from breathable cotton fabric, it bridges the gap between smart-casual and casual wear perfectly. Pair it with dark tailored trousers for the office or style it open over a t-shirt with chinos for a relaxed weekend ensemble."
+    },
     "type": "shirt"
   },
   "d8d053db-4a01-4de7-a610-e4248f04d9c3": {
     "brand": "PepeJeans",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "jeans",
+      "color": "black",
+      "pattern": "solid",
+      "fabric": "denim",
+      "fit": "slim",
+      "formality": 2,
+      "tags": [
+        "streetwear",
+        "casual",
+        "washed",
+        "minimalist"
+      ],
+      "description": "These Pepe Jeans men's slim-fit jeans are crafted from stretch denim with a faded black wash. Featuring a classic five-pocket construction and mid-rise waist, they offer a modern tailored silhouette. Pair them with a graphic tee and white sneakers for a clean, effortless streetwear outfit."
+    },
     "type": "jeans"
   },
   "d927eff2-2a00-48f8-b7b0-9aac564182b8": {
     "brand": "XYXX",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "chinos",
+      "color": "black",
+      "pattern": "solid",
+      "fabric": "cotton",
+      "fit": "straight",
+      "formality": 3,
+      "tags": [
+        "summer",
+        "breathable",
+        "smart_casual",
+        "minimalist"
+      ],
+      "description": "These structured chino shorts feature a flat front construction with a clean silhouette, mid-rise fit, and a classic button closure with a zip fly. Crafted from a lightweight and breathable peached twill cotton fabric, they are engineered for exceptional softness and comfort. Perfect for warm-weather smart-casual settings, they feature dual side pockets and a back welt pocket, making them incredibly versatile to pair with polo shirts, casual button-downs, or crewneck t-shirts alongside loafers or crisp white sneakers."
+    },
     "type": "shorts"
   },
   "dd5b52fa-4ba6-4657-9c84-c5befb94d007": {
     "brand": "RareRabbit",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "button-down",
+      "color": "black",
+      "pattern": "plaid",
+      "fabric": "cotton_jersey",
+      "fit": "slim",
+      "formality": 3,
+      "tags": [
+        "modern",
+        "geometric",
+        "smart-casual",
+        "monochrome"
+      ],
+      "description": "A sophisticated long-sleeve button-down shirt featuring an intricate, monochrome geometric pattern throughout. It is designed with a crisp spread collar and tailored silhouette that offers a sharp, contemporary look. Crafted from premium woven fabric, it pairs exceptionally well with black dress trousers or dark chinos for evening wear and upscale casual outings."
+    },
     "type": "shirt"
   },
   "e1b72e27-e1a9-473d-b0ac-9b1194dcec8b": {
     "brand": "Arrow",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "trousers",
+      "color": "navy_blue",
+      "pattern": "solid",
+      "fabric": "poly_blend",
+      "fit": "straight",
+      "formality": 4,
+      "tags": [
+        "corporate",
+        "minimalist",
+        "classic",
+        "officewear"
+      ],
+      "description": "These Arrow trousers feature a sleek solid navy blue design, crafted from a smooth fabric blend that offers all-day comfort and a sharp silhouette. With a timeless straight fit, flat-front styling, and functional pockets, they are engineered for professional settings. Ideally suited for the office or formal events, these pants pair perfectly with a crisp button-down shirt, a leather belt, and classic derby shoes."
+    },
     "type": "pants"
   },
   "e5724051-c77a-40f8-ac97-47f092405a37": {
     "brand": "Snitch",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "sweatshirt",
+      "color": "black",
+      "pattern": "textured",
+      "fabric": "knit",
+      "fit": "slim",
+      "formality": 3,
+      "tags": [
+        "cozy",
+        "minimalist",
+        "smart_casual",
+        "winterwear"
+      ],
+      "description": "This black knit polo sweater features a sophisticated cable-knit texture down the front panel paired with smooth knit full sleeves. It is designed with a classic polo collar and a modern quarter-zip neckline closure. Perfectly tailored for a slim silhouette, it looks excellent styled on its own or layered over a collared shirt, and pairs effortlessly with dark wash denim or tailored chinos."
+    },
     "type": "sweatshirt"
   },
   "e89ad6b5-9b5f-4435-b880-900be600af33": {
     "brand": "Reebok",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "sweatshirt",
+      "color": "charcoal",
+      "pattern": "solid",
+      "fabric": "cotton_jersey",
+      "fit": "straight",
+      "formality": 2,
+      "tags": [
+        "cozy",
+        "minimalist",
+        "athleisure",
+        "streetwear"
+      ],
+      "description": "A classic charcoal grey crewneck sweatshirt featuring a small contrast Reebok Vector logo on the left chest. It is designed with long sleeves, a ribbed crew neckline, and ribbed cuffs and hem for a secure, regular fit. Perfect for casual everyday wear or lounging, it pairs seamlessly with black joggers, track pants, or classic denim jeans."
+    },
     "type": "sweatshirt"
   },
   "e9c37798-bc13-4700-a76b-b9e84d8064a7": {
     "brand": "ThomasScott",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "chinos",
+      "color": "brown",
+      "pattern": "solid",
+      "fabric": "cotton_jersey",
+      "fit": "relaxed",
+      "formality": 2,
+      "tags": [
+        "summer",
+        "casual",
+        "cargo",
+        "streetwear"
+      ],
+      "description": "These solid brown shorts feature a relaxed fit with a partially elasticized waistband and drawstring utility detailing on the sides. Crafted from a comfortable woven fabric, they offer cargo-inspired functionality. Perfect for hot summer days, they pair well with casual t-shirts or polo shirts and low-top sneakers."
+    },
     "type": "shorts"
   },
   "e9c52a9a-0c1a-4b28-b295-b7d584cb9cd2": {
     "brand": "VanHeusen",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "chinos",
+      "color": "beige",
+      "pattern": "solid",
+      "fabric": "cotton_blend",
+      "fit": "slim",
+      "formality": 4,
+      "tags": [
+        "smart_casual",
+        "versatile",
+        "classic",
+        "business_casual"
+      ],
+      "description": "These VanHeusen trousers feature a solid, crisp beige fabric with a sleek slim fit profile. Designed with standard side pockets and a clean front waistband structure, they provide a refined appearance suitable for office settings or elevated smart-casual social gatherings. They can be perfectly paired with dark button-downs, casual t-shirts, blazers, and clean leather shoes or minimalist sneakers for a versatile look."
+    },
     "type": "pants"
   },
   "eb6ef946-95d1-4085-ae0b-6a7cd6223222": {
     "brand": "Snitch",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "t-shirt",
+      "color": "pink",
+      "pattern": "textured",
+      "fabric": "knit",
+      "fit": "slim",
+      "formality": 3,
+      "tags": [
+        "knitwear",
+        "smart_casual",
+        "pastel",
+        "minimalist"
+      ],
+      "description": "This Snitch polo features a unique textured crochet knit construction in a dusty pink hue. Designed with a classic polo collar, a three-button placket, and short sleeves with ribbed cuffs. It works exceptionally well for smart-casual wear when paired with tailored black trousers or clean-cut chinos."
+    },
     "type": "tshirt"
   },
   "ecbf7d68-7b03-4171-af2d-aab695006533": {
     "brand": "BlackBerrys",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "button-down",
+      "color": "black",
+      "pattern": "solid",
+      "fabric": "cotton_jersey",
+      "fit": "slim",
+      "formality": 4,
+      "tags": [
+        "formal",
+        "office",
+        "minimalist",
+        "classic"
+      ],
+      "description": "This is a premium black long-sleeve dress shirt featuring a classic spread collar, button-down placket, and a subtle self-textured finish. Crafted from breathable cotton, it offers a tailored slim fit that creates a sleek silhouette. Perfect for formal business environments, evening events, or boardroom meetings, it pairs exceptionally well with light gray dress trousers and a black leather belt."
+    },
     "type": "shirt"
   },
   "f321ed35-bca4-4344-a856-8884186a9dee": {
     "brand": "Snitch",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "t-shirt",
+      "color": "beige",
+      "pattern": "textured",
+      "fabric": "knit",
+      "fit": "slim",
+      "formality": 3,
+      "tags": [
+        "smart_casual",
+        "knitted",
+        "minimalist",
+        "textured"
+      ],
+      "description": "A cream-beige flat knit t-shirt featuring a structured crew neckline and half sleeves with ribbed cuffs. The solid color highlights the textured self-design weave. It offers a refined, smart-casual silhouette that pairs excellently with dark tailored trousers or crisp chinos."
+    },
     "type": "tshirt"
   },
   "f704ec63-fd07-4955-9755-167e05132637": {
     "brand": "Louis philippe",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "derby_shoes",
+      "color": "brown",
+      "pattern": "textured",
+      "fabric": "leather",
+      "fit": "straight",
+      "formality": 4,
+      "tags": [
+        "formal",
+        "office_wear",
+        "classic",
+        "corporate"
+      ],
+      "description": "A pair of brown leather derby dress shoes from Louis Philippe, featuring a sleek, polished plain-toe design complemented by micro-textured detailing along the side quarters. They include a secure lace-up closure, comfortable interior cushioning, and a low stacked heel with a sturdy dark outsole. These shoes are perfect for professional corporate settings or formal events and pair excellently with sharp suits, tailored trousers, or business casual chinos."
+    },
     "type": "shoes"
   },
   "f84b353c-b88e-4de5-9cde-7c39437662bd": {
     "brand": "Snitch",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "t-shirt",
+      "color": "black",
+      "pattern": "solid",
+      "fabric": "cotton_jersey",
+      "fit": "slim",
+      "formality": 2,
+      "tags": [
+        "minimalist",
+        "streetwear",
+        "layering",
+        "casual"
+      ],
+      "description": "A classic solid black t-shirt featuring a crew neck and full-length sleeves. Crafted from soft, lightweight fabric with clean stitching, this versatile piece is ideal for effortless layering. It pairs perfectly with distressed grey jeans and casual accessories for a stylish, relaxed streetwear look."
+    },
     "type": "tshirt"
   },
   "f92d04f2-aaec-4dd0-8879-7e579e364ccf": {
     "brand": "Arrow",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "chinos",
+      "color": "off_white",
+      "pattern": "textured",
+      "fabric": "cotton",
+      "fit": "slim",
+      "formality": 4,
+      "tags": [
+        "office",
+        "smart_casual",
+        "lightweight"
+      ],
+      "description": "Light cream textured trousers in a slim fit with a button closure. Suitable for business-casual settings or smart events. Pairs well with light-colored formal shirts and brown leather loafers."
+    },
     "type": "jeans"
   },
   "fbf2109f-55a0-4016-b580-29b8761d8f22": {
     "brand": "Skecher",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "boots",
+      "color": "black",
+      "pattern": "solid",
+      "fabric": "leather",
+      "fit": "straight",
+      "formality": 1,
+      "tags": [
+        "trail",
+        "waterproof",
+        "outdoor",
+        "athletic"
+      ],
+      "description": "A rugged mid-top athletic trail boot featuring a water-repellent leather and tight-knit mesh panel upper. Built with an all-black monochromatic design, it showcases the signature brand logo on the quarter panel, classic lace-up front, and a durable textured Goodyear rubber outsole for enhanced traction. Excellent for outdoor hiking, rainy day trekking, or paired casually with technical cargo pants."
+    },
     "type": "shoes"
   }
 }
