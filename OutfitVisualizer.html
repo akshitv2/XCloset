@@ -53,6 +53,12 @@
             flex-direction: column;
             gap: 30px;
         }
+        .gallery-row-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            justify-content: space-between;
+        }
         .gallery-row {
             display: flex;
             flex-direction: row;
@@ -60,6 +66,7 @@
             align-items: flex-start;
             overflow-x: auto;
             padding-bottom: 10px;
+            flex-grow: 1;
         }
         .image-wrapper {
             display: flex;
@@ -82,11 +89,24 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
+        .row-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
         .row-label {
             font-size: 14px;
             font-weight: bold;
             color: #333;
-            margin-bottom: 8px;
+        }
+        .btn-copy-row {
+            background-color: #28a745;
+            padding: 8px 15px;
+            font-size: 13px;
+        }
+        .btn-copy-row:hover {
+            background-color: #218838;
         }
     </style>
 </head>
@@ -115,7 +135,6 @@
         gallery.innerHTML = '';
 
         try {
-            // Evaluates the string as a native JavaScript array literal, allowing single & double quotes
             const parsedData = new Function(`return ${rawInput}`)();
 
             if (!Array.isArray(parsedData)) {
@@ -131,12 +150,27 @@
 
                 const rowBlock = document.createElement('div');
 
+                const rowHeader = document.createElement('div');
+                rowHeader.className = 'row-header';
+
                 if (is2D) {
                     const label = document.createElement('div');
                     label.className = 'row-label';
                     label.innerText = `Row ${rowIndex + 1}`;
-                    rowBlock.appendChild(label);
+                    rowHeader.appendChild(label);
                 }
+
+                // Create the action button for stitching/copying
+                const copyBtn = document.createElement('button');
+                copyBtn.className = 'btn-copy-row';
+                copyBtn.innerText = 'Copy Outfit Row';
+                copyBtn.onclick = () => copyRowToClipboard(rowFlex);
+                rowHeader.appendChild(copyBtn);
+
+                rowBlock.appendChild(rowHeader);
+
+                const rowWrapper = document.createElement('div');
+                rowWrapper.className = 'gallery-row-wrapper';
 
                 const rowFlex = document.createElement('div');
                 rowFlex.className = 'gallery-row';
@@ -149,10 +183,13 @@
                     wrapper.className = 'image-wrapper';
 
                     const img = document.createElement('img');
+                    // Enable CORS handling so canvas can read image data
+                    img.crossOrigin = "anonymous";
                     img.src = `${BASE_URL}${cleanId}${IMAGE_EXTENSION}`;
                     img.alt = `Image ${cleanId}`;
                     img.onerror = () => {
                         img.style.display = 'none';
+                        img.classList.add('img-error'); // Mark as broken to ignore during stitch
                         const errorDiv = document.createElement('div');
                         errorDiv.style.cssText = 'height:300px; width:200px; background:#f0f0f0; display:flex; align-items:center; justify-content:center; text-align:center; font-size:12px; color:#999; border:1px dashed #ccc;';
                         errorDiv.innerText = 'Image Not Found';
@@ -168,12 +205,63 @@
                     rowFlex.appendChild(wrapper);
                 });
 
-                rowBlock.appendChild(rowFlex);
+                rowWrapper.appendChild(rowFlex);
+                rowBlock.appendChild(rowWrapper);
                 gallery.appendChild(rowBlock);
             });
 
         } catch (e) {
             alert('Invalid Array format. Ensure brackets and quotes match properly.');
+        }
+    }
+
+    async function copyRowToClipboard(rowFlexElement) {
+        // Query only valid, completely loaded images in this row block
+        const imgs = Array.from(rowFlexElement.querySelectorAll('img')).filter(img => img.style.display !== 'none' && !img.classList.contains('img-error'));
+
+        if (imgs.length === 0) {
+            alert('No valid images in this row to copy.');
+            return;
+        }
+
+        // Set baseline canvas target height matching the rendered viewport workflow (300px)
+        const targetHeight = 300;
+        let totalWidth = 0;
+
+        // Map individual element width metrics maintaining true proportions
+        const imageDimensions = imgs.map(img => {
+            const aspect = img.naturalWidth / img.naturalHeight;
+            const calculatedWidth = targetHeight * aspect;
+            totalWidth += calculatedWidth;
+            return { img, width: calculatedWidth };
+        });
+
+        const canvas = document.createElement('canvas');
+        canvas.width = totalWidth;
+        canvas.height = targetHeight;
+        const ctx = canvas.getContext('2d');
+
+        // Stitch loop
+        let currentX = 0;
+        imageDimensions.forEach(item => {
+            ctx.drawImage(item.img, currentX, 0, item.width, targetHeight);
+            currentX += item.width;
+        });
+
+        // Push layout frame blob directly to operating system clipboard
+        try {
+            canvas.toBlob(async (blob) => {
+                if (!blob) {
+                    alert('Failed to generate image blob.');
+                    return;
+                }
+                const data = [new ClipboardItem({ [blob.type]: blob })];
+                await navigator.clipboard.write(data);
+                alert('Outfit copied to clipboard!');
+            }, 'image/png');
+        } catch (err) {
+            console.error(err);
+            alert('Unable to copy. Ensure your browser permissions grant clipboard access.');
         }
     }
 
