@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATELIER — Wardrobe System Editor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    </style>
+</head>
+<body class="bg-white text-neutral-800 min-h-screen flex flex-col antialiased">
+
+<!-- Atelier Header -->
+<header class="bg-white border-b border-neutral-200 sticky top-0 z-50 px-8 py-5 flex flex-col md:flex-row items-center justify-between gap-4">
+    <div class="flex items-baseline gap-3 select-none">
+        <span class="text-2xl font-normal tracking-[0.2em] text-[#3A75A4]">ATELIER</span>
+        <span class="text-[10px] tracking-[0.15em] text-neutral-400 font-medium uppercase whitespace-nowrap">Wardrobe System</span>
+    </div>
+
+    <div class="flex items-center gap-8 text-xs font-medium tracking-[0.15em] uppercase text-neutral-600">
+        <label class="hover:text-neutral-900 cursor-pointer transition">
+            Upload JSON
+            <input type="file" id="uploadInput" accept=".json" class="hidden" onchange="handleUpload(event)">
+        </label>
+
+        <button id="downloadBtn" onclick="handleDownload()" disabled
+                class="hover:text-neutral-900 transition disabled:opacity-30 disabled:cursor-not-allowed">
+            Download JSON
+        </button>
+
+        <button onclick="addItem()" class="text-[#3A75A4] hover:text-blue-800 transition font-semibold">
+            + Add Item
+        </button>
+    </div>
+</header>
+
+<!-- Atelier Filter / Tools Strip -->
+<section class="bg-[#F7F7F7] border-b border-neutral-200 px-8 py-3 flex items-center justify-between gap-4 min-h-[50px]">
+    <div class="flex items-center gap-4 w-full sm:w-auto">
+        <input type="text" id="searchInput" placeholder="SEARCH COLLECTION..."
+               class="hidden bg-white border border-neutral-300 text-[11px] tracking-wider px-3 py-1.5 focus:outline-none focus:border-neutral-500 w-full sm:w-64 uppercase" oninput="filterItems()">
+    </div>
+    <div id="itemCount" class="text-[10px] tracking-widest text-neutral-400 font-medium uppercase"></div>
+</section>
+
+<!-- Main Workspace -->
+<main class="flex-1 w-full px-8 py-10">
+    <!-- Empty State -->
+    <div id="emptyState" class="flex flex-col items-center justify-center py-32 text-center max-w-md mx-auto">
+        <h3 class="text-sm font-medium tracking-widest text-neutral-400 uppercase mb-2">No Dataset Loaded</h3>
+        <p class="text-xs text-neutral-400 tracking-wide mb-6">Import your wardrobe JSON collection file or initiate a blank schema profile to populate data.</p>
+    </div>
+
+    <!-- Editor Workspace Grid -->
+    <div id="editorContainer" class="hidden">
+        <div id="itemsList" class="grid grid-cols-1 xl:grid-cols-2 gap-12"></div>
+    </div>
+</main>
+
+<script>
+    let clothingData = {};
+
+    function generateUUID() {
+        if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+            return crypto.randomUUID();
+        }
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+            const r = Math.random() * 16 | 0;
+            const v = c === 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
+        });
+    }
+
+    function handleUpload(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            try {
+                clothingData = JSON.parse(e.target.result);
+                initEditor();
+            } catch (error) {
+                alert('Invalid JSON file format.');
+            }
+        };
+        reader.readAsText(file);
+    }
+
+    function initEditor() {
+        document.getElementById('emptyState').classList.add('hidden');
+        document.getElementById('editorContainer').classList.remove('hidden');
+        document.getElementById('searchInput').classList.remove('hidden');
+        document.getElementById('downloadBtn').removeAttribute('disabled');
+
+        updateItemCount();
+        renderItems();
+    }
+
+    function addItem() {
+        const uuid = generateUUID();
+        const newItem = {
+            "brand": "",
+            "metadata": {
+                "category": "",
+                "color": "",
+                "description": "",
+                "fabric": "",
+                "fit": "",
+                "formality": 3,
+                "id": "",
+                "pattern": "",
+                "sub_category": "",
+                "tags": []
+            },
+            "type": ""
+        };
+
+        clothingData = { [uuid]: newItem, ...clothingData };
+        initEditor();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function updateItemCount() {
+        const total = Object.keys(clothingData).length;
+        document.getElementById('itemCount').innerText = `${total} Items Total`;
+    }
+
+    function renderItems() {
+        const container = document.getElementById('itemsList');
+        container.innerHTML = '';
+
+        Object.entries(clothingData).forEach(([uuid, item]) => {
+            const card = document.createElement('div');
+            card.className = 'clothing-item bg-white flex flex-col sm:flex-row gap-8 pb-10 border-b border-neutral-200';
+            card.dataset.uuid = uuid;
+
+            const meta = item.metadata || {};
+            const tagsString = Array.isArray(meta.tags) ? meta.tags.join(', ') : '';
+
+            card.dataset.searchString = `${item.brand || ''} ${item.type || ''} ${meta.color || ''} ${tagsString}`.toLowerCase();
+
+            card.innerHTML = `
+                    <!-- Aspect Managed Image Container -->
+                    <div class="w-full sm:w-48 flex-shrink-0 flex flex-col gap-2">
+                        <div class="w-full aspect-[3/4] bg-[#F7F7F7] border border-neutral-200 overflow-hidden flex items-center justify-center relative">
+                            <!-- Overlay Brand Badge matching Reference Grid layout style -->
+                            <div class="absolute top-2 left-2 bg-white px-2 py-0.5 border border-neutral-200 text-[9px] font-bold tracking-wider uppercase select-none max-w-[120px] truncate shadow-sm">
+                                ${item.brand || 'GENERIC'}
+                            </div>
+                            <img src="media/clothes/${uuid}.png" alt="Item Asset"
+                                 class="w-full h-full object-cover"
+                                 onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'%23d4d4d8\' class=\'w-8 h-8\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1\' d=\'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z\' /></svg>';">
+                        </div>
+                        <span class="text-[9px] font-mono text-neutral-400 select-all truncate tracking-tight text-center px-1" title="${uuid}">${uuid}</span>
+                    </div>
+
+                    <!-- Clean Ledger Style Multi-Column Form -->
+                    <div class="flex-1 grid grid-cols-2 gap-x-6 gap-y-4">
+                        <div class="col-span-1">
+                            <label class="block text-[9px] font-semibold tracking-widest text-neutral-400 uppercase mb-0.5">Brand</label>
+                            <input type="text" value="${item.brand || ''}" oninput="updateField('${uuid}', 'brand', this.value)"
+                                   class="w-full bg-transparent border-b border-neutral-200 py-1 text-xs tracking-wide focus:outline-none focus:border-neutral-900 transition">
+                        </div>
+                        <div class="col-span-1">
+                            <label class="block text-[9px] font-semibold tracking-widest text-neutral-400 uppercase mb-0.5">Type</label>
+                            <input type="text" value="${item.type || ''}" oninput="updateField('${uuid}', 'type', this.value)"
+                                   class="w-full bg-transparent border-b border-neutral-200 py-1 text-xs tracking-wide focus:outline-none focus:border-neutral-900 transition">
+                        </div>
+                        <div class="col-span-1">
+                            <label class="block text-[9px] font-semibold tracking-widest text-neutral-400 uppercase mb-0.5">Category</label>
+                            <input type="text" value="${meta.category || ''}" oninput="updateMetaField('${uuid}', 'category', this.value)"
+                                   class="w-full bg-transparent border-b border-neutral-200 py-1 text-xs tracking-wide focus:outline-none focus:border-neutral-900 transition">
+                        </div>
+                        <div class="col-span-1">
+                            <label class="block text-[9px] font-semibold tracking-widest text-neutral-400 uppercase mb-0.5">Sub Category</label>
+                            <input type="text" value="${meta.sub_category || ''}" oninput="updateMetaField('${uuid}', 'sub_category', this.value)"
+                                   class="w-full bg-transparent border-b border-neutral-200 py-1 text-xs tracking-wide focus:outline-none focus:border-neutral-900 transition">
+                        </div>
+                        <div class="col-span-1">
+                            <label class="block text-[9px] font-semibold tracking-widest text-neutral-400 uppercase mb-0.5">Color</label>
+                            <input type="text" value="${meta.color || ''}" oninput="updateMetaField('${uuid}', 'color', this.value)"
+                                   class="w-full bg-transparent border-b border-neutral-200 py-1 text-xs tracking-wide focus:outline-none focus:border-neutral-900 transition">
+                        </div>
+                        <div class="col-span-1">
+                            <label class="block text-[9px] font-semibold tracking-widest text-neutral-400 uppercase mb-0.5">Fabric</label>
+                            <input type="text" value="${meta.fabric || ''}" oninput="updateMetaField('${uuid}', 'fabric', this.value)"
+                                   class="w-full bg-transparent border-b border-neutral-200 py-1 text-xs tracking-wide focus:outline-none focus:border-neutral-900 transition">
+                        </div>
+                        <div class="col-span-1">
+                            <label class="block text-[9px] font-semibold tracking-widest text-neutral-400 uppercase mb-0.5">Fit</label>
+                            <input type="text" value="${meta.fit || ''}" oninput="updateMetaField('${uuid}', 'fit', this.value)"
+                                   class="w-full bg-transparent border-b border-neutral-200 py-1 text-xs tracking-wide focus:outline-none focus:border-neutral-900 transition">
+                        </div>
+                        <div class="col-span-1">
+                            <label class="block text-[9px] font-semibold tracking-widest text-neutral-400 uppercase mb-0.5">Pattern</label>
+                            <input type="text" value="${meta.pattern || ''}" oninput="updateMetaField('${uuid}', 'pattern', this.value)"
+                                   class="w-full bg-transparent border-b border-neutral-200 py-1 text-xs tracking-wide focus:outline-none focus:border-neutral-900 transition">
+                        </div>
+                        <div class="col-span-2">
+                            <label class="block text-[9px] font-semibold tracking-widest text-neutral-400 uppercase mb-0.5">Formality (Scale 1-5)</label>
+                            <input type="number" min="1" max="5" value="${meta.formality || ''}" oninput="updateMetaField('${uuid}', 'formality', parseInt(this.value) || 0)"
+                                   class="w-full bg-transparent border-b border-neutral-200 py-1 text-xs tracking-wide focus:outline-none focus:border-neutral-900 transition">
+                        </div>
+                        <div class="col-span-2">
+                            <label class="block text-[9px] font-semibold tracking-widest text-neutral-400 uppercase mb-0.5">Tags (Comma Delimited)</label>
+                            <input type="text" value="${tagsString}" oninput="updateTags('${uuid}', this.value)"
+                                   class="w-full bg-transparent border-b border-neutral-200 py-1 text-xs tracking-wide focus:outline-none focus:border-neutral-900 transition" placeholder="SUMMER, MINIMALIST, SMART-CASUAL">
+                        </div>
+                        <div class="col-span-2">
+                            <label class="block text-[9px] font-semibold tracking-widest text-neutral-400 uppercase mb-0.5">Narrative Description</label>
+                            <textarea rows="2" oninput="updateMetaField('${uuid}', 'description', this.value)"
+                                      class="w-full bg-transparent border-b border-neutral-200 py-1 text-xs tracking-wide focus:outline-none focus:border-neutral-900 transition resize-none">${meta.description || ''}</textarea>
+                        </div>
+                    </div>
+                `;
+            container.appendChild(card);
+        });
+    }
+
+    function updateField(uuid, field, value) {
+        if (clothingData[uuid]) {
+            clothingData[uuid][field] = value;
+            updateSearchString(uuid);
+        }
+    }
+
+    function updateMetaField(uuid, field, value) {
+        if (clothingData[uuid]) {
+            if (!clothingData[uuid].metadata) clothingData[uuid].metadata = {};
+            clothingData[uuid].metadata[field] = value;
+            updateSearchString(uuid);
+        }
+    }
+
+    function updateTags(uuid, value) {
+        if (clothingData[uuid]) {
+            if (!clothingData[uuid].metadata) clothingData[uuid].metadata = {};
+            clothingData[uuid].metadata.tags = value.split(',').map(tag => tag.trim()).filter(tag => tag.length > 0);
+            updateSearchString(uuid);
+        }
+    }
+
+    function updateSearchString(uuid) {
+        const card = document.querySelector(`[data-uuid="${uuid}"]`);
+        if (!card) return;
+        const item = clothingData[uuid];
+        const meta = item.metadata || {};
+        const tagsString = Array.isArray(meta.tags) ? meta.tags.join(' ') : '';
+        card.dataset.searchString = `${item.brand || ''} ${item.type || ''} ${meta.color || ''} ${tagsString}`.toLowerCase();
+    }
+
+    function filterItems() {
+        const query = document.getElementById('searchInput').value.toLowerCase();
+        const cards = document.querySelectorAll('.clothing-item');
+        let visibleCount = 0;
+
+        cards.forEach(card => {
+            if (card.dataset.searchString.includes(query)) {
+                card.classList.remove('hidden');
+                card.classList.add('flex');
+                visibleCount++;
+            } else {
+                card.classList.remove('flex');
+                card.classList.add('hidden');
+            }
+        });
+
+        document.getElementById('itemCount').innerText = `${visibleCount} of ${Object.keys(clothingData).length} Items Displayed`;
+    }
+
+    function handleDownload() {
+        const jsonString = JSON.stringify(clothingData, null, 4);
+        const blob = new Blob([jsonString], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'edited_clothes.json';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
+</script>
+</body>
+</html>

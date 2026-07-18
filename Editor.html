@@ -4,370 +4,283 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clothing JSON Editor</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            max-width: 900px;
-            margin: 20px auto;
-            padding: 0 20px;
-            background-color: #f9f9f9;
-            color: #333;
-        }
-        .panel {
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-        }
-        .actions-panel {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .btn {
-            background-color: #0070f3;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        .btn:hover { background-color: #0051a8; }
-        .btn-export { background-color: #28a745; }
-        .btn-export:hover { background-color: #218838; }
-
-        .add-form {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 12px;
-            align-items: flex-end;
-        }
-
-        #clothing-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        .item-card {
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 15px;
-            display: flex;
-            gap: 20px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
-        .image-container {
-            width: 120px;
-            height: 120px;
-            flex-shrink: 0;
-            border: 1px solid #eee;
-            border-radius: 4px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #fafafa;
-        }
-        .image-container img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: cover;
-        }
-        .fields-container {
-            flex-grow: 1;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-        }
-        .full-width {
-            grid-column: span 3;
-        }
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
-        .form-group label {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #666;
-            margin-bottom: 4px;
-            text-transform: uppercase;
-        }
-        .form-group input, .form-group select {
-            padding: 6px 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 0.95rem;
-            background-color: #fff;
-            height: 34px;
-            box-sizing: border-box;
-        }
-        .form-group input:focus, .form-group select:focus {
-            border-color: #0070f3;
-            outline: none;
-        }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-gray-50 font-sans text-gray-900 antialiased min-h-screen flex flex-col">
 
-<h1>Clothing JSON Editor</h1>
+<!-- Top Navigation Bar -->
+<header class="bg-white border-b border-gray-200 sticky top-0 z-50 px-6 py-4 shadow-sm">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        <h1 class="text-xl font-bold tracking-tight text-gray-900 flex items-center gap-2">
+            <span>Clothing Inventory Editor</span>
+        </h1>
 
-<div class="panel actions-panel">
-    <div>
-        <label style="font-weight: bold; display: block; margin-bottom: 5px;">Upload JSON:</label>
-        <input type="file" id="upload-json" accept=".json">
+        <div class="flex items-center gap-3 w-full sm:w-auto">
+            <input type="text" id="searchInput" placeholder="Search by brand, color, tags..."
+                   class="hidden px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full sm:w-64" oninput="filterItems()">
+
+            <button onclick="addItem()"
+                    class="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg text-sm font-medium cursor-pointer transition shadow-sm whitespace-nowrap">
+                + Add Item
+            </button>
+
+            <label class="flex items-center gap-2 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium cursor-pointer transition shadow-sm whitespace-nowrap">
+                <span>Upload JSON</span>
+                <input type="file" id="uploadInput" accept=".json" class="hidden" onchange="handleUpload(event)">
+            </label>
+
+            <button id="downloadBtn" onclick="handleDownload()" disabled
+                    class="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-sm font-medium cursor-pointer transition disabled:opacity-50 disabled:cursor-not-allowed shadow-sm whitespace-nowrap">
+                Download JSON
+            </button>
+        </div>
     </div>
-    <button id="export-json" class="btn btn-export">Export JSON</button>
-</div>
+</header>
 
-<div class="panel">
-    <h3>Add New Entry</h3>
-    <div class="add-form">
-        <div class="form-group">
-            <label>ID (UUID)</label>
-            <input type="text" id="new-id" placeholder="Auto-generated if empty">
-        </div>
-        <div class="form-group">
-            <label>Type</label>
-            <select id="new-type"></select>
-        </div>
-        <div class="form-group">
-            <label>Color</label>
-            <select id="new-color"></select>
-        </div>
-        <div class="form-group">
-            <label>Brand</label>
-            <input type="text" id="new-brand" placeholder="e.g. Snitch">
-        </div>
-        <div class="form-group">
-            <label>Occasion</label>
-            <select id="new-occasion"></select>
-        </div>
-        <div class="form-group">
-            <label>Image File</label>
-            <input type="file" id="new-image" accept="image/*" style="padding: 4px;">
-        </div>
-        <button id="add-btn" class="btn">Add Item</button>
+<!-- Main Content Area -->
+<main class="flex-1 max-w-7xl mx-auto w-full px-6 py-8">
+    <!-- Empty State -->
+    <div id="emptyState" class="flex flex-col items-center justify-center py-24 text-center border-2 border-dashed border-gray-300 rounded-2xl bg-white p-8">
+        <svg class="w-12 h-12 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+        </svg>
+        <h3 class="text-lg font-medium text-gray-900 mb-1">No JSON loaded</h3>
+        <p class="text-sm text-gray-500 max-w-xs mb-4">Upload your clothing JSON file or click "+ Add Item" to create metadata from scratch.</p>
     </div>
-</div>
 
-<div id="clothing-list"></div>
+    <!-- Editor Container -->
+    <div id="editorContainer" class="hidden space-y-6">
+        <div id="itemCount" class="text-sm text-gray-500 font-medium"></div>
+        <div id="itemsList" class="space-y-6"></div>
+    </div>
+</main>
 
 <script>
-    // CONFIGURATION ARRAYS FOR EASY MAINTENANCE
-    const CLOTHING_TYPES = ['cap', 'tshirt', 'tanktop', 'sweatshirt', 'shirt', 'pants', 'jeans', 'joggers', 'shorts', 'pajamas', 'jacket', 'sweater', 'shoes'];
-    const OCCASIONS = ['formal', 'semiformal', 'casual', 'party', 'leisure'];
-    const COLORS = ['Black', 'White', 'Gray', 'Navy', 'Blue', 'Red', 'Green', 'Yellow', 'Pink', 'Purple', 'Orange', 'Brown', 'Beige', 'Khaki', 'Maroon', 'Olive', 'Teal'];
+    let clothingData = {};
 
-    // Internal flat array structure used strictly to manage orderly visual listing and index mapping
-    let originalData = [];
-
-    // Initialize the Add New Entry dropdown options on load
-    window.addEventListener('DOMContentLoaded', () => {
-        populateDropdown(document.getElementById('new-type'), CLOTHING_TYPES);
-        populateDropdown(document.getElementById('new-color'), COLORS);
-        populateDropdown(document.getElementById('new-occasion'), OCCASIONS);
-    });
-
-    function populateDropdown(selectElement, optionsArray, selectedValue = '') {
-        selectElement.innerHTML = '';
-        optionsArray.forEach(option => {
-            const optElement = document.createElement('option');
-            optElement.value = option;
-            optElement.textContent = option.charAt(0).toUpperCase() + option.slice(1);
-            if (option.toLowerCase() === selectedValue.toLowerCase()) {
-                optElement.selected = true;
-            }
-            selectElement.appendChild(optElement);
+    // Safe UUID generation fallback for non-HTTPS or filesystem environments
+    function generateUUID() {
+        if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+            return crypto.randomUUID();
+        }
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+            const r = Math.random() * 16 | 0;
+            const v = c === 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
         });
     }
 
-    // Parse Uploaded JSON (Handles both incoming Arrays or giant Object maps gracefully)
-    document.getElementById('upload-json').addEventListener('change', function(e) {
-        const file = e.target.files[0];
+    function handleUpload(event) {
+        const file = event.target.files[0];
         if (!file) return;
 
         const reader = new FileReader();
-        reader.onload = function(evt) {
+        reader.onload = function(e) {
             try {
-                let rawText = evt.target.result.trim();
-                const parsed = JSON.parse(rawText);
-
-                if (Array.isArray(parsed)) {
-                    originalData = parsed.map(item => {
-                        const key = Object.keys(item)[0];
-                        return { id: key, ...item[key] };
-                    });
-                } else if (typeof parsed === 'object') {
-                    originalData = Object.entries(parsed).map(([key, value]) => ({
-                        id: key,
-                        ...value
-                    }));
-                }
-
-                renderList();
-            } catch (err) {
-                alert('Error parsing JSON file. Please ensure it contains valid syntax.');
-                console.error(err);
+                clothingData = JSON.parse(e.target.result);
+                initEditor();
+            } catch (error) {
+                alert('Invalid JSON file format.');
             }
         };
         reader.readAsText(file);
-    });
+    }
 
-    // Render data elements
-    function renderList() {
-        const container = document.getElementById('clothing-list');
+    function initEditor() {
+        document.getElementById('emptyState').classList.add('hidden');
+        document.getElementById('editorContainer').classList.remove('hidden');
+        document.getElementById('searchInput').classList.remove('hidden');
+        document.getElementById('downloadBtn').removeAttribute('disabled');
+
+        updateItemCount();
+        renderItems();
+    }
+
+    function addItem() {
+        const uuid = generateUUID();
+
+        // Core blank item skeleton matching schema layout
+        const newItem = {
+            "brand": "",
+            "metadata": {
+                "category": "",
+                "color": "",
+                "description": "",
+                "fabric": "",
+                "fit": "",
+                "formality": 3,
+                "id": "",
+                "pattern": "",
+                "sub_category": "",
+                "tags": []
+            },
+            "type": ""
+        };
+
+        // Build dictionary entry dynamically
+        clothingData = { [uuid]: newItem, ...clothingData };
+
+        initEditor();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function updateItemCount() {
+        const total = Object.keys(clothingData).length;
+        document.getElementById('itemCount').innerText = `Showing ${total} items`;
+    }
+
+    function renderItems() {
+        const container = document.getElementById('itemsList');
         container.innerHTML = '';
 
-        originalData.forEach((item, index) => {
+        Object.entries(clothingData).forEach(([uuid, item]) => {
             const card = document.createElement('div');
-            card.className = 'item-card';
+            card.className = 'clothing-item bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm flex flex-col md:flex-row gap-6 p-6 transition hover:shadow-md';
+            card.dataset.uuid = uuid;
 
-            const imageSrc = item.image || 'https://via.placeholder.com/120';
+            const meta = item.metadata || {};
+            const tagsString = Array.isArray(meta.tags) ? meta.tags.join(', ') : '';
+
+            card.dataset.searchString = `${item.brand || ''} ${item.type || ''} ${meta.color || ''} ${tagsString}`.toLowerCase();
 
             card.innerHTML = `
-                    <div class="image-container">
-                        <img src="${imageSrc}" alt="${item.type || 'clothing'}" id="img-preview-${index}">
+                    <!-- Image Section -->
+                    <div class="w-full md:w-48 flex-shrink-0 flex flex-col items-center justify-start gap-3">
+                        <div class="w-full aspect-[3/4] rounded-lg overflow-hidden bg-gray-100 border border-gray-200 flex items-center justify-center relative group">
+                            <img src="media/clothes/${uuid}.png" alt="${item.brand || 'New'} ${item.type || 'Item'}"
+                                 class="w-full h-full object-cover"
+                                 onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'%239ca3af\' class=\'w-12 h-12\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z\' /></svg>';">
+                        </div>
+                        <span class="text-xs font-mono text-gray-400 select-all truncate w-full text-center" title="${uuid}">${uuid}</span>
                     </div>
-                    <div class="fields-container">
-                        <div class="form-group full-width">
-                            <label>Item ID Key</label>
-                            <input type="text" value="${item.id || ''}" data-index="${index}" data-field="id" class="inline-input">
+
+                    <!-- Input Grid Section -->
+                    <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-500 mb-1">Brand</label>
+                            <input type="text" value="${item.brand || ''}" oninput="updateField('${uuid}', 'brand', this.value)"
+                                   class="w-full px-3 py-1.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none">
                         </div>
-                        <div class="form-group">
-                            <label>Type</label>
-                            <select data-index="${index}" data-field="type" id="type-select-${index}" class="inline-select"></select>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-500 mb-1">Type</label>
+                            <input type="text" value="${item.type || ''}" oninput="updateField('${uuid}', 'type', this.value)"
+                                   class="w-full px-3 py-1.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none">
                         </div>
-                        <div class="form-group">
-                            <label>Color</label>
-                            <select data-index="${index}" data-field="color" id="color-select-${index}" class="inline-select"></select>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-500 mb-1">Category</label>
+                            <input type="text" value="${meta.category || ''}" oninput="updateMetaField('${uuid}', 'category', this.value)"
+                                   class="w-full px-3 py-1.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none">
                         </div>
-                        <div class="form-group">
-                            <label>Brand</label>
-                            <input type="text" value="${item.brand || ''}" data-index="${index}" data-field="brand" class="inline-input">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-500 mb-1">Sub Category</label>
+                            <input type="text" value="${meta.sub_category || ''}" oninput="updateMetaField('${uuid}', 'sub_category', this.value)"
+                                   class="w-full px-3 py-1.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none">
                         </div>
-                        <div class="form-group">
-                            <label>Occasion</label>
-                            <select data-index="${index}" data-field="occasion" id="occasion-select-${index}" class="inline-select"></select>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-500 mb-1">Color</label>
+                            <input type="text" value="${meta.color || ''}" oninput="updateMetaField('${uuid}', 'color', this.value)"
+                                   class="w-full px-3 py-1.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none">
                         </div>
-                        <div class="form-group" style="grid-column: span 2;">
-                            <label>Change Image File</label>
-                            <input type="file" accept="image/*" data-index="${index}" class="inline-img-uploader" style="padding:4px;">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-500 mb-1">Fabric</label>
+                            <input type="text" value="${meta.fabric || ''}" oninput="updateMetaField('${uuid}', 'fabric', this.value)"
+                                   class="w-full px-3 py-1.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-500 mb-1">Fit</label>
+                            <input type="text" value="${meta.fit || ''}" oninput="updateMetaField('${uuid}', 'fit', this.value)"
+                                   class="w-full px-3 py-1.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-500 mb-1">Pattern</label>
+                            <input type="text" value="${meta.pattern || ''}" oninput="updateMetaField('${uuid}', 'pattern', this.value)"
+                                   class="w-full px-3 py-1.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-500 mb-1">Formality (1-5)</label>
+                            <input type="number" min="1" max="5" value="${meta.formality || ''}" oninput="updateMetaField('${uuid}', 'formality', parseInt(this.value) || 0)"
+                                   class="w-full px-3 py-1.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                        </div>
+                        <div class="sm:col-span-2 md:col-span-3">
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-500 mb-1">Tags (Comma separated)</label>
+                            <input type="text" value="${tagsString}" oninput="updateTags('${uuid}', this.value)"
+                                   class="w-full px-3 py-1.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none" placeholder="e.g. summer, breathable, formal">
+                        </div>
+                        <div class="sm:col-span-2 md:col-span-3">
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-500 mb-1">Description</label>
+                            <textarea rows="2" oninput="updateMetaField('${uuid}', 'description', this.value)"
+                                      class="w-full px-3 py-1.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none resize-y">${meta.description || ''}</textarea>
                         </div>
                     </div>
                 `;
             container.appendChild(card);
-
-            populateDropdown(document.getElementById(`type-select-${index}`), CLOTHING_TYPES, item.type);
-            populateDropdown(document.getElementById(`color-select-${index}`), COLORS, item.color);
-            populateDropdown(document.getElementById(`occasion-select-${index}`), OCCASIONS, item.occasion);
-        });
-
-        // Bind inputs
-        container.querySelectorAll('.inline-input').forEach(input => {
-            input.addEventListener('input', function() {
-                const idx = this.getAttribute('data-index');
-                const field = this.getAttribute('data-field');
-                originalData[idx][field] = this.value;
-            });
-        });
-
-        // Bind dropdown selects
-        container.querySelectorAll('.inline-select').forEach(select => {
-            select.addEventListener('change', function() {
-                const idx = this.getAttribute('data-index');
-                const field = this.getAttribute('data-field');
-                originalData[idx][field] = this.value;
-            });
-        });
-
-        // Bind file uploads
-        container.querySelectorAll('.inline-img-uploader').forEach(uploader => {
-            uploader.addEventListener('change', function(e) {
-                const idx = this.getAttribute('data-index');
-                const file = e.target.files[0];
-                if (!file) return;
-
-                const reader = new FileReader();
-                reader.onload = function(evt) {
-                    originalData[idx]['image'] = evt.target.result;
-                    document.getElementById(`img-preview-${idx}`).src = evt.target.result;
-                };
-                reader.readAsDataURL(file);
-            });
         });
     }
 
-    // Add New Entry logic
-    document.getElementById('add-btn').addEventListener('click', function() {
-        const idInput = document.getElementById('new-id').value.trim();
-        const type = document.getElementById('new-type').value;
-        const color = document.getElementById('new-color').value;
-        const brand = document.getElementById('new-brand').value.trim();
-        const occasion = document.getElementById('new-occasion').value;
-        const imgFile = document.getElementById('new-image').files[0];
-
-        const itemId = idInput || crypto.randomUUID();
-
-        const newItem = {
-            id: itemId,
-            type: type,
-            color: color,
-            brand: brand,
-            occasion: occasion,
-            image: ""
-        };
-
-        if (imgFile) {
-            const reader = new FileReader();
-            reader.onload = function(evt) {
-                newItem.image = evt.target.result;
-                originalData.push(newItem);
-                clearAddForm();
-                renderList();
-            };
-            reader.readAsDataURL(imgFile);
-        } else {
-            originalData.push(newItem);
-            clearAddForm();
-            renderList();
+    function updateField(uuid, field, value) {
+        if (clothingData[uuid]) {
+            clothingData[uuid][field] = value;
+            updateSearchString(uuid);
         }
-    });
-
-    function clearAddForm() {
-        document.getElementById('new-id').value = '';
-        document.getElementById('new-brand').value = '';
-        document.getElementById('new-image').value = '';
-        document.getElementById('new-type').selectedIndex = 0;
-        document.getElementById('new-color').selectedIndex = 0;
-        document.getElementById('new-occasion').selectedIndex = 0;
     }
 
-    // Export data back as one single Object (no outer arrays)
-    document.getElementById('export-json').addEventListener('click', function() {
-        const outputDataObject = {};
+    function updateMetaField(uuid, field, value) {
+        if (clothingData[uuid]) {
+            if (!clothingData[uuid].metadata) clothingData[uuid].metadata = {};
+            clothingData[uuid].metadata[field] = value;
+            updateSearchString(uuid);
+        }
+    }
 
-        originalData.forEach(item => {
-            const { id, ...fields } = item;
-            const finalId = id ? id.trim() : crypto.randomUUID();
-            outputDataObject[finalId] = fields;
+    function updateTags(uuid, value) {
+        if (clothingData[uuid]) {
+            if (!clothingData[uuid].metadata) clothingData[uuid].metadata = {};
+            clothingData[uuid].metadata.tags = value.split(',').map(tag => tag.trim()).filter(tag => tag.length > 0);
+            updateSearchString(uuid);
+        }
+    }
+
+    function updateSearchString(uuid) {
+        const card = document.querySelector(`[data-uuid="${uuid}"]`);
+        if (!card) return;
+        const item = clothingData[uuid];
+        const meta = item.metadata || {};
+        const tagsString = Array.isArray(meta.tags) ? meta.tags.join(' ') : '';
+        card.dataset.searchString = `${item.brand || ''} ${item.type || ''} ${meta.color || ''} ${tagsString}`.toLowerCase();
+    }
+
+    function filterItems() {
+        const query = document.getElementById('searchInput').value.toLowerCase();
+        const cards = document.querySelectorAll('.clothing-item');
+        let visibleCount = 0;
+
+        cards.forEach(card => {
+            if (card.dataset.searchString.includes(query)) {
+                card.classList.remove('hidden');
+                card.classList.add('flex');
+                visibleCount++;
+            } else {
+                card.classList.remove('flex');
+                card.classList.add('hidden');
+            }
         });
 
-        const blob = new Blob([JSON.stringify(outputDataObject, null, 2)], { type: "application/json" });
+        document.getElementById('itemCount').innerText = `Showing ${visibleCount} of ${Object.keys(clothingData).length} items`;
+    }
+
+    function handleDownload() {
+        const jsonString = JSON.stringify(clothingData, null, 4);
+        const blob = new Blob([jsonString], { type: 'application/json' });
         const url = URL.createObjectURL(blob);
 
-        const downloadAnchor = document.createElement('a');
-        downloadAnchor.setAttribute("href", url);
-        downloadAnchor.setAttribute("download", "wardrobe.json");
-        document.body.appendChild(downloadAnchor);
-        downloadAnchor.click();
-        downloadAnchor.remove();
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'wardrobe.json';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
         URL.revokeObjectURL(url);
-    });
+    }
 </script>
 </body>
 </html>

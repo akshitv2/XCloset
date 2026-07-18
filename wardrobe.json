@@ -4,7 +4,7 @@
         "metadata": {
             "category": "top",
             "color": "navy_blue",
-            "description": "A navy blue long-sleeve shirt featuring a mandarin collar and a subtly textured fabric, perfect for a relaxed yet polished summer look.",
+            "description": "A navy blue linen long-sleeve shirt featuring a mandarin collar and a subtly textured fabric, perfect for a relaxed yet polished summer look.",
             "fabric": "linen",
             "fit": "relaxed",
             "formality": 3,
@@ -46,7 +46,7 @@
         "metadata": {
             "category": "top",
             "color": "blue",
-            "description": "A classic blue knit pullover or sweatshirt featuring a structured polo collar and a relaxed, straight fit, perfect for smart-casual layering.",
+            "description": "A classic blue knit pullover or sweatshirt featuring a structured polo collar and a relaxed, straight fit, perfect for smart-casual layering or wearing directly as a faux shirt on warmer day.",
             "fabric": "knit",
             "fit": "straight",
             "formality": 3,
@@ -67,7 +67,7 @@
         "metadata": {
             "category": "outerwear",
             "color": "burgundy",
-            "description": "A solid burgundy pullover hoodie with a drawstring hood and a front kangaroo pocket, featuring a relaxed fit for comfortable daily wear.",
+            "description": "A solid burgundy front closed pullover hoodie with a drawstring hood and a front kangaroo pocket, featuring a relaxed fit for comfortable daily wear.",
             "fabric": "cotton_jersey",
             "fit": "relaxed",
             "formality": 2,
@@ -88,7 +88,7 @@
         "metadata": {
             "category": "top",
             "color": "blue",
-            "description": "A classic long-sleeve light blue button-down dress shirt with a pointed collar and a single chest pocket.",
+            "description": "A classic long-sleeve light saturated blue button-down dress shirt with a pointed collar and a single chest pocket.",
             "fabric": "cotton",
             "fit": "slim",
             "formality": 4,
@@ -193,7 +193,7 @@
         "metadata": {
             "category": "top",
             "color": "black",
-            "description": "A long-sleeved black plaid button-down shirt featuring a classic collar, worn as a layering piece over a black base shirt.",
+            "description": "A long-sleeved woolen black plaid button-down shirt with checks featuring a classic collar.",
             "fabric": "cotton",
             "fit": "slim",
             "formality": 3,
@@ -339,7 +339,7 @@
         "metadata": {
             "category": "outerwear",
             "color": "beige",
-            "description": "A ribbed knit button-up cardigan in a neutral beige tone, featuring a classic v-neck design and a relaxed fit.",
+            "description": "A ribbed knit button-up warm fuzzy cardigan in a neutral beige tone, featuring a classic v-neck design and a relaxed fit.",
             "fabric": "knit",
             "fit": "relaxed",
             "formality": 3,
@@ -360,7 +360,7 @@
         "metadata": {
             "category": "top",
             "color": "taupe",
-            "description": "A solid-colored slim-fit crew neck t-shirt in a neutral taupe shade, featuring a lightweight cotton-jersey fabric.",
+            "description": "A solid-colored muscle-fit crew neck t-shirt in a neutral taupe shade, featuring a lightweight cotton-jersey fabric.",
             "fabric": "cotton_jersey",
             "fit": "slim",
             "formality": 2,
@@ -381,7 +381,7 @@
         "metadata": {
             "category": "top",
             "color": "dusty_rose",
-            "description": "A short-sleeved slim-fit t-shirt in a muted dusty rose color featuring a raw-edge neckline detail.",
+            "description": "A short-sleeved muscle-fit t-shirt in a muted dusty rose color featuring a raw-edge neckline detail.",
             "fabric": "cotton_jersey",
             "fit": "slim",
             "formality": 2,
