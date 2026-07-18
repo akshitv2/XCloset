@@ -40,6 +40,13 @@
         button:hover {
             background-color: #0060d6;
         }
+        .btn-paste {
+            background-color: #28a745;
+            margin-left: 10px;
+        }
+        .btn-paste:hover {
+            background-color: #218838;
+        }
         .gallery-container {
             width: 100%;
             background: white;
@@ -114,11 +121,9 @@
 
 <div class="controls">
     <h3>Input ID Array (Supports single or double quotes)</h3>
-    <textarea id="jsonInput">[
-  ['279f7430-9043-4ec4-99fb-2f871fb7bd35', "246433b0-802b-45f2-99a0-bf37a07dc976"],
-  ["d8d053db-4a01-4de7-a610-e4248f04d9c3", '334ed90f-6458-47fb-b65f-3449d46ae07e']
-]</textarea>
+    <textarea id="jsonInput"></textarea>
     <button onclick="renderImages()">Display Images</button>
+    <button class="btn-paste" onclick="pasteAndRender()">Paste & Display</button>
 </div>
 
 <div class="gallery-container">
@@ -129,10 +134,23 @@
     const BASE_URL = "/XCloset/media/clothes/";
     const IMAGE_EXTENSION = ".png";
 
+    async function pasteAndRender() {
+        try {
+            const text = await navigator.clipboard.readText();
+            document.getElementById('jsonInput').value = text;
+            renderImages();
+        } catch (err) {
+            alert('Failed to read clipboard. Please check browser permissions.');
+            console.error('Clipboard access error:', err);
+        }
+    }
+
     function renderImages() {
         const gallery = document.getElementById('gallery');
         const rawInput = document.getElementById('jsonInput').value.trim();
         gallery.innerHTML = '';
+
+        if (!rawInput) return;
 
         try {
             const parsedData = new Function(`return ${rawInput}`)();
@@ -160,7 +178,6 @@
                     rowHeader.appendChild(label);
                 }
 
-                // Create the action button for stitching/copying
                 const copyBtn = document.createElement('button');
                 copyBtn.className = 'btn-copy-row';
                 copyBtn.innerText = 'Copy Outfit Row';
@@ -183,13 +200,12 @@
                     wrapper.className = 'image-wrapper';
 
                     const img = document.createElement('img');
-                    // Enable CORS handling so canvas can read image data
                     img.crossOrigin = "anonymous";
                     img.src = `${BASE_URL}${cleanId}${IMAGE_EXTENSION}`;
                     img.alt = `Image ${cleanId}`;
                     img.onerror = () => {
                         img.style.display = 'none';
-                        img.classList.add('img-error'); // Mark as broken to ignore during stitch
+                        img.classList.add('img-error');
                         const errorDiv = document.createElement('div');
                         errorDiv.style.cssText = 'height:300px; width:200px; background:#f0f0f0; display:flex; align-items:center; justify-content:center; text-align:center; font-size:12px; color:#999; border:1px dashed #ccc;';
                         errorDiv.innerText = 'Image Not Found';
@@ -216,7 +232,6 @@
     }
 
     async function copyRowToClipboard(rowFlexElement) {
-        // Query only valid, completely loaded images in this row block
         const imgs = Array.from(rowFlexElement.querySelectorAll('img')).filter(img => img.style.display !== 'none' && !img.classList.contains('img-error'));
 
         if (imgs.length === 0) {
@@ -224,11 +239,9 @@
             return;
         }
 
-        // Set baseline canvas target height matching the rendered viewport workflow (300px)
         const targetHeight = 300;
         let totalWidth = 0;
 
-        // Map individual element width metrics maintaining true proportions
         const imageDimensions = imgs.map(img => {
             const aspect = img.naturalWidth / img.naturalHeight;
             const calculatedWidth = targetHeight * aspect;
@@ -241,14 +254,12 @@
         canvas.height = targetHeight;
         const ctx = canvas.getContext('2d');
 
-        // Stitch loop
         let currentX = 0;
         imageDimensions.forEach(item => {
             ctx.drawImage(item.img, currentX, 0, item.width, targetHeight);
             currentX += item.width;
         });
 
-        // Push layout frame blob directly to operating system clipboard
         try {
             canvas.toBlob(async (blob) => {
                 if (!blob) {
