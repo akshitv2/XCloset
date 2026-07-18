@@ -28,7 +28,12 @@
       "fabric": "leather",
       "fit": "straight",
       "formality": 4,
-      "tags": ["formal", "office", "classic", "slip-on"],
+      "tags": [
+        "formal",
+        "office",
+        "classic",
+        "slip-on"
+      ],
       "description": "A pair of classic black slip-on formal shoes by Bata. Features a smooth faux-leather finish with clean panel stitching, subtle side elastic inserts for easy wear, a sleek tapered toe design, and a low stacked heel."
     },
     "type": "shoes"
@@ -61,7 +66,12 @@
       "fabric": "cotton_jersey",
       "fit": "relaxed",
       "formality": 2,
-      "tags": ["streetwear", "cozy", "minimalist", "athleisure"],
+      "tags": [
+        "streetwear",
+        "cozy",
+        "minimalist",
+        "athleisure"
+      ],
       "description": "A solid burgundy hoodie jacket featuring a drawstring hood, long sleeves with ribbed cuffs, and a kangaroo front pocket. Made from a comfortable knit jersey fabric, it offers a relaxed and casual fit. Pairs well with denim jeans or joggers for a classic streetwear style."
     },
     "type": "jacket"
@@ -75,29 +85,90 @@
       "fabric": "cotton",
       "fit": "slim",
       "formality": 4,
-      "tags": ["formal", "office", "classic", "corporate"],
+      "tags": [
+        "formal",
+        "office",
+        "classic",
+        "corporate"
+      ],
       "description": "This Raymond formal shirt features a light blue hue with a subtle micro-textured pattern throughout. Crafted with long sleeves, a standard button-down collar, and a chest patch pocket, it delivers a sharp, clean silhouette. It offers a tailored slim fit that looks professional and pairs exceptionally well with dark formal trousers, a leather belt, and oxford shoes for corporate or business-casual settings."
     },
     "type": "shirt"
   },
   "279f7430-9043-4ec4-99fb-2f871fb7bd35": {
     "brand": "PepeJeans",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "t-shirt",
+      "color": "white",
+      "pattern": "solid",
+      "fabric": "cotton_jersey",
+      "fit": "slim",
+      "formality": 2,
+      "tags": [
+        "minimalist",
+        "casual",
+        "summer",
+        "essential"
+      ],
+      "description": "A classic white crew neck t-shirt from Pepe Jeans featuring a subtle yellow logo detail on the left chest. Crafted from a comfortable cotton jersey fabric, it offers a slim fit silhouette with standard short sleeves. This highly versatile essential is perfect for casual daily wear and pairs effortlessly with blue denim jeans or shorts."
+    },
     "type": "tshirt"
   },
   "2ec58542-dac3-4175-957a-5cd3af9728c0": {
     "brand": "Louis Stitch",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "boots",
+      "color": "black",
+      "pattern": "solid",
+      "fabric": "leather",
+      "fit": "straight",
+      "formality": 4,
+      "tags": [
+        "classic",
+        "sleek",
+        "minimalist",
+        "versatile"
+      ],
+      "description": "Premium black leather Chelsea boots featuring elasticated side panels and convenient pull tabs. Designed with a smooth solid finish and a low block heel. Ideal for business casual wear, pairing excellently with slim-fit chinos or tailored trousers."
+    },
     "type": "shoes"
   },
   "334ed90f-6458-47fb-b65f-3449d46ae07e": {
     "brand": "NewBalance",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "sneakers",
+      "color": "black",
+      "pattern": "solid",
+      "fabric": "leather",
+      "fit": "straight",
+      "formality": 2,
+      "tags": [
+        "streetwear",
+        "retro",
+        "casual",
+        "classic"
+      ],
+      "description": "These New Balance 574 lifestyle sneakers feature a durable cow leather suede and mesh paneled upper in black. Equipped with an iconic ENCAP cushioned midsole in white and grey for support, they offer excellent comfort. They feature classic lace-up closures and a sturdy black rubber outsole, making them highly versatile for everyday casual wear paired with jeans or chinos."
+    },
     "type": "shoes"
   },
   "376d0173-e683-489b-87c1-341b92715a3e": {
     "brand": "Highlander",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "button-down",
+      "color": "white",
+      "pattern": "striped",
+      "fabric": "linen",
+      "fit": "relaxed",
+      "formality": 2,
+      "tags": [
+        "summer",
+        "breathable",
+        "resortwear",
+        "casual"
+      ],
+      "description": "This is a lightweight white short-sleeve button-down shirt featuring muted vertical stripes. Made from a breathable, textured cotton-linen blend fabric, it features a classic spread collar and a button placket. The relaxed silhouette makes it ideal for warm weather, casual summer outings, or resort styling. It pairs excellently with light-colored trousers, linen pants, or casual denim shorts."
+    },
     "type": "shirt"
   },
   "386759b5-1a86-47d2-9b7c-874f86a8be89": {
