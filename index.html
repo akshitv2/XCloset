@@ -84,12 +84,12 @@
         <div class="px-4 flex flex-wrap gap-2 items-center bg-zinc-100/80 dark:bg-zinc-900/50 py-3 border-y border-zinc-200 dark:border-zinc-800 transition-colors duration-200">
             <select class="bg-white dark:bg-black border border-zinc-300 dark:border-zinc-700 text-xs text-zinc-900 dark:text-white uppercase tracking-wider px-3 py-2 focus:outline-none focus:border-lumia-accent transition rounded-none"
                     id="filter-type" onchange="renderCloset()">
-                <option value="all">All Architecture</option>
+                <option value="all">All Types</option>
             </select>
-            <select class="bg-white dark:bg-black border border-zinc-300 dark:border-zinc-700 text-xs text-zinc-900 dark:text-white uppercase tracking-wider px-3 py-2 focus:outline-none focus:border-lumia-accent transition rounded-none"
-                    id="filter-occasion" onchange="renderCloset()">
-                <option value="all">All Settings</option>
-            </select>
+<!--            <select class="bg-white dark:bg-black border border-zinc-300 dark:border-zinc-700 text-xs text-zinc-900 dark:text-white uppercase tracking-wider px-3 py-2 focus:outline-none focus:border-lumia-accent transition rounded-none"-->
+<!--                    id="filter-occasion" onchange="renderCloset()">-->
+<!--                <option value="all">All Settings</option>-->
+<!--            </select>-->
             <button class="text-xs uppercase tracking-widest text-zinc-500 dark:text-lumia-muted hover:text-zinc-900 dark:hover:text-white px-2 py-1 bg-zinc-200 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 transition rounded-none"
                     onclick="resetFilters()">
                 Reset
@@ -195,8 +195,7 @@
             types.add(item.type);
             occasions.add(item.occasion);
         });
-        populateSelect('filter-type', types, 'All Architecture');
-        populateSelect('filter-occasion', occasions, 'All Settings');
+        populateSelect('filter-type', types, 'All Types');
 
         const fitOccasions = new Set();
         Object.values(outfits).forEach(fit => {
@@ -216,7 +215,7 @@
 
     function resetFilters() {
         document.getElementById('filter-type').value = 'all';
-        document.getElementById('filter-occasion').value = 'all';
+        // document.getElementById('filter-occasion').value = 'all';
         renderCloset();
     }
 
@@ -281,11 +280,11 @@
         grid.innerHTML = '';
 
         const typeFilter = document.getElementById('filter-type').value;
-        const occasionFilter = document.getElementById('filter-occasion').value;
+        // const occasionFilter = document.getElementById('filter-occasion').value;
 
         Object.entries(clothes).forEach(([uuid, item]) => {
             if (typeFilter !== 'all' && item.type !== typeFilter) return;
-            if (occasionFilter !== 'all' && item.occasion !== occasionFilter) return;
+            // if (occasionFilter !== 'all' && item.occasion !== occasionFilter) return;
 
             const cardHtml = `
                     <div class="group relative aspect-square bg-zinc-100 dark:bg-zinc-950 overflow-hidden border border-transparent hover:border-zinc-900 dark:hover:border-white transition-all duration-200">
