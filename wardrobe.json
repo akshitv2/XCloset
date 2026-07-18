@@ -173,97 +173,361 @@
   },
   "386759b5-1a86-47d2-9b7c-874f86a8be89": {
     "brand": "BearHouse",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "button-down",
+      "color": "black",
+      "pattern": "plaid",
+      "fabric": "cotton_jersey",
+      "fit": "slim",
+      "formality": 3,
+      "tags": [
+        "smart_casual",
+        "autumn",
+        "classic",
+        "woven"
+      ],
+      "description": "A long-sleeve button-down shirt featuring a black and white woven checked plaid pattern. Crafted with a premium slim fit, it features a classic shirt collar, buttoned front placket, and a chest pocket adorned with the brand's signature metal bear logo detail. Ideal for smart-casual wear, weekend outings, or office casual, it pairs perfectly with dark denim jeans or crisp chinos and clean sneakers."
+    },
     "type": "shirt"
   },
   "3ee4290c-46b8-40ae-ac05-156d91347079": {
     "brand": "FameForever",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "joggers",
+      "color": "beige",
+      "pattern": "solid",
+      "fabric": "cotton_jersey",
+      "fit": "slim",
+      "formality": 1,
+      "tags": [
+        "streetwear",
+        "cozy",
+        "minimalist",
+        "athleisure"
+      ],
+      "description": "These solid beige joggers feature an elasticated waistband and ribbed ankle cuffs. Made from a soft cotton blend fabric, they have convenient side insert pockets. They are ideal for casual lounging or running errands, pairing perfectly with a relaxed graphic tee and chunky sneakers."
+    },
     "type": "joggers"
   },
   "3f8782f6-5853-4fc7-b1d3-1cf9033f7cdc": {
     "brand": "LouisPhilippe",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "trousers",
+      "color": "black",
+      "pattern": "solid",
+      "fabric": "unknown",
+      "fit": "slim",
+      "formality": 5,
+      "tags": [
+        "formal",
+        "business",
+        "minimalist",
+        "classic"
+      ],
+      "description": "These elegant black formal trousers from Louis Philippe feature a contemporary slim fit and a crisp flat-front design. Crafted for refined comfort and style, they provide a sharp silhouette suitable for high-formality events. Ideal for the boardroom or formal evening gatherings, they can be seamlessly paired with a clean white dress shirt and polished black oxford shoes."
+    },
     "type": "pants"
   },
   "4520ff0d-d567-467c-b7af-0b5d9a6668fa": {
     "brand": "BlackBerrys",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "button-down",
+      "color": "navy_blue",
+      "pattern": "solid",
+      "fabric": "cotton",
+      "fit": "slim",
+      "formality": 4,
+      "tags": [
+        "corporate",
+        "minimalist",
+        "classic",
+        "formal"
+      ],
+      "description": "A refined long-sleeve dress shirt featuring a crisp spread collar, standard front button placket, and a single chest patch pocket. Crafted from smooth, structured cotton fabric, it offers a tailored, sharp appearance. Perfect for formal business settings or evening events, it pairs effortlessly with dark trousers and leather dress shoes."
+    },
     "type": "shirt"
   },
   "46f6bd34-3c85-400e-a293-e290facd108b": {
     "brand": "IndianGarage",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "shorts",
+      "color": "white",
+      "pattern": "solid",
+      "fabric": "cotton",
+      "fit": "slim",
+      "formality": 2,
+      "tags": [
+        "summer",
+        "minimalist",
+        "casual",
+        "breathable"
+      ],
+      "description": "These white mid-rise chino shorts from The Indian Garage Co offer a clean and minimalist look. Crafted from comfortable cotton fabric with a solid pattern, they feature a structured slim fit with a button closure and convenient side pockets. They are ideal for warm-weather casual outings and pair perfectly with a dark green t-shirt or polo and white sneakers."
+    },
     "type": "shorts"
   },
   "4797e580-69da-45a9-93a1-8a8fe700bc6e": {
     "brand": "Snitch",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "blazer",
+      "color": "black",
+      "pattern": "solid",
+      "fabric": "knit",
+      "fit": "slim",
+      "formality": 3,
+      "tags": [
+        "layering",
+        "minimalist",
+        "smart_casual",
+        "cozy"
+      ],
+      "description": "A sleek, black solid knit jacket from Snitch featuring a distinct shawl collar and front button closures. This long-sleeve knit layer fits close to the body, offering a structured yet comfortable casual style. It can be effortlessly paired with an off-white crew-neck t-shirt and tailored trousers for a polished, smart-casual aesthetic."
+    },
     "type": "jacket"
   },
   "4932dd4b-3c0c-45e3-85b2-f3a8850120d7": {
     "brand": "Highlander",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "button-down",
+      "color": "brown",
+      "pattern": "solid",
+      "fabric": "linen",
+      "fit": "slim",
+      "formality": 3,
+      "tags": [
+        "summer",
+        "breathable",
+        "smart_casual",
+        "minimalist"
+      ],
+      "description": "A long-sleeve casual shirt by Highlander made from a lightweight, breathable cotton-linen blend. It features a clean, solid brown profile with a traditional spread collar, a full button placket, regular cuffs, and a slightly curved hemline. Ideal for warm weather, it pairs seamlessly with off-white or beige trousers or casual chinos for an effortless smart-casual appearance."
+    },
     "type": "shirt"
   },
   "50a4856f-bb29-43b2-ba3b-b2b372d2d4e0": {
     "brand": "Snitch",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "cardigan",
+      "color": "beige",
+      "pattern": "textured",
+      "fabric": "knit",
+      "fit": "relaxed",
+      "formality": 3,
+      "tags": [
+        "cozy",
+        "layering",
+        "minimalist",
+        "smart casual"
+      ],
+      "description": "A classic beige V-neck cardigan featuring a distinct vertical ribbed texture and a button-down front closure. It is designed with long sleeves and a relaxed silhouette, offering a clean, contemporary aesthetic. This piece acts as an ideal layering option over plain t-shirts or casual shirts, pairing exceptionally well with classic blue denim or smart trousers for a polished smart-casual appearance."
+    },
     "type": "sweater"
   },
   "5640e893-b9f4-44c9-8958-5ed363e1af3a": {
     "brand": "Snitch",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "t-shirt",
+      "color": "taupe",
+      "pattern": "solid",
+      "fabric": "cotton_jersey",
+      "fit": "slim",
+      "formality": 2,
+      "tags": [
+        "minimalist",
+        "casual",
+        "basic",
+        "everyday"
+      ],
+      "description": "A solid taupe crew-neck t-shirt with a slim fit and short sleeves. Made from smooth cotton jersey fabric for daily comfort. A versatile wardrobe basic that pairs well with dark denim or casual trousers."
+    },
     "type": "tshirt"
   },
   "58369c9c-b15b-437a-bfcb-6acac802efaf": {
     "brand": "Snitch",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "t-shirt",
+      "color": "pink",
+      "pattern": "solid",
+      "fabric": "cotton_jersey",
+      "fit": "slim",
+      "formality": 2,
+      "tags": [
+        "summer",
+        "minimalist",
+        "casual",
+        "raw-edge"
+      ],
+      "description": "A classic slim-fit mauve pink t-shirt featuring a distinctive raw-edge crew neck and short half sleeves. Crafted from a lightweight and soft cotton blend fabric, it offers a contemporary minimalist style. Perfect for casual everyday wear, it pairs exceptionally well with dark denim or cargo pants."
+    },
     "type": "tshirt"
   },
   "60bdf523-15fd-4d41-9c91-bc146c76b823": {
     "brand": "VanHeusen",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "t-shirt",
+      "color": "black",
+      "pattern": "solid",
+      "fabric": "cotton_jersey",
+      "fit": "slim",
+      "formality": 3,
+      "tags": [
+        "minimalist",
+        "classic",
+        "smart-casual"
+      ],
+      "description": "A classic black short-sleeve polo t-shirt featuring a contrast tipped ribbed collar and matching cuffs. It includes a small embroidered chest logo, a standard button placket, and a clean structured silhouette. Ideal for smart-casual events, it pairs perfectly with beige chinos or dark denim."
+    },
     "type": "tshirt"
   },
   "61af3553-325c-444b-9319-2c54ac1cdeb1": {
     "brand": "Nike",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "sneakers",
+      "color": "white",
+      "pattern": "solid",
+      "fabric": "leather",
+      "fit": "straight",
+      "formality": 2,
+      "tags": [
+        "retro",
+        "streetwear",
+        "minimalist",
+        "classic"
+      ],
+      "description": "A classic low-top sneaker featuring a smooth white leather upper accented by a distinct brown leather Swoosh and heel tab. It incorporates textured light-grey suede overlays near the toe box and an exposed foam tongue for a vintage aesthetic. This versatile shoe is ideal for everyday casual wear and pairs effortlessly with denim jeans, cargo pants, or relaxed shorts."
+    },
     "type": "shoes"
   },
   "65599a0a-8558-41f9-8b49-4bae78cb758f": {
     "brand": "Celio",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "sweatshirt",
+      "color": "off_white",
+      "pattern": "solid",
+      "fabric": "cotton_jersey",
+      "fit": "straight",
+      "formality": 2,
+      "tags": [
+        "minimalist",
+        "cozy",
+        "layering",
+        "streetwear"
+      ],
+      "description": "This Celio sweatshirt features a clean, minimalist design with a modern quarter-zip mock neckline. Crafted from a comfortable solid-colored knit fabric, it includes long sleeves with ribbed cuffs and a structured hem for a tailored look. It is an excellent piece for transition weather layering, pairing effortlessly with chinos or casual denim for an elevated casual outfit."
+    },
     "type": "sweatshirt"
   },
   "690dfc24-5df5-4793-8a07-f31dc41dfbd8": {
     "brand": "Generic",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "t-shirt",
+      "color": "black",
+      "pattern": "textured",
+      "fabric": "knit",
+      "fit": "slim",
+      "formality": 3,
+      "tags": [
+        "minimalist",
+        "textured",
+        "smart-casual",
+        "summer"
+      ],
+      "description": "This is a men's short-sleeve polo-style t-shirt featuring a distinctive vertical ribbed knit texture. It is designed with a buttonless open V-neck collar and a form-fitting slim silhouette. The solid black color gives it a clean, modern aesthetic that works perfectly for smart-casual summer wear. It pairs exceptionally well with white chinos or tailored shorts for a refined yet relaxed look."
+    },
     "type": "tshirt"
   },
   "70482477-b391-4559-bcff-1a9598fc6b67": {
     "brand": "IndianGarage",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "chinos",
+      "color": "brown",
+      "pattern": "solid",
+      "fabric": "cotton",
+      "fit": "slim",
+      "formality": 3,
+      "tags": [
+        "smart_casual",
+        "drawstring",
+        "lightweight",
+        "minimalist"
+      ],
+      "description": "These men's brown solid mid-rise trousers feature a clean flat-front design with a casual drawstring waist closure. The tapered slim silhouette offers a sharp yet comfortable look for warm weather. Crafted from lightweight cotton fabric, they pair excellently with printed casual button-downs and crisp white sneakers for a refined smart-casual aesthetic."
+    },
     "type": "pants"
   },
   "75d44345-b131-4bfc-b3a2-4762c92fb6ea": {
     "brand": "Celio",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "button-down",
+      "color": "olive_green",
+      "pattern": "solid",
+      "fabric": "linen",
+      "fit": "oversized",
+      "formality": 3,
+      "tags": [
+        "summer",
+        "breathable",
+        "minimalist",
+        "relaxed"
+      ],
+      "description": "A long-sleeve, solid olive green button-down shirt featuring a classic spread collar and a single chest patch pocket. Crafted from breathable, textured linen fabric with a relaxed, roomy drape. Perfectly pairs with cream or beige chinos and minimalist sneakers for an effortless smart-casual look."
+    },
     "type": "shirt"
   },
   "77801729-301b-4fcb-9837-517871dfcaf0": {
     "brand": "Puma",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "cap",
+      "color": "navy_blue",
+      "pattern": "textured",
+      "fabric": "canvas",
+      "fit": "straight",
+      "formality": 2,
+      "tags": [
+        "streetwear",
+        "sporty",
+        "minimalist"
+      ],
+      "description": "A structured navy blue baseball cap featuring a distinctive textured pattern across the brim. It displays a small metallic gold Puma logo on the front panel for a touch of contrast. Excellent for casual outdoor styling, it pairs well with activewear or casual denim jackets."
+    },
     "type": "cap"
   },
   "7b9d1468-b785-4b0e-bc6d-dfc5409d57a1": {
     "brand": "Snitch",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "t-shirt",
+      "color": "charcoal",
+      "pattern": "textured",
+      "fabric": "knit",
+      "fit": "slim",
+      "formality": 3,
+      "tags": [
+        "minimalist",
+        "smart_casual",
+        "textured",
+        "essentials"
+      ],
+      "description": "A charcoal grey flat knit t-shirt featuring a structured crew neck and fitted half sleeves. The fine knit texture gives it a refined, elevated look compared to standard cotton tees. It features a clean, solid profile that frames the physique smoothly, making it an excellent choice for a smart-casual ensemble when paired with tailored trousers or layered under a sharp blazer."
+    },
     "type": "tshirt"
   },
   "7c32d3fc-d5bd-422d-96fe-ee97b4d2e319": {
     "brand": "Celio",
-    "metadata": {},
+    "metadata": {
+      "sub_category": "sweatshirt",
+      "color": "light_blue",
+      "pattern": "solid",
+      "fabric": "knit",
+      "fit": "straight",
+      "formality": 2,
+      "tags": [
+        "minimalist",
+        "cozy",
+        "casual",
+        "layering"
+      ],
+      "description": "A classic light blue long-sleeve sweatshirt from Celio featuring a clean crew neckline and a finely knit texture. Designed with a structured straight fit, ribbed cuffs, and a matching ribbed hemline for a neat silhouette. Perfect for layering over a collared shirt or wearing standalone for casual everyday wear. Pairs excellently with dark chinos or casual denim jeans."
+    },
     "type": "sweatshirt"
   },
   "7d4d5e31-db66-4873-be91-86b4a31049c3": {
