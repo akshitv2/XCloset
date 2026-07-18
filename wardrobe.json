@@ -1215,58 +1215,268 @@
   },
   "49bc8e02-c130-4e15-a025-eca45214dabe": {
     "type": "sweatshirt",
-    "brand": "Dennis Lingo"
+    "brand": "Dennis Lingo",
+    "metadata": {
+      "sub_category": "sweater",
+      "color": "navy_blue",
+      "pattern": "textured",
+      "fabric": "knit",
+      "fit": "slim",
+      "formality": 3,
+      "tags": [
+        "cable_knit",
+        "quarter_zip",
+        "smart_casual",
+        "layering"
+      ],
+      "description": "This Dennis Lingo sweater features a sophisticated cable knit texture and a practical quarter-zip closure with a mock neck. The deep navy blue color makes it a versatile piece for smart-casual ensembles. It is crafted from a soft knit fabric that provides warmth and is ideal for layering over a collared shirt or wearing on its own, pairing perfectly with chinos or dark denim."
+    }
   },
   "49bc8e02-c130-4e15-a025-eca45214dabc": {
     "type": "jacket",
-    "brand": "Here&Now"
+    "brand": "Here&Now",
+    "metadata": {
+      "sub_category": "jacket",
+      "color": "olive_green",
+      "pattern": "solid",
+      "fabric": "denim",
+      "fit": "slim",
+      "formality": 2,
+      "tags": [
+        "casual",
+        "streetwear",
+        "winter",
+        "outerwear"
+      ],
+      "description": "This Here&Now olive green denim jacket features a contrasting cream-colored sherpa collar, adding a touch of texture and warmth. It has a classic button-down front, dual chest pockets with buttoned flaps, and a structured fit. Perfect for layering over a basic t-shirt or hoodie during transitional weather, it pairs exceptionally well with dark jeans or chinos for a relaxed, everyday look."
+    }
   },
   "49bc8e02-c130-4e15-a025-eca45214dabd": {
     "type": "shirt",
-    "brand": "Rare Rabbit"
+    "brand": "Rare Rabbit",
+    "metadata": {
+      "sub_category": "polo",
+      "color": "white",
+      "pattern": "solid",
+      "fabric": "cotton_jersey",
+      "fit": "slim",
+      "formality": 3,
+      "tags": [
+        "long-sleeve",
+        "smart-casual",
+        "floral-patch",
+        "minimalist"
+      ],
+      "description": "This Rare Rabbit long-sleeve polo features a clean, solid white base crafted from a comfortable cotton-based fabric. The design is highlighted by a delicate floral patch on the left chest, adding a refined decorative touch. It features a classic polo collar with a button placket, making it a versatile choice that pairs excellently with chinos or tailored denim for a polished smart-casual look."
+    }
   },
   "fbf2109f-55a0-4016-b580-29b8761d8f23": {
     "type": "pants",
-    "brand": "Decathlon"
+    "brand": "Decathlon",
+    "metadata": {
+      "sub_category": "cargo_pants",
+      "color": "khaki",
+      "pattern": "solid",
+      "fabric": "cotton_blend",
+      "fit": "straight",
+      "formality": 1,
+      "tags": [
+        "outdoor",
+        "tactical",
+        "durable",
+        "hiking"
+      ],
+      "description": "These Decathlon cargo pants are designed for outdoor activities like hiking and trekking. They feature a durable fabric construction with reinforced knee areas for added resilience. The design includes multiple cargo pockets for utility and storage, and they pair well with technical hiking boots or casual athletic footwear."
+    }
   },
   "fbf2109f-55a0-4016-b580-29b8761d8f24": {
     "type": "sweatshirt",
-    "brand": "Decathlon"
+    "brand": "Decathlon",
+    "metadata": {
+      "sub_category": "sweatshirt",
+      "color": "charcoal",
+      "pattern": "solid",
+      "fabric": "knit",
+      "fit": "slim",
+      "formality": 1,
+      "tags": [
+        "athletic",
+        "performance",
+        "outdoors",
+        "midlayer"
+      ],
+      "description": "This Decathlon Quechua technical sweatshirt features a quarter-zip collar and long sleeves with a two-tone design. Crafted from a functional knit fabric, it is designed for hiking and active outdoor pursuits. It works excellently as a base or mid-layer and pairs well with technical hiking pants or athletic gear."
+    }
   },
   "fbf2109f-55a0-4016-b580-29b8761d8f25": {
     "type": "sweatshirt",
-    "brand": "Indian Garage"
+    "brand": "Indian Garage",
+    "metadata": {
+      "sub_category": "sweatshirt",
+      "color": "dusty_rose",
+      "pattern": "solid",
+      "fabric": "knit",
+      "fit": "relaxed",
+      "formality": 2,
+      "tags": [
+        "casual",
+        "minimalist",
+        "knitted",
+        "long-sleeve"
+      ],
+      "description": "This Indian Garage sweatshirt features a relaxed fit with a distinct rib-knit texture. It is designed with a polo-style collar and a V-neck opening, offering a modern twist on a classic silhouette. The long sleeves make it suitable for transitional weather, pairing effortlessly with chinos or jeans for a clean, smart-casual look."
+    }
   },
   "bfa40f17-7541-4f82-a989-903395901c97": {
     "type": "tanktop",
-    "brand": "H&M"
+    "brand": "H&M",
+    "metadata": {
+      "sub_category": "tanktop",
+      "color": "white",
+      "pattern": "solid",
+      "fabric": "cotton_jersey",
+      "fit": "slim",
+      "formality": 1,
+      "tags": [
+        "summer",
+        "essential",
+        "breathable",
+        "layering"
+      ],
+      "description": "This H&M tank top features a classic sleeveless design with a round neckline and a ribbed finish throughout. Crafted from a soft, breathable cotton-blend jersey, it offers a slim fit that makes it a perfect foundational base layer. It is versatile enough to be worn on its own during hot summer days or layered under unbuttoned shirts and jackets for a casual, textured look."
+    }
   },
   "07918a4d-b520-4b3f-be7e-a440dc1ea8e6": {
     "type": "pants",
-    "brand": "Kite Club"
+    "brand": "Kite Club",
+    "metadata": {
+      "sub_category": "trousers",
+      "color": "dark_purple",
+      "pattern": "solid",
+      "fabric": "wool",
+      "fit": "straight",
+      "formality": 4,
+      "tags": [
+        "tailored",
+        "smart_casual",
+        "side_adjusters",
+        "pleated"
+      ],
+      "description": "These sophisticated trousers feature a deep, dark purple hue and a refined, tailored silhouette with classic pleats at the waist. They are equipped with side adjusters, providing a clean, belt-less look characteristic of high-end formal menswear. Crafted from a high-quality wool fabric, they pair perfectly with a crisp white button-down shirt and leather loafers for a sharp business-casual or formal aesthetic."
+    }
   },
   "1f4ad706-5bb2-4d2e-ae62-ca8af4b76149": {
     "type": "pants",
-    "brand": "Arrow"
+    "brand": "Arrow",
+    "metadata": {
+      "sub_category": "chinos",
+      "color": "charcoal",
+      "pattern": "solid",
+      "fabric": "cotton",
+      "fit": "slim",
+      "formality": 3,
+      "tags": [
+        "smart_casual",
+        "versatile",
+        "minimalist",
+        "professional"
+      ],
+      "description": "These Arrow charcoal grey chinos feature a clean, solid design with a refined slim fit. Crafted from a comfortable cotton-blend fabric, they offer a polished look suitable for office wear or smart-casual outings. They pair excellently with a crisp white polo or a button-down shirt and clean sneakers or leather loafers."
+    }
   },
   "30398b2c-de0d-4be4-9c6b-74cbc6d83990": {
     "type": "tshirt",
-    "brand": "Marks & Spencer"
+    "brand": "Marks & Spencer",
+    "metadata": {
+      "sub_category": "t-shirt",
+      "color": "grey",
+      "pattern": "solid",
+      "fabric": "cotton_jersey",
+      "fit": "slim",
+      "formality": 2,
+      "tags": [
+        "minimalist",
+        "casual",
+        "basic",
+        "versatile"
+      ],
+      "description": "This is a classic grey crew-neck t-shirt from Marks & Spencer's Autograph range, crafted from a soft, high-quality cotton jersey fabric. It features a clean, solid design with short sleeves and a tailored slim fit that sits close to the body. This essential staple is perfect for layering under a blazer or open shirt for a smart-casual look, or can be worn on its own with jeans or chinos for a polished, everyday outfit."
+    }
   },
   "aea71320-b863-4f44-9924-56ad6be27a6a": {
     "type": "pants",
-    "brand": "Arrow"
+    "brand": "Arrow",
+    "metadata": {
+      "sub_category": "chinos",
+      "color": "dark_brown",
+      "pattern": "solid",
+      "fabric": "cotton",
+      "fit": "slim",
+      "formality": 4,
+      "tags": [
+        "business_casual",
+        "professional",
+        "tailored",
+        "versatile"
+      ],
+      "description": "These Arrow slim-fit trousers are crafted from a smooth, refined cotton blend, offering a clean and polished silhouette. They feature a solid dark brown tone, making them an excellent choice for a professional wardrobe. These pants pair perfectly with a crisp button-down shirt and leather dress shoes for a sharp business casual or formal office look."
+    }
   },
   "5e39434c-a070-4bae-b4ef-2533f45a12ad": {
     "type": "pants",
-    "brand": "Arrow"
+    "brand": "Arrow",
+    "metadata": {
+      "sub_category": "chinos",
+      "color": "beige",
+      "pattern": "solid",
+      "fabric": "cotton",
+      "fit": "slim",
+      "formality": 4,
+      "tags": [
+        "business_casual",
+        "versatile",
+        "classic",
+        "polished"
+      ],
+      "description": "These Arrow brand trousers feature a clean, solid beige finish in a slim-fit silhouette that offers a tailored appearance. Made from a smooth cotton-blend fabric, they include crisp creases down the legs for added structure. They are ideal for business casual environments and pair exceptionally well with a crisp white button-down shirt and leather loafers for a sharp, professional look."
+    }
   },
   "d4dc9bba-9208-44b0-9b65-33e67263f33f": {
     "type": "pants",
-    "brand": "Van Heusen"
+    "brand": "Van Heusen",
+    "metadata": {
+      "sub_category": "chinos",
+      "color": "navy_blue",
+      "pattern": "solid",
+      "fabric": "cotton",
+      "fit": "slim",
+      "formality": 4,
+      "tags": [
+        "business_casual",
+        "professional",
+        "tailored",
+        "versatile"
+      ],
+      "description": "These Van Heusen slim-fit trousers feature a clean, solid navy blue finish with a subtle textured appearance. Designed for a sharp, professional look, they are perfect for office environments or formal business casual events. Pair these with a crisp white or light blue dress shirt and leather oxfords to complete a polished ensemble."
+    }
   },
   "593a208c-8715-464b-aea0-45d0fde62a94": {
     "type": "tshirt",
-    "brand": "Snitch"
+    "brand": "Snitch",
+    "metadata": {
+      "sub_category": "polo shirt",
+      "color": "navy_blue",
+      "pattern": "textured",
+      "fabric": "knit",
+      "fit": "slim",
+      "formality": 3,
+      "tags": [
+        "smart_casual",
+        "textured",
+        "summer",
+        "versatile"
+      ],
+      "description": "This Snitch knit polo shirt features a sophisticated navy blue color with a distinct vertical ribbed texture. It is designed with a classic polo collar, a short button placket, and ribbed sleeve cuffs. The slim-fit silhouette makes it an excellent choice for a smart-casual ensemble, pairing perfectly with white chinos or tailored trousers for a refined warm-weather look."
+    }
   }
 }
