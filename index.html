@@ -542,7 +542,7 @@
 
     async function copyRowIdsToJSON(rowFlexElement, btnElement) {
         const idElements = Array.from(rowFlexElement.querySelectorAll('.visualizer-item-id'));
-        const ids = idElements.map(el => el.innerText.trim()).filter(id => id);
+        const ids = idElements.map(el => el.innerText.toLowerCase().trim()).filter(id => id);
 
         if (ids.length === 0) {
             alert('No valid cloth IDs found in this row.');
