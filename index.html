@@ -86,10 +86,6 @@
                     id="filter-type" onchange="renderCloset()">
                 <option value="all">All Types</option>
             </select>
-<!--            <select class="bg-white dark:bg-black border border-zinc-300 dark:border-zinc-700 text-xs text-zinc-900 dark:text-white uppercase tracking-wider px-3 py-2 focus:outline-none focus:border-lumia-accent transition rounded-none"-->
-<!--                    id="filter-occasion" onchange="renderCloset()">-->
-<!--                <option value="all">All Settings</option>-->
-<!--            </select>-->
             <button class="text-xs uppercase tracking-widest text-zinc-500 dark:text-lumia-muted hover:text-zinc-900 dark:hover:text-white px-2 py-1 bg-zinc-200 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 transition rounded-none"
                     onclick="resetFilters()">
                 Reset
@@ -115,11 +111,38 @@
         </div>
     </section>
 
+    <!-- Native Integrated Visualizer Section -->
+    <section class="space-y-4 hidden" id="view-go-to-viz">
+        <div class="px-4 flex justify-between items-center bg-zinc-100/80 dark:bg-zinc-900/50 py-3 border-y border-zinc-200 dark:border-zinc-800 transition-colors duration-200">
+            <span class="text-xs font-semibold tracking-widest text-zinc-500 dark:text-lumia-muted uppercase">Outfit Visualizer Engine</span>
+        </div>
+
+        <div class="p-4 space-y-4 max-w-7xl mx-auto">
+            <div class="space-y-2">
+                <label for="jsonInput" class="text-xs font-bold uppercase tracking-wider text-zinc-400 dark:text-lumia-muted">Input ID Array (Supports 1D or 2D Arrays)</label>
+                <textarea id="jsonInput" class="w-full h-24 bg-zinc-50 dark:bg-zinc-950 border border-zinc-300 dark:border-zinc-800 text-zinc-900 dark:text-white p-3 font-mono text-xs focus:outline-none focus:border-lumia-accent transition rounded-none placeholder-zinc-400 dark:placeholder-zinc-600" placeholder='e.g., ["uuid1", "uuid2"] or [["uuid1", "uuid2"], ["uuid3", "uuid4"]]'></textarea>
+            </div>
+
+            <div class="flex gap-2">
+                <button onclick="renderVisualizerImages()" class="bg-lumia-accent text-white text-xs font-bold uppercase tracking-widest px-4 py-2 hover:bg-opacity-90 transition rounded-none">
+                    Display Images
+                </button>
+                <button onclick="pasteAndRenderVisualizer()" class="bg-zinc-200 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white text-xs font-bold uppercase tracking-widest px-4 py-2 hover:bg-zinc-300 dark:hover:bg-zinc-700 transition rounded-none">
+                    Paste & Display
+                </button>
+            </div>
+
+            <div id="visualizer-gallery" class="space-y-6 pt-4"></div>
+        </div>
+    </section>
+
 </main>
 
 <script>
     const MEDIA_URL = '/XCloset/wardrobe.json';
     const OUTFITS_URL = '/XCloset/outfits.json';
+    const VISUALIZER_BASE_URL = "/XCloset/media/clothes/";
+    const VISUALIZER_IMAGE_EXTENSION = ".png";
 
     // Type order mapping for sorting
     const TYPE_ORDER = ['cap', 'tshirt', 'tanktop', 'sweatshirt', 'shirt', 'pants', 'jeans', 'joggers', 'shorts', 'pajamas', 'jacket', 'sweater', 'shoes'];
@@ -167,12 +190,9 @@
     }
 
     function switchView(viewName) {
-        if(viewName === 'go-to-viz'){
-            window.location.href = "/XCloset/OutfitVisualizer.html";
-        }
-
         document.getElementById('view-closet').classList.add('hidden');
         document.getElementById('view-fits').classList.add('hidden');
+        document.getElementById('view-go-to-viz').classList.add('hidden');
 
         document.querySelectorAll('.nav-link').forEach(el => {
             el.classList.remove('text-zinc-900', 'text-white');
@@ -189,6 +209,7 @@
 
         if (viewName === 'closet') renderCloset();
         if (viewName === 'fits') renderFitsPage();
+        if (viewName === 'go-to-viz') renderVisualizerImages();
     }
 
     function populateFilterDropdowns() {
@@ -218,7 +239,6 @@
 
     function resetFilters() {
         document.getElementById('filter-type').value = 'all';
-        // document.getElementById('filter-occasion').value = 'all';
         renderCloset();
     }
 
@@ -248,7 +268,6 @@
             const blob = await response.blob();
             let targetBlob = blob;
 
-            // Normalize non-PNG files via canvas to satisfy cross-platform Clipboard requirements
             if (!blob.type.includes('png')) {
                 const img = new Image();
                 img.src = item.image;
@@ -283,11 +302,9 @@
         grid.innerHTML = '';
 
         const typeFilter = document.getElementById('filter-type').value;
-        // const occasionFilter = document.getElementById('filter-occasion').value;
 
         Object.entries(clothes).forEach(([uuid, item]) => {
             if (typeFilter !== 'all' && item.type !== typeFilter) return;
-            // if (occasionFilter !== 'all' && item.occasion !== occasionFilter) return;
 
             const cardHtml = `
                     <div class="group relative aspect-square bg-zinc-100 dark:bg-zinc-950 overflow-hidden border border-transparent hover:border-zinc-900 dark:hover:border-white transition-all duration-200">
@@ -303,7 +320,6 @@
                             <h3 class="text-xs font-bold uppercase tracking-tight text-zinc-900 dark:text-white truncate">${item.color} ${item.type}</h3>
                             <p class="text-[10px] text-zinc-500 dark:text-lumia-muted uppercase tracking-wider truncate mt-0.5">${item.occasion}</p>
 
-                            <!-- Dual Output Action Bar -->
                             <div class="flex mt-2 pt-2 border-t border-zinc-200 dark:border-zinc-800 text-[9px] font-bold uppercase tracking-widest gap-2 justify-between">
                                 <button onclick="event.stopPropagation(); copyId('${uuid}', this)" class="w-1/2 text-center text-lumia-accent hover:text-zinc-900 dark:hover:text-white transition py-1">
                                     COPY ID
@@ -369,6 +385,190 @@
                 `;
             grid.innerHTML += lookbookCard;
         });
+    }
+
+    /* Integrated Visualizer Processing Engines */
+    async function pasteAndRenderVisualizer() {
+        try {
+            const text = await navigator.clipboard.readText();
+            document.getElementById('jsonInput').value = text;
+            renderVisualizerImages();
+        } catch (err) {
+            alert('Failed to read clipboard. Please check browser permissions.');
+            console.error('Clipboard access error:', err);
+        }
+    }
+
+    function renderVisualizerImages() {
+        const gallery = document.getElementById('visualizer-gallery');
+        const rawInput = document.getElementById('jsonInput').value.trim();
+        gallery.innerHTML = '';
+
+        if (!rawInput) return;
+
+        try {
+            const parsedData = new Function(`return ${rawInput}`)();
+
+            if (!Array.isArray(parsedData)) {
+                alert('Input must be a valid array.');
+                return;
+            }
+
+            const is2D = parsedData.length > 0 && Array.isArray(parsedData[0]);
+            const matrix = is2D ? parsedData : [parsedData];
+
+            matrix.forEach((row, rowIndex) => {
+                if (!Array.isArray(row)) return;
+
+                const rowBlock = document.createElement('div');
+                rowBlock.className = 'border border-zinc-200 dark:border-zinc-800 p-3 space-y-3 bg-white dark:bg-zinc-950 transition-colors duration-200';
+
+                const rowHeader = document.createElement('div');
+                rowHeader.className = 'flex justify-between items-center border-b border-zinc-200 dark:border-zinc-800 pb-2';
+
+                const label = document.createElement('div');
+                label.className = 'text-[10px] text-lumia-accent uppercase tracking-widest font-semibold';
+                label.innerText = is2D ? `Row ${rowIndex + 1}` : 'Custom Compile';
+                rowHeader.appendChild(label);
+
+                const actionsContainer = document.createElement('div');
+                actionsContainer.className = 'flex gap-2';
+
+                const copyBtn = document.createElement('button');
+                copyBtn.className = 'text-[10px] font-bold uppercase tracking-widest bg-green-600 text-white px-3 py-1 hover:bg-green-700 transition rounded-none';
+                copyBtn.innerText = 'Copy Outfit Row';
+                copyBtn.onclick = () => copyRowToClipboard(rowFlex);
+                actionsContainer.appendChild(copyBtn);
+
+                const copyJsonBtn = document.createElement('button');
+                copyJsonBtn.className = 'text-[10px] font-bold uppercase tracking-widest bg-lumia-accent text-white px-3 py-1 hover:bg-opacity-90 transition rounded-none';
+                copyJsonBtn.innerText = 'Copy Config JSON';
+                copyJsonBtn.onclick = () => copyRowIdsToJSON(rowFlex, copyJsonBtn);
+                actionsContainer.appendChild(copyJsonBtn);
+
+                rowHeader.appendChild(actionsContainer);
+                rowBlock.appendChild(rowHeader);
+
+                const rowWrapper = document.createElement('div');
+                rowWrapper.className = 'w-full overflow-x-auto pb-2';
+
+                const rowFlex = document.createElement('div');
+                rowFlex.className = 'flex gap-3 items-start min-w-max';
+
+                row.forEach(id => {
+                    const cleanId = String(id).trim();
+                    if (!cleanId) return;
+
+                    const wrapper = document.createElement('div');
+                    wrapper.className = 'flex flex-col items-center flex-shrink-0 w-[200px] bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-2';
+
+                    const img = document.createElement('img');
+                    img.crossOrigin = "anonymous";
+                    img.src = `${VISUALIZER_BASE_URL}${cleanId}${VISUALIZER_IMAGE_EXTENSION}`;
+                    img.alt = `Image ${cleanId}`;
+                    img.className = 'h-[250px] object-contain mx-auto';
+                    img.onerror = () => {
+                        img.style.display = 'none';
+                        img.classList.add('img-error');
+                        const errorDiv = document.createElement('div');
+                        errorDiv.className = 'h-[250px] w-full bg-zinc-100 dark:bg-zinc-950 flex items-center justify-center text-center text-[10px] text-zinc-400 dark:text-lumia-muted border border-dashed border-zinc-300 dark:border-zinc-800 uppercase tracking-widest';
+                        errorDiv.innerText = 'Not Found';
+                        wrapper.insertBefore(errorDiv, wrapper.firstChild);
+                    };
+
+                    const idLabel = document.createElement('div');
+                    idLabel.className = 'visualizer-item-id text-[9px] font-mono text-zinc-400 dark:text-lumia-muted uppercase mt-2 w-full truncate text-center select-all';
+                    idLabel.innerText = cleanId;
+
+                    wrapper.appendChild(img);
+                    wrapper.appendChild(idLabel);
+                    rowFlex.appendChild(wrapper);
+                });
+
+                rowWrapper.appendChild(rowFlex);
+                rowBlock.appendChild(rowWrapper);
+                gallery.appendChild(rowBlock);
+            });
+
+        } catch (e) {
+            alert('Invalid Array format. Ensure brackets and quotes match properly.');
+        }
+    }
+
+    async function copyRowToClipboard(rowFlexElement) {
+        const imgs = Array.from(rowFlexElement.querySelectorAll('img')).filter(img => img.style.display !== 'none' && !img.classList.contains('img-error'));
+
+        if (imgs.length === 0) {
+            alert('No valid images in this row to copy.');
+            return;
+        }
+
+        const targetHeight = 300;
+        let totalWidth = 0;
+
+        const imageDimensions = imgs.map(img => {
+            const aspect = img.naturalWidth / img.naturalHeight || 1;
+            const calculatedWidth = targetHeight * aspect;
+            totalWidth += calculatedWidth;
+            return { img, width: calculatedWidth };
+        });
+
+        const canvas = document.createElement('canvas');
+        canvas.width = totalWidth;
+        canvas.height = targetHeight;
+        const ctx = canvas.getContext('2d');
+
+        let currentX = 0;
+        imageDimensions.forEach(item => {
+            ctx.drawImage(item.img, currentX, 0, item.width, targetHeight);
+            currentX += item.width;
+        });
+
+        try {
+            canvas.toBlob(async (blob) => {
+                if (!blob) {
+                    alert('Failed to generate image blob.');
+                    return;
+                }
+                const data = [new ClipboardItem({ [blob.type]: blob })];
+                await navigator.clipboard.write(data);
+                alert('Outfit copied to clipboard!');
+            }, 'image/png');
+        } catch (err) {
+            console.error(err);
+            alert('Unable to copy. Ensure your browser permissions grant clipboard access.');
+        }
+    }
+
+    async function copyRowIdsToJSON(rowFlexElement, btnElement) {
+        const idElements = Array.from(rowFlexElement.querySelectorAll('.visualizer-item-id'));
+        const ids = idElements.map(el => el.innerText.trim()).filter(id => id);
+
+        if (ids.length === 0) {
+            alert('No valid cloth IDs found in this row.');
+            return;
+        }
+
+        const generatedUuid = typeof crypto.randomUUID === 'function' ? crypto.randomUUID() : 'outfit-' + Math.random().toString(36).substring(2, 15);
+        const structure = {
+            [generatedUuid]: {
+                "clothes": ids
+            }
+        };
+
+        const jsonFormattedText = JSON.stringify(structure, null, 2);
+
+        try {
+            await navigator.clipboard.writeText(jsonFormattedText);
+            const originalText = btnElement.innerText;
+            btnElement.innerText = 'COPIED JSON';
+            setTimeout(() => {
+                btnElement.innerText = originalText;
+            }, 1000);
+        } catch (err) {
+            console.error('Failed to copy text configuration: ', err);
+            alert('Unable to copy JSON. Check browser clipboard permissions.');
+        }
     }
 
     initializeArchive();

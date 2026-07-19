@@ -1,17 +1,36 @@
 {
   "1": {
-    "occasion": "Casual",
-    "clothes": ["c174a2c3-4a6f-4d36-9268-2de4380b4fda","8c5bf934-8e03-412e-9fb3-004c693b89e1"]},
+    "clothes": [
+      "c174a2c3-4a6f-4d36-9268-2de4380b4fda",
+      "8c5bf934-8e03-412e-9fb3-004c693b89e1"
+    ]
+  },
   "2": {
-    "occasion": "Casual",
-    "clothes": ["d4d2fec7-23ae-46b5-bc62-105fa953506c","70482477-b391-4559-bcff-1a9598fc6b67"]
+    "clothes": [
+      "d4d2fec7-23ae-46b5-bc62-105fa953506c",
+      "70482477-b391-4559-bcff-1a9598fc6b67"
+    ]
   },
   "3": {
-    "occasion":"Casual",
-    "clothes": ["4797e580-69da-45a9-93a1-8a8fe700bc6e","279f7430-9043-4ec4-99fb-2f871fb7bd35","b425a848-72a5-40b5-b83c-214cc43bc30f","0c39a4a2-ec80-4a1a-921b-8517e49c2ca4"]
-
+    "clothes": [
+      "4797e580-69da-45a9-93a1-8a8fe700bc6e",
+      "279f7430-9043-4ec4-99fb-2f871fb7bd35",
+      "b425a848-72a5-40b5-b83c-214cc43bc30f",
+      "0c39a4a2-ec80-4a1a-921b-8517e49c2ca4"
+    ]
   },
-  "4": {"occasion":"Casual",
-    "clothes": ["7b9d1468-b785-4b0e-bc6d-dfc5409d57a1","3f8782f6-5853-4fc7-b1d3-1cf9033f7cdc","2ec58542-dac3-4175-957a-5cd3af9728c0"]
+  "4": {
+    "clothes": [
+      "7b9d1468-b785-4b0e-bc6d-dfc5409d57a1",
+      "3f8782f6-5853-4fc7-b1d3-1cf9033f7cdc",
+      "2ec58542-dac3-4175-957a-5cd3af9728c0"
+    ]
+  },
+  "a9e8d5ad-d9aa-4141-a326-062e56d89f4e": {
+    "clothes": [
+      "376D0173-E683-489B-87C1-341B92715A3E",
+      "D927EFF2-2A00-48F8-B7B0-9AAC564182B8",
+      "61AF3553-325C-444B-9319-2C54AC1CDEB1"
+    ]
   }
 }
