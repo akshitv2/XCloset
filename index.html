@@ -66,12 +66,8 @@
                 Lookbooks
             </button>
             <button class="nav-link text-zinc-400 dark:text-lumia-muted hover:text-zinc-900 dark:hover:text-white transition-colors uppercase"
-                    id="nav-add-item" onclick="switchView('add-item')">
-                + Add
-            </button>
-            <button class="nav-link text-zinc-400 dark:text-lumia-muted hover:text-zinc-900 dark:hover:text-white transition-colors uppercase"
                     id="nav-go-to-viz" onclick="switchView('go-to-viz')">
-                Vizualizer
+                Visualizer
             </button>
         </nav>
     </div>
@@ -122,8 +118,8 @@
 </main>
 
 <script>
-    const MEDIA_URL = '/wardrobe.json';
-    const OUTFITS_URL = '/outfits.json';
+    const MEDIA_URL = '/XCloset/wardrobe.json';
+    const OUTFITS_URL = '/XCloset/outfits.json';
 
     // Type order mapping for sorting
     const TYPE_ORDER = ['cap', 'tshirt', 'tanktop', 'sweatshirt', 'shirt', 'pants', 'jeans', 'joggers', 'shorts', 'pajamas', 'jacket', 'sweater', 'shoes'];
@@ -177,7 +173,6 @@
 
         document.getElementById('view-closet').classList.add('hidden');
         document.getElementById('view-fits').classList.add('hidden');
-        // document.getElementById('view-add-item').classList.add('hidden');
 
         document.querySelectorAll('.nav-link').forEach(el => {
             el.classList.remove('text-zinc-900', 'text-white');
