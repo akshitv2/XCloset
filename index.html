@@ -122,8 +122,8 @@
 </main>
 
 <script>
-    const MEDIA_URL = '/XCloset/wardrobe.json';
-    const OUTFITS_URL = '/XCloset/outfits.json';
+    const MEDIA_URL = '/wardrobe.json';
+    const OUTFITS_URL = '/outfits.json';
 
     // Type order mapping for sorting
     const TYPE_ORDER = ['cap', 'tshirt', 'tanktop', 'sweatshirt', 'shirt', 'pants', 'jeans', 'joggers', 'shorts', 'pajamas', 'jacket', 'sweater', 'shoes'];
@@ -177,7 +177,7 @@
 
         document.getElementById('view-closet').classList.add('hidden');
         document.getElementById('view-fits').classList.add('hidden');
-        document.getElementById('view-add-item').classList.add('hidden');
+        // document.getElementById('view-add-item').classList.add('hidden');
 
         document.querySelectorAll('.nav-link').forEach(el => {
             el.classList.remove('text-zinc-900', 'text-white');
@@ -364,7 +364,7 @@
                         </div>
 
                         <div class="relative w-full aspect-square bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 overflow-hidden">
-                            ${outfitMainImage ? `<img src="${outfitMainImage}" class="w-full h-full object-contain mx-auto" alt="${fitOccasion} Full Look">` : `<div class="w-full h-full flex items-center justify-center text-[10px] uppercase tracking-widest text-zinc-400">No Outfit Image</div>`}
+                            ${outfitMainImage ? `<img src="${outfitMainImage}" onerror="this.src='fallback.png'" class="w-full h-full object-contain mx-auto" alt="${fitOccasion} Full Look">` : `<div class="w-full h-full flex items-center justify-center text-[10px] uppercase tracking-widest text-zinc-400">No Outfit Image</div>`}
                         </div>
 
                         <div class="grid grid-cols-4 gap-1 bg-zinc-100 dark:bg-black p-1 w-full">
